@@ -34,7 +34,7 @@ const listaDeEquipmanetos = [
       ]"
        :dados="listaDeEquipamentos"
     />
-         
+
 
   </div>
 </template>

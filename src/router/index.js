@@ -9,6 +9,9 @@ import Cabecalho from '../components/cabecalho.vue';
 
 
 const routes = [{
+  path: '/',
+  redirect: '/painel_geral'},
+{
   path: '/painel_geral',
   name: 'Painel Geral',
   component: Painel_geral

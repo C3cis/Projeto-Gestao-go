@@ -20,7 +20,7 @@
 <style lang="css" scoped>
 .main-container {
     flex: 2;
-    min-width: 0;
+    min-width: 0 ;
     padding: 1.4rem;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 15px;
+    padding-bottom: 9px;
 }
 
 .titulo-header h1 {

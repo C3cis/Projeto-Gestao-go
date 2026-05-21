@@ -11,8 +11,10 @@ defineProps({
 })
 </script>
 <template >
+    <section class="tabela-container">
     <table class="tabela-geral">
         <thead>
+
             <tr>
                 <th v-for="coluna in colunas" :key="coluna.chave">
                     {{ coluna.titulo }} 
@@ -28,9 +30,18 @@ defineProps({
             </tr>
         </tbody>
     </table>
+    </section>
 
 </template>
 <style lang="css">
+.tabela-container {
+    background-color: #f4f7fe;
+    gap: 2px;
+    padding: 10px;
+    border-radius: 10px;
+    width:100%;
+    overflow-x: auto;
+}
 table {
     width: 100%;
     border-collapse: collapse;

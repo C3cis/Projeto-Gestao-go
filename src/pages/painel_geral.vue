@@ -1,45 +1,54 @@
 <script setup>
 import Tabelas from '@/components/tabelas.vue';
+import Card from '@/components/card.vue';
+
+const meusCards = [
+  { id: 1, titulo: 'Vendas', valor: 'R$ 1.500', icone: '/icons/vendas.svg' },
+  { id: 2, titulo: 'Clientes', valor: 350, icone: '/icons/clientes.svg' },
+  { id: 3, titulo: 'Produtos', valor: 42, icone: '/icons/produtos.svg' }
+];
 
 // Você precisa definir a variável que usou no template!
-const listaDeVendas = [
-  { nome: 'Microscópio Zeiss', total: 'R$ 15.000' },
-  { nome: 'Centrífuga Digital', total: 'R$ 8.500' },
-  { nome: 'Espectrofotômetro', total: 'R$ 12.200' }
-];
 const listaDeEquipamentos = [
-  { nome: 'Microscópio Zeiss', modelo: 'Xingling' },
-  { nome: 'Centrífuga Digital', modelo: 'Xingling' },
-  { nome: 'Espectrofotômetro', modelo: 'SHEIN' }
+  { id: '----', nome: '---', modelo: '---' },
+  { id: '----', nome: '----', modelo: '---' },
+  { id: '---', nome: '---', modelo: '----' }
 ];
 
 </script>
 
 <template>
-  <div class="painel-container">
-    <h1>Painel Geral de Vendas</h1>
-    
+<section class="component-card-container">   
+    <Card 
+      v-for="card in meusCards" 
+      :key="card.id"
+      :titulo="card.titulo"
+      :valor="card.valor"
+      :icone="card.icone"
+    />
+  </section>
+   <section class="tabela-container">
+  <div class="painel-container"> 
+      <h2>Equipamentos</h2>
+     
     <Tabelas
       :colunas="[
-        { titulo: 'Produto', chave: 'nome' },
-        { titulo: 'Total', chave: 'total' }
-      ]"
-      :dados="listaDeVendas"
-    /><br>
-    <h1>Painel Geral de Equipamentos</h1>
-    <Tabelas
-      :colunas="[
-        { titulo: 'Produto', chave: 'nome' },
+        { titulo: 'ID', chave: 'id' },
+        { titulo: 'Nome', chave: 'nome' },
         { titulo: 'Modelo', chave: 'modelo' }
       ]"
-       :dados="listaDeEquipamentos"
-    />
-
-
+      :dados="listaDeEquipamentos"
+    /><br>
   </div>
+  </section>
 </template>
 <style lang="css" scoped>
 .painel-container {
   padding: 20px;
+}
+.component-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 4fr));
+  gap: 10px;
 }
 </style>

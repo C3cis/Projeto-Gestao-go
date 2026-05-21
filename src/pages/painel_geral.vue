@@ -32,9 +32,9 @@ const listaDeEquipmanetos = [
         { titulo: 'Produto', chave: 'nome' },
         { titulo: 'Modelo', chave: 'modelo' }
       ]"
-       :dados="listaDeEquipmanetos"
+       :dados="listaDeEquipamentos"
     />
-          :dados="listaDeEquipmanetos"
+         
 
   </div>
 </template>

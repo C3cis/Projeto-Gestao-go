@@ -7,7 +7,7 @@ const listaDeVendas = [
   { nome: 'Centrífuga Digital', total: 'R$ 8.500' },
   { nome: 'Espectrofotômetro', total: 'R$ 12.200' }
 ];
-const listaDeEquipmanetos = [
+const listaDeEquipamentos = [
   { nome: 'Microscópio Zeiss', modelo: 'Xingling' },
   { nome: 'Centrífuga Digital', modelo: 'Xingling' },
   { nome: 'Espectrofotômetro', modelo: 'SHEIN' }

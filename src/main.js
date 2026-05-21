@@ -5,5 +5,11 @@ import router from './router'
 import './css/base/variables.css'
 import './css/base/reset.css'
 
-createApp(App).mount('#app')
+// 1. Criamos a instância do app e guardamos na variável 'app'
+const app = createApp(App)
+
+// 2. Instalamos o roteador ANTES de montar
 app.use(router)
+
+// 3. Agora sim, montamos o app no HTML
+app.mount('#app')

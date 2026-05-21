@@ -18,7 +18,6 @@ import Painel_geral from './pages/painel_geral.vue';
     </main>
   </div>
 
-  <painel_geral/>
 
 </template>
 

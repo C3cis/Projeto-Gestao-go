@@ -1,9 +1,11 @@
 <script setup>
 import Painel_geral from './pages/painel_geral.vue';
+import Cabecalho from './components/cabecalho.vue';
 
 </script>
 
 <template>
+  <cabecalho/>
   <div class="dashboard-container-lateral">
     <nav class="sidebar">
       <router-link to="/painel_geral">Painel Geral</router-link>

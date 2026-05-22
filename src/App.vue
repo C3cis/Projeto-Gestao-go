@@ -1,7 +1,6 @@
 <script setup>
-import Painel_geral from './pages/painel_geral.vue';
 import Cabecalho from './components/cabecalho.vue';
-
+   
 </script>
 
 <template>
@@ -17,9 +16,9 @@ import Cabecalho from './components/cabecalho.vue';
     </nav>
     <main class="content">
       <router-view></router-view>
+
     </main>
   </div>
-
 
 </template>
 
@@ -27,13 +26,14 @@ import Cabecalho from './components/cabecalho.vue';
 .dashboard-container-lateral {
     display: flex;
     min-height: 100vh;
-    background-color: #e4e7ec; /* Tom de fundo mais moderno e leve */
+    background-color: #f4f6fb;
 }
+
 /* SIDEBAR */
 .sidebar {
     width: 260px;
     background-color: #cbd2e4;
-    border-right: 1px solid #686e84;
+    border-right: 1px solid #d1d3d9;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -41,21 +41,23 @@ import Cabecalho from './components/cabecalho.vue';
     position: sticky;
     top: 0;
 }
-.sidebar a, .sidebar router-link {
+
+.sidebar a {
     display: block;
-    padding: 24px;
-    color: #293141;
+    padding: 16px;
+    color: #000000;
     text-decoration: none;
-    cursor: pointer; 
+    border-radius: 8px;
+    transition: 0.2s;
 }
 
 .sidebar a:hover {
-    background-color: #e0e7ff;
+    background-color: #ffffff;
 }
+
 .content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  border-radius: 2%;
+  padding: 20px;
+  background-color: #f5f7fa;
 }
 </style>

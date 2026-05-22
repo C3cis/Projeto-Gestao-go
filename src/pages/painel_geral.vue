@@ -3,9 +3,10 @@ import Tabelas from '@/components/tabelas.vue';
 import Card from '@/components/card.vue';
 
 const meusCards = [
-  { id: 1, titulo: 'Vendas', valor: 'R$ 1.500', icone: '/icons/vendas.svg' },
-  { id: 2, titulo: 'Clientes', valor: 350, icone: '/icons/clientes.svg' },
-  { id: 3, titulo: 'Produtos', valor: 42, icone: '/icons/produtos.svg' }
+  { titulo: 'Equipamentos', valor: '3', icone: '/funcionario.png' },
+  { titulo: 'Funcionarios', valor: '4', icone: '/funcionario.png' },
+  { titulo: 'Manutencao', valor: '2', icone: '/definicoes.png' },
+  { titulo: 'Pedidos', valor: '2', icone: '/aviao-de-papel.png' }
 ];
 
 // Você precisa definir a variável que usou no template!
@@ -21,7 +22,7 @@ const listaDeEquipamentos = [
 <section class="component-card-container">   
     <Card 
       v-for="card in meusCards" 
-      :key="card.id"
+      :key="card.titulo"
       :titulo="card.titulo"
       :valor="card.valor"
       :icone="card.icone"
@@ -43,12 +44,16 @@ const listaDeEquipamentos = [
   </section>
 </template>
 <style lang="css" scoped>
-.painel-container {
-  padding: 20px;
-}
 .component-card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 4fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.painel-container {
+  margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
 }
 </style>

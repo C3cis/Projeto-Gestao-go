@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
+
 import App from './App.vue'
-import './main.css'
 import router from './router'
-import './css/base/variables.css'
-import './css/base/reset.css'
+
+import './main.css'
 
 // 1. Criamos a instância do app e guardamos na variável 'app'
 const app = createApp(App)

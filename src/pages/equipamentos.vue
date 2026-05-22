@@ -1,7 +1,2 @@
-<script setup>
-</script>
-<template>
-
-</template>
-<style lang="css">
-</style>
+<script setup></script>
+<template></template>

@@ -11,12 +11,12 @@
 <template>
   <article
     class="flex w-full flex-col justify-center gap-0.75 rounded-[10px] border border-black bg-gray-100 p-[3%] text-justify">
-    <div>
+    <div class="gap-0.5 mb-2 m-1 text-[2rem] text-cyan-700">
       <Icon :icon="icone" />
     </div>
 
     <div>
-      <h3 class="m-0 text-[13px] font-medium">
+      <h3 class="m-0 text-[0.9rem] font-medium">
         {{ titulo }}
       </h3>
 

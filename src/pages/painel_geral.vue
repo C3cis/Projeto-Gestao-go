@@ -19,10 +19,7 @@
 </script>
 
 <template>
-  <div class="mb-10">
-    <Botoes tipo="medio" texto="Adicionar Equipamento" cor="vermelho" />
-    <Botoes tipo="grande" texto="Adicionar Equipamento" cor="verde" />
-  </div>
+  
   <section class="grid grid-cols-4 gap-4">
     <Card
       v-for="card in meusCards"
@@ -33,7 +30,7 @@
   </section>
   <section>
     <div class="mt-5 rounded-xl bg-white p-5">
-      <h2>Equipamentos</h2>
+      <h2 class="text-2xl font-bold">Equipamentos</h2>
 
       <Tabelas
         :colunas="[

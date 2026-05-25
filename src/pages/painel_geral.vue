@@ -19,8 +19,13 @@
 </script>
 
 <template>
-  
-  <section class="grid grid-cols-4 gap-4">
+  <section class="mb-9 f">
+    <div class="flex items-center justify-between mb-2 ">
+    <h1 class="text-3xl font-bold mb-1.5 mt-1.5">Dashboard</h1>
+    </div>
+    <p class="text-gray-600 text-[0.9rem]">Visão geral do sistema e Pendências</p>
+  </section>
+  <section class="grid grid-cols-4 gap-5">
     <Card
       v-for="card in meusCards"
       :key="card.titulo"

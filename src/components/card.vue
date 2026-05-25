@@ -10,8 +10,8 @@
 
 <template>
   <article
-    class="flex w-full flex-col justify-center gap-0.75 rounded-[10px] border border-black bg-gray-100 p-[3%] text-justify">
-    <div class="gap-0.5 mb-2 m-1 text-[2rem] text-cyan-700">
+    class="flex w-full flex-col justify-center gap-0.75 rounded-[10px] border border-black bg-violet-50 p-[3%] text-justify">
+    <div class="gap-0.5 mb-2 m-1 text-[2rem] text-rose-900">
       <Icon :icon="icone" />
     </div>
 

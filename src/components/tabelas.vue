@@ -12,14 +12,14 @@
 </script>
 
 <template>
-  <section class="rounded-2.5 w-full overflow-x-auto bg-[#f4f7fe] p-2.5">
+  <section class="rounded-2.5 w-full overflow-x-auto bg-purple-50 p-2.5">
     <table class="mt-3.75 w-full border-collapse bg-white">
       <thead>
         <tr>
           <th
             v-for="coluna in colunas"
             :key="coluna.chave"
-            class="first:rounded-tl-2.5 last:rounded-tr-2.5 bg-[#2d6cdf] px-3 py-3.75 text-left text-[0.85rem] font-semibold text-white">
+            class="first:rounded-tl-2.5 last:rounded-tr-2.5 bg-pink-800 px-3 py-3.75 text-left text-[0.85rem] font-semibold text-white">
             {{ coluna.titulo }}
           </th>
         </tr>

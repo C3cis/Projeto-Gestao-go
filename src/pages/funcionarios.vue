@@ -15,6 +15,14 @@ import Tabelas from '../components/tabelas.vue'
     { id: '000', funcionario: '---', setor: '---', status: '---' },
     { id: '000', funcionario: '---', setor: '---', status: '---' },
   ]
+
+  const BotoesBusca = [
+    {texto: "Buscar", tamanho: "pequeno", cor: "rosaClaro"},
+  {texto: "Todos", tamanho: "pequeno", cor: "rosao"},
+  {texto: "Pendentes", tamanho: "pequeno", cor: "rosinha"},
+  {texto: "Aprovado", tamanho: "pequeno", cor: "rosinha"},
+  {texto: "Cancelado", tamanho: "pequeno", cor: "rosinha"},
+]
 </script>
 
 <template>
@@ -33,11 +41,17 @@ import Tabelas from '../components/tabelas.vue'
       :valor="card.valor"
       :icone="card.icone" />
   </section>
-  <section>
-      <div class="flex items-center justify-between mb-4">
-        <h1 class="gap-5 mt-4 mb-1.5 text-2xl font-bold ">Cadastrados</h1>
-
-      </div>
+  <section class="flex items-center p-1.5 gap-3">
+  
+    <Botoes v-for="botoes in BotoesBusca"
+      :texto="botoes.texto"
+      :tipo="botoes.tamanho"
+      :cor="botoes.cor"
+    />
+  </section>
+  <section>   
+    <div class="flex items-center justify-between mb-4 px-1 p-4">
+      
       <Tabelas
         :colunas="[
           { titulo: 'ID', chave: 'id' },
@@ -47,5 +61,6 @@ import Tabelas from '../components/tabelas.vue'
           { titulo: 'Status', chave: 'status'}
         ]"
         :dados="Funcionarios" /><br/>
+        </div> 
   </section>
 </template>

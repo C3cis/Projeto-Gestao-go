@@ -16,6 +16,7 @@ import Tabelas from '../components/tabelas.vue'
     { id: '003', cliente: 'Carlos Santos', produto: 'Espectrofotômetro', status: 'Entregue' },
   ]
 const BotoesBusca = [
+    {texto: "Buscar", tamanho: "pequeno", cor: "rosaClaro"},
   {texto: "Todos", tamanho: "pequeno", cor: "rosao"},
   {texto: "Pendentes", tamanho: "pequeno", cor: "rosinha"},
   {texto: "Aprovado", tamanho: "pequeno", cor: "rosinha"},
@@ -49,9 +50,7 @@ const BotoesBusca = [
 
   </section>
   <section>
-      <div class="flex items-center justify-between mb-4">
-
-      </div>
+      <div class="flex items-center justify-between mb-4 px-1 p-4">
       <Tabelas
         :colunas="[
           { titulo: 'ID do Pedido', chave: 'id' },
@@ -60,6 +59,7 @@ const BotoesBusca = [
           { titulo: 'Status', chave: 'status' },
         ]"
         :dados="Pedidos" /><br/>
+         </div>
     </section>
 </template>
 v-for="botoes in BotoesBusca"

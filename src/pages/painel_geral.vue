@@ -34,10 +34,10 @@
       :icone="card.icone" />
   </section>
   <section>
-    <div class="mt-5 rounded-xl bg-white p-5">
+     
+    <div class="mt-4 rounded-xl bg-white p-5">
      <h2 class="text-2xl font-bold">Equipamentos</h2>
-
-
+      <div class="flex items-center justify-between mb-4 px-0.5 p-4">
       <Tabelas
         :colunas="[
           { titulo: 'ID', chave: 'id' },
@@ -45,6 +45,7 @@
           { titulo: 'Modelo', chave: 'modelo' },
         ]"
         :dados="listaDeEquipamentos" /><br />
+      </div>
     </div>
   </section>
 </template>

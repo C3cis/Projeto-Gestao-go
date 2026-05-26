@@ -16,9 +16,10 @@ import Tabelas from '../components/tabelas.vue'
     { id: '003', cliente: 'Carlos Santos', produto: 'Espectrofotômetro', status: 'Entregue' },
   ]
 const BotoesBusca = [
-  {texto: "Todos"},
-  {texto: "Pendente"}
-
+  {texto: "Todos", tamanho: "pequeno", cor: "rosao"},
+  {texto: "Pendentes", tamanho: "pequeno", cor: "rosinha"},
+  {texto: "Aprovado", tamanho: "pequeno", cor: "rosinha"},
+  {texto: "Cancelado", tamanho: "pequeno", cor: "rosinha"},
 ]
   
 </script>
@@ -38,16 +39,16 @@ const BotoesBusca = [
       :valor="card.valor"
       :icone="card.icone" />
   </section>
-  <section class grid grid-cols-2 gap-5 mb-6>
-    <Botoes
-    v-for="Botoes in BotoesBusca"
-    :class="Botoes.texto"
+  <section class="flex items-center p-1.5 gap-3">
+    <Botoes v-for="botoes in BotoesBusca"
+      :texto="botoes.texto"
+      :tipo="botoes.tamanho"
+      :cor="botoes.cor"
     />
 
   </section>
   <section>
       <div class="flex items-center justify-between mb-4">
-        <h1 class="gap-5 mt-4 mb-1.5 text-2xl font-bold ">Pedidos Realizados</h1>
 
       </div>
       <Tabelas

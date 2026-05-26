@@ -7,7 +7,6 @@
 </script>
 <template>
   <button
-  v-for="botoes in button"
   :class="{
       'px-2 py-1 text-sm': tipo === 'pequeno',
       'px-4 py-2 text-sm': tipo === 'medio',

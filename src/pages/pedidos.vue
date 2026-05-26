@@ -40,6 +40,7 @@ const BotoesBusca = [
       :icone="card.icone" />
   </section>
   <section class="flex items-center p-1.5 gap-3">
+  
     <Botoes v-for="botoes in BotoesBusca"
       :texto="botoes.texto"
       :tipo="botoes.tamanho"

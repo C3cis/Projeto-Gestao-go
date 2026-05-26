@@ -15,6 +15,12 @@ import Tabelas from '../components/tabelas.vue'
     { id: '002', cliente: 'Maria Oliveira', produto: 'Centrífuga Digital', status: 'Enviado' },
     { id: '003', cliente: 'Carlos Santos', produto: 'Espectrofotômetro', status: 'Entregue' },
   ]
+const BotoesBusca = [
+  {texto: "Todos"},
+  {texto: "Pendente"}
+
+]
+  
 </script>
 <template>
   <section class="mb-9 f">
@@ -32,9 +38,17 @@ import Tabelas from '../components/tabelas.vue'
       :valor="card.valor"
       :icone="card.icone" />
   </section>
+  <section class grid grid-cols-2 gap-5 mb-6>
+    <Botoes
+    v-for="Botoes in BotoesBusca"
+    :class="Botoes.texto"
+    />
+
+  </section>
   <section>
       <div class="flex items-center justify-between mb-4">
         <h1 class="gap-5 mt-4 mb-1.5 text-2xl font-bold ">Pedidos Realizados</h1>
+
       </div>
       <Tabelas
         :colunas="[
@@ -46,8 +60,8 @@ import Tabelas from '../components/tabelas.vue'
         :dados="Pedidos" /><br/>
     </section>
 </template>
-
-<!--<div class="mb-10">
-    <Botoes tipo="medio" texto="Adicionar Equipamento" cor="vermelho" />
-    <Botoes tipo="grande" texto="Adicionar Equipamento" cor="verde" />
-  </div>-->
+v-for="botoes in BotoesBusca"
+    :key="botoes.button"
+    :tipo="botoes.tipo"
+    :texto="botoes.texto"
+    :cor="botoes.cor"

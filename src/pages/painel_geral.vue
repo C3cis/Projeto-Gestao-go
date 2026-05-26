@@ -35,7 +35,8 @@
   </section>
   <section>
     <div class="mt-5 rounded-xl bg-white p-5">
-      <h2 class="text-2xl font-bold">Equipamentos</h2>
+     <h2 class="text-2xl font-bold">Equipamentos</h2>
+
 
       <Tabelas
         :colunas="[

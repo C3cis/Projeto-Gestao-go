@@ -19,14 +19,14 @@ import Tabelas from '../components/tabelas.vue'
   const BotoesBusca = [
     {texto: "Buscar", tamanho: "pequeno", cor: "rosaClaro"},
   {texto: "Todos", tamanho: "pequeno", cor: "rosao"},
-  {texto: "Pendentes", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Aprovado", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Cancelado", tamanho: "pequeno", cor: "rosinha"},
+  {texto: "Ativo", tamanho: "pequeno", cor: "rosinha"},
+  {texto: "Afastado", tamanho: "pequeno", cor: "rosinha"},
+  {texto: "Inativo", tamanho: "pequeno", cor: "rosinha"},
 ]
 </script>
 
 <template>
- <section class="mb-9 f">
+ <section class="mb-9">
     <div class="flex items-center justify-between mb-2 ">
     <h1 class="text-3xl font-bold mb-1.5 mt-1.5">Funcionários</h1>
          <Botoes tipo="medio" texto="+ Novo Funcionário" cor="rosao" />

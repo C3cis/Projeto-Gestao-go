@@ -9,6 +9,7 @@
 </script>
 
 <template>
+  <!-- Card de status -->
   <article
     class="flex w-full flex-col justify-center gap-0.75 rounded-[20px] border border-black bg-violet-50 p-[4%] text-justify">
     <div class="gap-0.5 mb-2 m-1 text-[2rem] text-rose-900">

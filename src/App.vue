@@ -7,7 +7,7 @@
   <cabecalho />
   <div class="flex min-h-screen bg-white">
     <nav
-      class="sticky top-0 flex h-screen w-64 flex-col border border-solid border-white bg-white p-10  ">
+      class="sticky top-0 flex h-screen w-64 flex-col bg-red-50 p-10  ">
       <SidebarLink to="/" label="Painel Geral" />
       <SidebarLink to="/funcionarios" label="Funcionarios" />
       <SidebarLink to="/equipamentos" label="Equipamentos" />

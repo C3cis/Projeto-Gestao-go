@@ -19,7 +19,7 @@
           <th
             v-for="coluna in colunas"
             :key="coluna.chave"
-            class="first:rounded-tl-2.5 last:rounded-tr-2.5 bg-pink-800 px-3 py-3.75 text-left text-[0.85rem] font-semibold text-white">
+            class="first:rounded-tl-2.5 last:rounded-tr-2.5 bg-rose-300 px-3 py-3.75 text-left text-[0.85rem] font-semibold text-white">
             {{ coluna.titulo }}
           </th>
         </tr>

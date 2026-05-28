@@ -28,7 +28,7 @@ import Tabelas from '../components/tabelas.vue'
 <template>
  <section class="mb-9">
     <div class="flex items-center justify-between mb-2 ">
-    <h1 class="text-3xl font-bold mb-1.5 mt-1.5">Equipamentos</h1>
+    <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5 mt-1.5">Equipamentos</h1>
          <Botoes tipo="medio" texto="+ Novo Equipamento" cor="rosao" />
     </div>
     <p class="text-gray-600 text-[0.9rem]">Equipamentos Cadastrados</p>

@@ -30,8 +30,7 @@ const Manutencoes = [
 </script>
 
 <template>
-    <article class="mb-9  ">
-    <section>
+    <section class="mb-9">
     <div class="flex items-center justify-between mb-2 ">
     <h1 class="text-3xl font-bold mb-1.5 mt-1.5">Manutenções</h1>
          <Botoes tipo="medio" texto="+ Nova Manutenção" cor="rosao" />
@@ -55,7 +54,7 @@ const Manutencoes = [
     />
   </section>
   <section >
-    <div class="grid grid-cols-3 place-items-center gap-2">
+    <div class="grid grid-cols-3 place-items-center gap-4 ">
       
       <CardHist
         v-for="card in Manutencoes"
@@ -69,6 +68,4 @@ const Manutencoes = [
       />
     </div>
   </section>
-  </article>
-
 </template>

@@ -4,10 +4,10 @@ import Card from '../components/card.vue';
 import Tabelas from '../components/tabelas.vue'
 
  const meusCards = [
-    { titulo: 'Total', valor: '3', icone: 'ph:toolbox' },
-    { titulo: 'Ativos', valor: '4',icone:'material-symbols:checklist-rounded'},
-    { titulo: 'Afastados', valor: '2', icone: 'material-symbols:manage-search' },
-    { titulo: 'Inativos', valor: '2', icone: 'material-symbols:analytics-outline' },
+    { titulo: 'Total', valor: '3', icone: 'line-md:account' },
+    { titulo: 'Ativos', valor: '4',icone:'line-md:account-add'},
+    { titulo: 'Afastados', valor: '2', icone: 'line-md:account-alert' },
+    { titulo: 'Inativos', valor: '2', icone: 'line-md:account-delete' },
   ]
 
   const Funcionarios = [

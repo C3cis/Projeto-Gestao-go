@@ -4,10 +4,10 @@ import Card from '../components/card.vue';
 import CardHist from '../components/cardHist.vue';
 
  const meusCards = [
-    { titulo: 'Total', valor: '3', icone: 'ph:toolbox' },
-    { titulo: 'Ativos', valor: '4',icone:'material-symbols:checklist-rounded'},
-    { titulo: 'Afastados', valor: '2', icone: 'material-symbols:manage-search' },
-    { titulo: 'Inativos', valor: '2', icone: 'material-symbols:analytics-outline' },
+    { titulo: 'Agendadas', valor: '3', icone: 'line-md:calendar' },
+    { titulo: 'Em Andamento', valor: '4',icone:'line-md:construction'},
+    { titulo: 'Concluídas', valor: '2', icone: 'line-md:confirm-square-twotone' },
+    { titulo: 'Urgentes', valor: '2', icone: 'line-md:hazard-lights-loop' },
   ]
 
   const BotoesBusca = [
@@ -21,10 +21,10 @@ import CardHist from '../components/cardHist.vue';
 ]
 
 const Manutencoes = [
-    { icone: 'ph:toolbox', titulo: 'Manutenção do Servidor', status: 'Concluída', conteudo: 'Substituição de peças e atualização de software', dataAberto: '01/05/2024', dataFechado: '05/05/2024', valor: 'R$ 500,00' },
-    { icone: 'material-symbols:checklist-rounded', titulo: 'Manutenção da Impressoras', status: 'Agendada', conteudo: 'Limpeza e calibração das cabeças de impressão', dataAberto: '10/06/2024', dataFechado: '15/06/2024', valor: 'R$ 300,00' },
-    { icone: 'material-symbols:manage-search', titulo: 'Manutenção do Ar Condicionado', status: 'Urgente', conteudo: 'Reparo do sistema de refrigeração e troca de filtros', dataAberto: '20/06/2024', dataFechado: '', valor: 'R$ 800,00' },
-    { icone: 'material-symbols:analytics-outline', titulo: 'Manutenção do Sistema de Segurança', status: 'Cancelada', conteudo: 'Atualização do software e verificação dos sensores', dataAberto: '15/06/2024', dataFechado: '', valor: 'R$ 600,00' },
+    { icone: 'line-md:calendar', titulo: 'Manutenção do Servidor', status: 'Concluída', conteudo: 'Substituição de peças e atualização de software', dataAberto: '01/05/2024', dataFechado: '05/05/2024', valor: 'R$ 500,00' },
+    { icone: 'line-md:construction', titulo: 'Manutenção da Impressoras', status: 'Agendada', conteudo: 'Limpeza e calibração das cabeças de impressão', dataAberto: '10/06/2024', dataFechado: '15/06/2024', valor: 'R$ 300,00' },
+    { icone: 'line-md:hazard-lights-loop', titulo: 'Manutenção do Ar Condicionado', status: 'Urgente', conteudo: 'Reparo do sistema de refrigeração e troca de filtros', dataAberto: '20/06/2024', dataFechado: '', valor: 'R$ 800,00' },
+    { icone: 'line-md:menu-to-close-alt-transition', titulo: 'Manutenção do Sistema de Segurança', status: 'Cancelada', conteudo: 'Atualização do software e verificação dos sensores', dataAberto: '15/06/2024', dataFechado: '', valor: 'R$ 600,00' },
 
 ]
 </script>

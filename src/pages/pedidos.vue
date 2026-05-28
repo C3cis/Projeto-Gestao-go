@@ -5,9 +5,9 @@ import Tabelas from '../components/tabelas.vue'
 
  const meusCards = [
     { titulo: 'Pendentes', valor: '3', icone: 'line-md:document-report' },
-    { titulo: 'Aprovados', valor: '4',icone:'material-symbols:checklist-rounded'},
-    { titulo: 'Em Analise', valor: '2', icone: 'material-symbols:manage-search' },
-    { titulo: 'Total', valor: '2', icone: 'material-symbols:analytics-outline' },
+    { titulo: 'Aprovados', valor: '4',icone:'line-md:email-check'},
+    { titulo: 'Em Analise', valor: '2', icone: 'line-md:downloading-loop' },
+    { titulo: 'Total', valor: '2', icone: 'line-md:folder-settings-filled' },
   ]
 
   const Pedidos = [

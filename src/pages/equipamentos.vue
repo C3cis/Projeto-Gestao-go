@@ -5,9 +5,9 @@ import Tabelas from '../components/tabelas.vue'
 
  const meusCards = [
     { titulo: 'Total', valor: '3', icone: 'ph:toolbox' },
-    { titulo: 'Operacionais', valor: '4',icone:'material-symbols:checklist-rounded'},
-    { titulo: 'Em Manutenção', valor: '2', icone: 'material-symbols:manage-search' },
-    { titulo: 'Inativos', valor: '2', icone: 'material-symbols:analytics-outline' },
+    { titulo: 'Operacionais', valor: '4',icone:'line-md:fork-right'},
+    { titulo: 'Em Manutenção', valor: '2', icone: 'line-md:construction-twotone'},
+    { titulo: 'Inativos', valor: '2', icone: 'line-md:menu-to-close-alt-transition' }
   ]
 
   const Equipamentos = [

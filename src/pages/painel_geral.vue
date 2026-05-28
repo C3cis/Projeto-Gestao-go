@@ -4,10 +4,10 @@
   import Tabelas from '../components/tabelas.vue'
 
   const meusCards = [
-    { titulo: 'Equipamentos', valor: '3', icone: 'ph:toolbox' },
+    { titulo: 'Equipamentos', valor: '3', icone: 'line-md:computer-twotone' },
     { titulo: 'Funcionarios', valor: '4', icone: 'ph:users' },
-    { titulo: 'Manutencao', valor: '2', icone: 'ph:wrench' },
-    { titulo: 'Pedidos', valor: '2', icone: 'ph:git-pull-request' },
+    { titulo: 'Manutencao Ativas', valor: '2', icone: 'line-md:alert-loop' },
+    { titulo: 'Pedidos Pendentes', valor: '2', icone: 'line-md:text-box-twotone-to-text-box-multiple-twotone-transition' },
   ]
 
   // Você precisa definir a variável que usou no template!

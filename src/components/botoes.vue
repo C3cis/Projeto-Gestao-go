@@ -8,9 +8,9 @@
 <template>
   <button
   :class="{
-      'px-2 py-1 text-sm': tipo === 'pequeno',
-      'px-4 py-2 text-sm': tipo === 'medio',
-      'px-6 py-3 text-lg': tipo === 'grande',
+      'px-2 py-1  ': tipo === 'pequeno',
+      'px-4 py-2 text-sm ': tipo === 'medio',
+      'px-6 py-3 text-lg xl:px-100 sm:px-90': tipo === 'grande',
 
 
       

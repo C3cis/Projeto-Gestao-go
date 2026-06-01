@@ -33,7 +33,7 @@ import Tabelas from '../components/tabelas.vue'
     </div>
     <p class="text-gray-600 text-[0.9rem]">Equipamentos Cadastrados</p>
   </section>
-  <section class="grid grid-cols-4 gap-5 mb-6">
+  <section class="grid grid-cols-4 gap-5 mb-6 xl:grid-cols-6 sm:grid-cols-2 sm:gap-3">
     <Card
       v-for="card in meusCards"
       :key="card.titulo"

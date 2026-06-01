@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-  <main class="flex min-w-0 flex-2 flex-col gap-40 p-[1.4rem] bg-rose-100 sm:p-[1.9rem] sm:border-[100%] xl:p-[2.4rem]">
-    <header class="flex items-center justify-between p-2.25 sm:p-4 xl:p-4">
+  <main class="flex-col w-full bg-rose-100 p-[1.2rem]  xl:p-[2.4rem]">
+    <header class="flex items-center justify-between p-2.25 sm:w-full ">
       <div>
         <h1 class="text-2xl font-bold text-rose-950">Meu Painel</h1>
         <p class="text-rose-800">Atividades Realizadas</p>

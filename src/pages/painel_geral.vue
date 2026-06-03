@@ -23,10 +23,14 @@
     <div class="flex items-center justify-between mb-2 ">
     <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5 mt-1.5">Dashboard</h1>
     </div>
-    <p class="text-gray-600 text-[0.9rem]">Visão geral do sistema e Pendências</p>
+    <p class="text-gray-600">Visão geral do sistema e Pendências</p>
   </section>
-  <section class="grid grid-cols-4 gap-5 mb-6 xl:grid-cols-6 sm:grid-cols-2 sm:gap-3">
-    <Card
+  <section class="grid grid-cols-2 gap-5 text-center
+   sm:grid-cols-2 sm:gap-3 
+   md:grid-cols-4
+   lg:grid-cols-8
+   xl:grid-cols-4">
+   <Card
       v-for="card in meusCards"
       :key="card.titulo"
       :titulo="card.titulo"

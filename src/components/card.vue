@@ -10,20 +10,20 @@
 
 <template>
   <!-- Card de status -->
-  <article
-    class="flex w-full flex-col justify-center  rounded-[20px] border border-black bg-violet-50 text-justify
-    sm:grid grid-flow-col sm:gap-2 sm:p-[20%] xl:grid-cols-2 xl:p-2 xl:text-center md:grid-cols-1 md:p-[20%] md:text-left
-    ">
-    <div class="gap-0.5 mb-2 m-1 text-[2rem] text-rose-900">
+  <article class="flex flex-col items-center gap-3 rounded-[20px] border border-black bg-violet-50 p-2 text-xs
+    sm:flex-row sm:items-center  sm:p-6 sm:text-sm
+    lg:flex-row lg:items-center lg:p-4 lg:text-lg
+    xl:flex-row xl:items-center xl:p-4 xl:text-xl ">
+    <div class=" text-[2rem] text-rose-900">
       <Icon :icon="icone" />
     </div>
 
     <div>
-      <h3 class="m-0 text-[0.9rem] font-medium">
+      <h3 class="text-[0.9rem] font-medium">
         {{ titulo }}
       </h3>
 
-      <p class="m-0 text-[1.4rem] font-medium">
+      <p class="text-[1.4rem] font-medium">
         {{ valor }}
       </p>
     </div>

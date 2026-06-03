@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="js">
   defineProps({
     to: {
       type: String,
@@ -12,7 +12,8 @@
 </script>
 
 <template>
-  <router-link class="block rounded-[1.2rem] p-4 text-rose-800  transition-all hover:bg-white border border-r-9  mt-10 border-rose-800" :to="to">
+  <router-link class="block rounded-[0.9rem] p-2 text-rose-800  transition-all hover:bg-white border border-r-6  mt-2 border-rose-800 " :to="to">
     {{ label }}
   </router-link>
+
 </template>

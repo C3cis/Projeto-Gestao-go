@@ -1,19 +1,29 @@
-<script setup></script>
+<script setup>
+  import { Icon } from '@iconify/vue'
+
+  function darkMode() {
+    const html = document.documentElement
+    html.classList.toggle('dark')
+  }
+
+</script>
 
 <template>
-  <main class="flex-col w-full bg-rose-100 p-[1.2rem]  xl:p-[2.4rem]">
-    <header class="flex items-center justify-between p-2.25 sm:w-full ">
+    <header class="flex items-center justify-between p-2.25 sm:w-full  bg-rose-100 mb-3">
       <div>
-        <h1 class="text-2xl font-bold text-rose-950">Meu Painel</h1>
-        <p class="text-rose-800">Atividades Realizadas</p>
+        <h1 class="text-md font-bold text-rose-950">Meu Painel</h1>
+        <p class="text-xs text-rose-800">Atividades Realizadas</p>
       </div>
-
-      <div class="flex items-center gap-5">
-        <div class="text-right">
-          <h1 class="text-[0.95rem] text-rose-950">Russaneta</h1>
-          <p class="text-[0.8rem] text-rose-800">Nivel de Acesso == mais baixo que o do rosa :3</p>
+        <div class=" text-right">
+          <h1 class="text-sm text-rose-950">Russaneta</h1> 
+          <p class="text-xs text-rose-800">Nivel de Acesso</p>
+          <button class="bg-black/10 rounded-full p-2 mt-2" @click="darkMode">
+          <Icon
+            icon="line-md:account"
+            class="text-3xl text-rose-900"
+          />
+        </button>
         </div>
-      </div>
     </header>
-  </main>
+  
 </template>

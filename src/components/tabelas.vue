@@ -12,8 +12,8 @@
 </script>
 
 <template>
-  <section class="rounded-2.5 w-full overflow-x-auto bg-purple-50 p-2.5">
-    <table class="mt-3.75 w-full border-collapse bg-white">
+  <section class="rounded-2.5 w-full overflow-x-auto bg-purple-50 p-2.5 ">
+    <table class="mt-3.75 w-full border-collapse bg-white ">
       <thead>
         <tr>
           <th

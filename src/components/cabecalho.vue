@@ -9,9 +9,9 @@
 </script>
 
 <template>
-    <header class="flex items-center justify-between p-2.25 sm:w-full  bg-rose-100 mb-3">
+    <header class="flex flex-wrap items-center justify-between p-2.25 sm:w-full  bg-rose-100 mb-3">
       <div>
-        <h1 class="text-md font-bold text-rose-950">Meu Painel</h1>
+        <h1 class="text-xl font-bold text-rose-950">Meu Painel</h1>
         <p class="text-xs text-rose-800">Atividades Realizadas</p>
       </div>
         <div class=" text-right">

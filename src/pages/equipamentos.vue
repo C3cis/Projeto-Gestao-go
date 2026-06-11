@@ -27,13 +27,17 @@ import Tabelas from '../components/tabelas.vue'
 
 <template>
  <section class="mb-9">
-    <div class="flex items-center justify-between mb-2 ">
+    <div class="flex flex-wrap items-center justify-between mb-2 ">
     <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5 mt-1.5">Equipamentos</h1>
-         <Botoes tipo="medio" texto="+ Novo Equipamento" cor="rosao" />
+         <Botoes class="text-xs mb-4" tipo="medio" texto="+ Novo Equipamento" cor="rosao" />
     </div>
     <p class="text-gray-600 text-[0.9rem]">Equipamentos Cadastrados</p>
   </section>
-  <section class="grid grid-cols-4 gap-5 mb-6 xl:grid-cols-6 sm:grid-cols-2 sm:gap-3">
+  <section class="grid grid-cols-2 gap-5 text-justify mb-9
+   sm:grid-cols-2 sm:gap-3 
+   md:grid-cols-2 md:text-base
+   lg:grid-cols-4 lg:text-lg
+   xl:grid-cols-5 xl: text-xl">
     <Card
       v-for="card in meusCards"
       :key="card.titulo"
@@ -41,7 +45,7 @@ import Tabelas from '../components/tabelas.vue'
       :valor="card.valor"
       :icone="card.icone" />
   </section>
-  <section class="flex items-center p-1.5 gap-3 mb-5">
+  <section class="flex flex-wrap p-2 mb-6 gap-2">
   
     <Botoes v-for="botoes in BotoesBusca"
       :texto="botoes.texto"

@@ -25,7 +25,7 @@ const BotoesBusca = [
   
 </script>
 <template>
-  <section class="mb-9 f">
+  <section class="mb-9">
     <div class="flex flex-wrap items-center justify-between mb-2 ">
     <h1 class="text-3xl mb-1.5 mt-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold">Pedidos</h1>
          <Botoes class="text-xs mb-4" tipo="medio" texto="+ Novo Pedido" cor="rosao" />
@@ -36,7 +36,7 @@ const BotoesBusca = [
    sm:grid-cols-2 sm:gap-3 
    md:grid-cols-2 md:text-base
    lg:grid-cols-4 lg:text-lg
-   xl:grid-cols-5 xl: text-xl">
+   xl:grid-cols-5 xl:text-xl">
     <Card
       v-for="card in meusCards"
       :key="card.titulo"
@@ -66,8 +66,3 @@ const BotoesBusca = [
      </div>
     </section>
 </template>
-v-for="botoes in BotoesBusca"
-    :key="botoes.button"
-    :tipo="botoes.tipo"
-    :texto="botoes.texto"
-    :cor="botoes.cor"

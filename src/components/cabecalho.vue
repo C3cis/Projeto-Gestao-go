@@ -21,8 +21,12 @@
   <header
     class="mb-1 flex flex-wrap items-center justify-between bg-rose-100 p-2.25 sm:w-full dark:bg-rose-950/90">
     <div>
-      <h1 class="text-xl font-bold text-rose-950 dark:text-rose-400">Meu Painel</h1>
-      <p class="text-xs text-rose-800 dark:text-rose-200">Atividades Realizadas</p>
+      <h1 class="text-xl font-bold text-rose-950 dark:text-rose-400">
+        {{ $t('cabecalho.meu_painel') }}
+      </h1>
+      <p class="text-xs text-rose-800 dark:text-rose-200">
+        {{ $t('cabecalho.atividades_realizadas') }}
+      </p>
     </div>
     <div class="text-right">
       <h1 class="text-sm text-rose-950 dark:text-rose-400">Russaneta</h1>
@@ -34,6 +38,11 @@
           "
           class="text-2xl text-rose-900" />
       </button>
+      <select v-model="$i18n.locale">
+        <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
+          {{ locale }}
+        </option>
+      </select>
     </div>
   </header>
 </template>

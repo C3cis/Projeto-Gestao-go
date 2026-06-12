@@ -17,10 +17,12 @@
     <Icon icon="line-md:align-justify" />
   </button>
 
-  <div class="flex min-h-screen">
-    <nav class="flex-col bg-red-50 p-4 gap-4 w-64
+  <div class="flex min-h-screen  ">
+    <nav class="flex flex-col bg-red-50 p-4 gap-4 w-64 
+    
   fixed md:relative top-0 left-0 h-full md:h-auto z-50 md:z-auto pt-16 md:pt-4"
-  :class="sidebarAberto ? 'flex' : 'hidden md:flex'">
+  :class="[sidebarAberto ? 'flex' : 'hidden md:flex',
+  'dark:bg-neutral-950/96 ', 'dark:text-slate-500']">
 
       <SidebarLink to="/" label="Painel Geral" />
       <SidebarLink to="/funcionarios" label="Funcionarios" />
@@ -29,7 +31,9 @@
       <SidebarLink to="/pedidos" label="Pedidos" />
     </nav>
 
-    <main class="flex-1 bg-white dark:bg-slate-900 p-5">
+    <main class=" w-full bg-white p-5
+    dark:bg-neutral-950 
+    ">
       <router-view />
     </main>
 

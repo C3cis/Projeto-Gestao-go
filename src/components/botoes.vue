@@ -14,10 +14,10 @@
 
 
       
-      'rounded-[11px] bg-fuchsia-400 text-white': cor === 'rosa',
-      'rounded-[11px] bg-pink-800 text-white': cor === 'rosao',
-      'rounded-[11px] bg-rose-300 text-white': cor === 'rosinha',
-      'rounded-[11px] bg-red-100 text-black px-25 ': cor === 'rosaClaro',
+      'rounded-[11px] bg-fuchsia-400 text-white dark:bg-rose-100 dark:text-black': cor === 'rosa',
+      'rounded-[11px] bg-pink-800 text-white dark:bg-rose-200 dark:text-pink-900': cor === 'rosao',
+      'rounded-[11px] bg-rose-300 text-white dark:bg-neutral-300/90 dark:text-black': cor === 'rosinha',
+      'rounded-[11px] bg-red-100 text-black dark:bg-rose-300/70 dark:text-white px-25 ': cor === 'rosaClaro',
 
     }">
     {{ texto }}

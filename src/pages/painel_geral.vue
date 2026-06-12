@@ -39,14 +39,14 @@
   </section>
   <section>
      
-    <div class="mt-4 rounded-xl bg-white p-5">
-     <h2 class="text-2xl font-bold">Equipamentos</h2>
+    <div class="mt-4 rounded-xl bg-rose-50 p-5 dark:bg-neutral-200/36">
+     <h2 class="text-2xl font-bold dark:text-neutral-200">Pedidos Pendentes</h2>
       <div class="flex items-center justify-between mb-4 px-0.5 p-4">
       <Tabelas
         :colunas="[
           { titulo: 'ID', chave: 'id' },
-          { titulo: 'Nome', chave: 'nome' },
-          { titulo: 'Modelo', chave: 'modelo' },
+          { titulo: 'Pedido', chave: 'nome' },
+          { titulo: 'Problemas', chave: 'modelo' },
         ]"
         :dados="listaDeEquipamentos" /><br />
       </div>

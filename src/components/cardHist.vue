@@ -18,24 +18,24 @@ defineProps({
     <div class="text-xl p-2">
         <Icon :icon="icone" class="text-3xl text-amber-950 dark:text-rose-200"/>
 
-        <div class="flex flex-wrap items-center justify-between mb-2 text-[2rem] dark:text-rose-400">
-     <h3 class="flex flex-wrap items-center m-2 text-base font-medium gap-1 ">
+        <div class="flex flex-wrap items-center justify-between mb-2 text-3xl dark:text-rose-400">
+     <h3 class="m-2 text-base font-medium gap-1 ">
             {{ titulo }}</h3>
      
-      <h2 class="text-xs text-rose-800 font-medium border-2 border-rose-800 bg-red-100 rounded-[20rem] mb-4 p-[0.3rem] w-min "> {{ status }}</h2>
+      <h2 class="text-xs text-rose-800 font-medium border-2 border-rose-800 bg-red-100 rounded-[20px] mb-4 p-[4.3px] w-min "> {{ status }}</h2>
         </div>
-            <p class="text-xs font-medium mb-3.5 dark:text-neutral-50">
+            <p class="text-sm font-medium mb-3.5 dark:text-neutral-50">
                 {{ conteudo }}
             </p>
 
-        <div class="flex flex-1 justify-content m-3 gap-9 dark:text-neutral-300">
-              <p class=" text-[0.5rem] font-medium">
+        <div class="flex flex-col m-3 dark:text-neutral-300 ">
+              <p class=" text-xs font-medium">
                 {{ "Data de Abertura: " + dataAberto }}
             </p>
-            <p class="text-[0.5rem] font-medium">
+            <p class="text-xs font-medium">
                 {{ "Data de Fechamento: " + dataFechado }}
             </p>
-            <p class="text-[0.5rem] font-medium">
+            <p class="text-xs font-medium">
                 {{ "Custo: " + valor }}
             </p>
         </div>

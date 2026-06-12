@@ -19,7 +19,7 @@
           <th
             v-for="coluna in colunas"
             :key="coluna.chave"
-            class="first:rounded-tl-2.5 last:rounded-tr-2.5 bg-rose-300 px-3 py-3.75 text-left text-[0.85rem] font-semibold text-white dark:bg-rose-500/55">
+            class=" bg-rose-300 px-3 py-3.75 text-left text-sm font-semibold text-white dark:bg-rose-500/55">
             {{ coluna.titulo }}
           </th>
         </tr>
@@ -30,7 +30,7 @@
           <td
             v-for="coluna in colunas"
             :key="coluna.chave"
-            class="border-r border-b border-[#e9edf7] px-3 py-3.75 align-middle text-[0.9rem] text-black dark:text-white">
+            class="border-r border-b  px-3 py-5 align-middle text-sm text-black dark:text-white">
             {{ item[coluna.chave] }}
           </td>
         </tr>

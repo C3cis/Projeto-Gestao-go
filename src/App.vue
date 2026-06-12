@@ -34,7 +34,10 @@
     <main class=" w-full bg-white p-5
     dark:bg-neutral-950 
     ">
+    <div class="max-w-7xl mx-auto">
       <router-view />
+      
+      </div>
     </main>
 
   </div>

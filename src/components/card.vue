@@ -10,7 +10,7 @@
 
 <template>
   <!-- Card de status -->
-  <article class="flex flex-col  rounded-[20px] border border-black bg-violet-50 p-2 text-xs
+  <article class="flex flex-col  rounded-[20px] border-2 border-black bg-violet-50 p-3 text-xs py-2 
   dark:border-white dark:bg-neutral-500/50">
     <div class=" text-[2rem] text-rose-900 
     dark:text-rose-200">

@@ -25,11 +25,10 @@
     </div>
     <p class="text-gray-600">Visão geral do sistema e Pendências</p>
   </section>
-  <section class="grid grid-cols-2 gap-5 text-justify mb-9
-   sm:grid-cols-2 sm:gap-3 
-   md:grid-cols-2 md:text-base
-   lg:grid-cols-4 lg:text-lg
-   xl:grid-cols-5 xl: text-xl">
+  <section class="grid grid-cols-1 gap-4 text-justify mb-15 px-20 text-sm
+   sm:grid-cols-2 sm:px-10 sm:gap-6
+   lg:grid-cols-4 lg:text-lg lg:px-4 
+   xl:text-xl">
    <Card
       v-for="card in meusCards"
       :key="card.titulo"

@@ -40,7 +40,7 @@ const Manutencoes = [
   <section class="grid grid-cols-1 gap-4 text-justify mb-5 px-20 text-sm
    sm:grid-cols-2 sm:px-10 sm:gap-6
    lg:grid-cols-4 lg:text-lg lg:px-4 
-   xl:text-xl"">
+   xl:text-xl">
     <Card
       v-for="card in meusCards"
       :key="card.titulo"
@@ -57,8 +57,8 @@ const Manutencoes = [
     />
   </section>
   <section >
-    <div class="grid grid-cols-1 gap-4 text-justify mb-5 px-20 text-sm
-    sm:px-24 sm:gap-4
+    <div class="grid grid-cols-1 gap-4 text-justify mb-5 px-2 text-sm
+    sm:px-4 sm:gap-4
    lg:grid-cols-2 lg:px-20
    xl:text-xl">
 

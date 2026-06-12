@@ -25,7 +25,7 @@
     </div>
     <p class="text-gray-600">Visão geral do sistema e Pendências</p>
   </section>
-  <section class="grid grid-cols-1 gap-4 text-justify mb-15 px-20 text-sm
+  <section class="grid grid-cols-1 gap-4 text-justify mb-15 px-12 text-sm
    sm:grid-cols-2 sm:px-10 sm:gap-6
    lg:grid-cols-4 lg:text-lg lg:px-4 
    xl:text-xl">

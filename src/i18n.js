@@ -4,6 +4,7 @@ import enUS from './i18n/en-us'
 import ptBR from './i18n/pt-br'
 
 const i18n = createI18n({
+  legacy: false,
   locale: 'pt-BR',
   fallbackLocale: 'en-US',
   messages: {

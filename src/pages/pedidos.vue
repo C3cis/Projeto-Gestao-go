@@ -1,36 +1,40 @@
 <script setup>
+import { computed} from 'vue'
+import { useI18n } from 'vue-i18n'
 import Botoes from '../components/botoes.vue';
 import Card from '../components/card.vue';
 import Tabelas from '../components/tabelas.vue'
 
- const meusCards = [
-    { titulo: 'Pendentes', valor: '3', icone: 'line-md:document-report' },
-    { titulo: 'Aprovados', valor: '4',icone:'line-md:email-check'},
-    { titulo: 'Em Analise', valor: '2', icone: 'line-md:downloading-loop' },
-    { titulo: 'Total', valor: '2', icone: 'line-md:folder-settings-filled' },
-  ]
+const {t} = useI18n() 
+
+ const meusCards = computed(() =>[
+    { titulo: t('pedidos.cards.pendentes'), valor: '3', icone: 'line-md:document-report' },
+    { titulo: t('pedidos.cards.aprovados'), valor: '4',icone:'line-md:email-check'},
+    { titulo: t('pedidos.cards.em_analise'), valor: '2', icone: 'line-md:downloading-loop' },
+    { titulo: t('pedidos.cards.total'), valor: '2', icone: 'line-md:folder-settings-filled' },
+  ])
 
   const Pedidos = [
     { id: '001', cliente: 'João Silva', produto: 'Microscópio Zeiss', status: 'Em Processamento' },
     { id: '002', cliente: 'Maria Oliveira', produto: 'Centrífuga Digital', status: 'Enviado' },
     { id: '003', cliente: 'Carlos Santos', produto: 'Espectrofotômetro', status: 'Entregue' },
   ]
-const BotoesBusca = [
-    {texto: "Buscar", tamanho: "pequeno", cor: "rosaClaro"},
-  {texto: "Todos", tamanho: "pequeno", cor: "rosao"},
-  {texto: "Pendentes", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Aprovado", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Cancelado", tamanho: "pequeno", cor: "rosinha"},
-]
+const BotoesBusca = computed(() =>[
+    {texto: t('pedidos.botoes.busca'), tamanho: "pequeno", cor: "rosaClaro"},
+  {texto: t('pedidos.botoes.todos'), tamanho: "pequeno", cor: "rosao"},
+  {texto: t('pedidos.botoes.pendentes'), tamanho: "pequeno", cor: "rosinha"},
+  {texto: t('pedidos.botoes.aprovados'), tamanho: "pequeno", cor: "rosinha"},
+  {texto: t('pedidos.botoes.cancelados'), tamanho: "pequeno", cor: "rosinha"},
+])
   
 </script>
 <template>
   <section class="mb-9">
     <div class="flex flex-wrap items-center justify-between mb-2 ">
-    <h1 class="text-3xl mb-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold">Pedidos</h1>
-         <Botoes class="text-xs mb-4" tipo="medio" texto="+ Novo Pedido" cor="rosao" />
+    <h1 class="text-3xl mb-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold">{{ $t('pedidos.titulo') }}</h1>
+         <Botoes class="text-xs mb-4" tipo="medio" :texto="$t('pedidos.botoes.adicionar')" cor="rosao" />
     </div>
-    <p class="text-gray-600 text-xl">Gerencie os pedidos realizados por seus clientes</p>
+    <p class="text-gray-600 text-xl">{{ $t('pedidos.sub_titulo') }}</p>
   </section>
   <section class="grid grid-cols-1 gap-4 text-justify mb-5 px-20 text-sm
    sm:grid-cols-2 sm:px-10 sm:gap-6
@@ -56,10 +60,10 @@ const BotoesBusca = [
      <div>
       <Tabelas
         :colunas="[
-          { titulo: 'ID do Pedido', chave: 'id' },
-          { titulo: 'Cliente', chave: 'cliente' },
-          { titulo: 'Produto', chave: 'produto' },
-          { titulo: 'Status', chave: 'status' },
+          { titulo: $t('pedidos.tabela.id'), chave: 'id' },
+          { titulo: $t('pedidos.tabela.tecnico'), chave: 'cliente' },
+          { titulo: $t('pedidos.tabela.pedido'), chave: 'produto' },
+          { titulo: $t('pedidos.tabela.status'), chave: 'status' },
         ]"
         :dados="Pedidos" /><br/>
      </div>

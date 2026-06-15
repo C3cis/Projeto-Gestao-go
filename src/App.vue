@@ -24,11 +24,11 @@
   :class="[sidebarAberto ? 'flex' : 'hidden md:flex',
   'dark:bg-neutral-950/96 ', 'dark:text-slate-500']">
 
-      <SidebarLink to="/" label="Painel Geral" />
-      <SidebarLink to="/funcionarios" label="Funcionarios" />
-      <SidebarLink to="/equipamentos" label="Equipamentos" />
-      <SidebarLink to="/manutencao" label="Manutenções" />
-      <SidebarLink to="/pedidos" label="Pedidos" />
+      <SidebarLink to="/" :label="$t('sidebar.painel_geral')" />
+      <SidebarLink to="/funcionarios" :label="$t('sidebar.funcionarios')" />
+      <SidebarLink to="/equipamentos" :label="$t('sidebar.equipamentos')" />
+      <SidebarLink to="/manutencao" :label="$t('sidebar.manutencoes')" />
+      <SidebarLink to="/pedidos" :label="$t('sidebar.pedidos')" />
     </nav>
 
     <main class=" w-full bg-white p-5

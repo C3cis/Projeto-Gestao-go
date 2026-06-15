@@ -1,14 +1,19 @@
 <script setup>
+import { computed} from 'vue'
+import { useI18n } from 'vue-i18n'
 import Botoes from '../components/botoes.vue';
 import Card from '../components/card.vue';
 import Tabelas from '../components/tabelas.vue'
 
- const meusCards = [
-    { titulo: 'Total', valor: '3', icone: 'line-md:account' },
-    { titulo: 'Ativos', valor: '4',icone:'line-md:account-add'},
-    { titulo: 'Afastados', valor: '2', icone: 'line-md:account-alert' },
-    { titulo: 'Inativos', valor: '2', icone: 'line-md:account-delete' },
-  ]
+ const {t} = useI18n()
+
+
+ const meusCards = computed(() =>[
+    { titulo: t('funcionarios.cards.totais'), valor: '3', icone: 'line-md:account' },
+    { titulo: t('funcionarios.cards.ativos'), valor: '4',icone:'line-md:account-add'},
+    { titulo: t('funcionarios.cards.afastados'), valor: '2', icone: 'line-md:account-alert' },
+    { titulo: t('funcionarios.cards.inativos'), valor: '2', icone: 'line-md:account-delete' },
+  ])
 
   const Funcionarios = [
     { id: '001', funcionario: 'Rosa mosqueta', contato:'(11)1234567',  setor: 'Webzinho', status: 'Negativado' },
@@ -16,23 +21,23 @@ import Tabelas from '../components/tabelas.vue'
     { id: '000', funcionario: '---', setor: '---', status: '---' },
   ]
 
-  const BotoesBusca = [
-    {texto: "Buscar", tamanho: "pequeno", cor: "rosaClaro"},
-  {texto: "Todos", tamanho: "pequeno", cor: "rosao"},
-  {texto: "Ativo", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Afastado", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Inativo", tamanho: "pequeno", cor: "rosinha"},
-]
+  const BotoesBusca = computed(() =>[
+    {texto: t('funcionarios.botoes.busca'), tamanho: "pequeno", cor: "rosaClaro"},
+  {texto: t('funcionarios.botoes.todos'), tamanho: "pequeno", cor: "rosao"},
+  {texto: t('funcionarios.botoes.ativos'), tamanho: "pequeno", cor: "rosinha"},
+  {texto: t('funcionarios.botoes.afastados'), tamanho: "pequeno", cor: "rosinha"},
+  {texto: t('funcionarios.botoes.inativo'), tamanho: "pequeno", cor: "rosinha"},
+])
 </script>
 
 <template>
  <section class="mb-9">
     <div class="flex flex-wrap items-center justify-between mb-2 ">
     <h1 class="text-3xl 
-     bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-3">Funcionários</h1>
-      <Botoes class="text-xs mb-4" tipo="medio" texto="+ Novo Funcionário" cor="rosao" />
+     bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-3">{{ $t('funcionarios.titulo') }}</h1>
+      <Botoes class="text-xs mb-4" tipo="medio" :texto="$t('funcionarios.botoes.adicionar')" cor="rosao" />
       </div>
-      <p class="text-gray-600 mb-8">Colaboradores Cadastrados</p>
+      <p class="text-gray-600 mb-8">{{ $t('funcionarios.sub_titulo') }}</p>
         
     
    
@@ -60,11 +65,11 @@ import Tabelas from '../components/tabelas.vue'
     <div>
       <Tabelas
         :colunas="[
-          { titulo: 'ID', chave: 'id' },
-          { titulo: 'Funcionario', chave: 'funcionario' },
-          { titulo: 'Setor', chave: 'setor' },
-          { titulo: 'Contato', chave: 'contato' },
-          { titulo: 'Status', chave: 'status'}
+          { titulo:  $t('funcionarios.tabela.id'), chave: 'id' },
+          { titulo: $t('funcionarios.tabela.funcionario'), chave: 'funcionario' },
+          { titulo: $t('funcionarios.tabela.setor'), chave: 'setor' },
+          { titulo: $t('funcionarios.tabela.contato'), chave: 'contato' },
+          { titulo: $t('funcionarios.tabela.status'), chave: 'status'}
         ]"
         :dados="Funcionarios" /><br/>
     </div>

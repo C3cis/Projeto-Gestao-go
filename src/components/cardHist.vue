@@ -29,16 +29,16 @@ defineProps({
             </p>
 
         <div class="flex flex-col m-3 dark:text-neutral-300 ">
-              <p class=" text-xs font-medium">
-                {{ "Data de Abertura: " + dataAberto }}
-            </p>
-            <p class="text-xs font-medium">
-                {{ "Data de Fechamento: " + dataFechado }}
-            </p>
-            <p class="text-xs font-medium">
-                {{ "Custo: " + valor }}
-            </p>
-        </div>
+    <p class=" text-xs font-medium">
+        {{ $t('manutencoes.cardHist.data_abertura') }}: {{ dataAberto }}
+    </p>
+    <p class="text-xs font-medium">
+        {{ $t('manutencoes.cardHist.data_fechamento') }}: {{ dataFechado }}
+    </p>
+    <p class="text-xs font-medium">
+        {{ $t('manutencoes.cardHist.custo') }}: {{ valor }}
+    </p>
+</div>
           
             </div>
     </article>

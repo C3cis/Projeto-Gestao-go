@@ -1,24 +1,27 @@
 <script setup>
+import { computed} from 'vue'
+import { useI18n } from 'vue-i18n'
 import Botoes from '../components/botoes.vue';
 import Card from '../components/card.vue';
 import CardHist from '../components/cardHist.vue';
 
- const meusCards = [
-    { titulo: 'Agendadas', valor: '3', icone: 'line-md:calendar' },
-    { titulo: 'Em Andamento', valor: '4',icone:'line-md:construction'},
-    { titulo: 'Concluídas', valor: '2', icone: 'line-md:confirm-square-twotone' },
-    { titulo: 'Urgentes', valor: '2', icone: 'line-md:hazard-lights-loop' },
-  ]
+const {t} = useI18n() 
 
-  const BotoesBusca = [
-    {texto: "Buscar", tamanho: "pequeno", cor: "rosaClaro"},
-  {texto: "Todos", tamanho: "pequeno", cor: "rosao"},
-  {texto: "Agendadas", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Concluídas", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Urgentes", tamanho: "pequeno", cor: "rosinha"},
-  {texto: "Cancelados", tamanho: "pequeno", cor: "rosinha"},
+ const meusCards = computed(() =>[
+    { titulo: t('manutencoes.cards.agendadas'), valor: '3', icone: 'line-md:calendar' },
+    { titulo: t('manutencoes.cards.em_andamento'), valor: '4',icone:'line-md:construction'},
+    { titulo: t('manutencoes.cards.concluidas'), valor: '2', icone: 'line-md:confirm-square-twotone' },
+    { titulo: t('manutencoes.cards.urgentes'), valor: '2', icone: 'line-md:hazard-lights-loop' },
+  ])
 
-]
+  const BotoesBusca = computed(() =>[
+  {texto: t('manutencoes.botoes.busca'), tamanho: "pequeno", cor: "rosaClaro"},
+  {texto: t('manutencoes.botoes.todos'), tamanho: "pequeno", cor: "rosao"},
+  {texto: t('manutencoes.botoes.agendadas'), tamanho: "pequeno", cor: "rosinha"},
+  {texto: t('manutencoes.botoes.concluidas'), tamanho: "pequeno", cor: "rosinha"},
+  {texto: t('manutencoes.botoes.urgentes'), tamanho: "pequeno", cor: "rosinha"},
+  {texto: t('manutencoes.botoes.cancelados'), tamanho: "pequeno", cor: "rosinha"},
+])
 
 const Manutencoes = [
     { icone: 'line-md:calendar', titulo: 'Manutenção do Servidor', status: 'Concluída', conteudo: 'Substituição de peças e atualização de software', dataAberto: '01/05/2024', dataFechado: '05/05/2024', valor: 'R$ 500,00' },
@@ -32,10 +35,10 @@ const Manutencoes = [
 <template>
     <section class="mb-9">
     <div class="flex flex-wrap items-center justify-between mb-2 ">
-    <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5">Manutenções</h1>
-         <Botoes class="text-xs mb-4" tipo="medio" texto="+ Nova Manutenção" cor="rosao" />
+    <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5">{{ $t('manutencoes.titulo') }}</h1>
+         <Botoes class="text-xs mb-4" tipo="medio" :texto="$t('manutencoes.botoes.adicionar')" cor="rosao" />
     </div>
-    <p class="text-gray-600 text-xl">Manutenções Cadastradas</p>
+    <p class="text-gray-600 text-xl">{{ $t('manutencoes.sub_titulo') }}</p>
   </section>
   <section class="grid grid-cols-1 gap-4 text-justify mb-5 px-20 text-sm
    sm:grid-cols-2 sm:px-10 sm:gap-6

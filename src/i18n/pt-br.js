@@ -1,7 +1,129 @@
+import Painel_geral from "../pages/painel_geral.vue";
+
 export default {
+  sidebar: {
+    painel_geral: 'Painel Geral',
+    funcionarios: 'Funcionários',
+    equipamentos: 'Equipamentos',
+    manutencoes: 'Manutenções',
+    pedidos: 'Pedidos'
+  },
+  
   cabecalho: {
     meu_painel: 'Meu Painel',
     atividades_realizadas: 'Atividades Realizadas',
   },
-  manutencoes: {},
-}
+  painel_geral: {
+    titulo: 'Visão geral do sistema e Pendências',
+    titulo_tabela: 'Pedidos Pendentes',
+    cards: {
+      equipamentos: 'Equipamentos',
+      funcionarios: 'Funcionários',
+      manutencao_ativa: 'Manutenções Ativas',
+      pedidos_pendentes: 'Pedidos Pendentes'
+    },
+    tabela: {
+      id: 'ID',
+      pedido: 'Pedidos',
+      problemas: 'Problemas'
+    }
+  },
+  funcionarios: {
+    titulo: 'Funcionários',
+    sub_titulo: 'Colaboradores Cadastrados',
+    cards: {
+      totais: 'Totais',
+      ativos: 'Ativos',
+      afastados: 'Afastados',
+      inativos: 'Inativos'
+    },
+    tabela: {
+      id: 'ID',
+      funcionario: 'Funcionario',
+      setor: 'Setor',
+      contato: 'Contato',
+      status: 'Status'
+    },
+    botoes:{
+    adicionar: '+ Novo Funcionario',
+    busca: 'Busca',
+    todos: 'Todos',
+    ativos: 'Ativos',
+    afastados: 'Afastados',
+    inativo: 'Inativos'
+    },
+  },
+  equipamentos: {
+    titulo: 'Equipamentos',
+    sub_titulo: 'Equipamentos Cadastrado',
+    cards: {
+      totais: 'Totais',
+      operacionais: 'Operacionais',
+      em_manutencao: 'Em Manutenção',
+      inativos: 'Inativos'
+    },
+    tabela: {
+      id: 'ID',
+      equipamento: 'Nome',
+      modelo: 'Modelo',
+      localizacao: 'Localização',
+      status: 'Status'
+    },
+    botoes:{
+    adicionar: '+ Novo Equipamento',
+    busca: "Busca",
+    todos: 'Todos',
+    ativos: 'Ativos',
+    em_manutencao: 'Em manutenção'
+   },
+  },
+  manutencoes:{
+    titulo: 'Manutenções',
+    sub_titulo: 'Registro de Manutenções',
+    cards: {
+      agendadas: 'Agendadas',
+      em_andamento: 'Em andamento',
+      concluidas: 'Concluídas',
+      urgentes: 'Urgentes'
+    },
+    cardHist: {
+  data_abertura: 'Data de Abertura',
+  data_fechamento: 'Data de Fechamento',
+  custo: 'Custo',
+  },
+  botoes:{
+    adicionar: '+ Nova Manutenção',
+    busca: "Busca",
+    todos: 'Todos',
+    agendadas: 'Agendadas',
+    concluidas: 'Concluídas',
+    urgentes: 'Urgentes',
+    cancelados: 'Cancelados'
+  },
+},
+  pedidos: {
+    titulo: 'Pedidos',
+    sub_titulo: 'Gerencie os pedidos realizados por seus clientes',
+    cards: {
+      pendentes: 'Pendentes',
+      aprovados: 'Aprovados',
+      em_analise: 'Em análise',
+      total: 'Total'
+    },
+    tabela: {
+      id: 'ID',
+      tecnico: 'Tecnico',
+      pedido: 'Pedido',
+      status: 'Status'
+    },
+    botoes:{
+        adicionar: '+ Novo Pedido',
+        busca: "Busca",
+        todos: 'Todos',
+        pendentes: 'Pendentes',
+        aprovados: 'Aprovados',
+        cancelados: 'Cancelados' 
+   },
+  }
+ }
+

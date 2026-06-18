@@ -1,20 +1,26 @@
-<script setup>
+<script setup lang="ts">
   defineProps({
-    titulo: String,
-    valor: String,
-    icone: String,
+    titulo: {
+      type: String,
+      required: true
+    },
+    valor: {
+      type: String,
+      required: true
+    },
+    icone: {
+      type: String,
+      required: true
+    },
   })
-
-  import { Icon } from '@iconify/vue'
 </script>
 
 <template>
-  <!-- Card de status -->
   <article class="flex flex-col  rounded-[20px] border-2 border-black bg-violet-50 p-3 text-xs py-2 
   dark:border-white dark:bg-neutral-500/50">
     <div class=" text-[2rem] text-rose-900 
     dark:text-rose-200">
-      <Icon :icon="icone" />
+      <Icon :name="icone" />
     </div>
 
     <div>

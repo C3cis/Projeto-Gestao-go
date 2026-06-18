@@ -1,7 +1,4 @@
-<script setup>
-  import { Icon } from '@iconify/vue'
-  import { ref } from 'vue'
-
+<script setup lang="ts">
   const sidebarAberto = ref(false)
 
   function toggleSidebar() {
@@ -12,7 +9,7 @@
 <template>
   <cabecalho />
   <button class="md:hidden fixed top-0 left-0 z-60 text-3xl text-rose-800" @click="toggleSidebar">
-    <Icon icon="line-md:align-justify" />
+    <Icon name="line-md:align-justify" />
   </button>
 
   <div class="flex min-h-screen  ">
@@ -22,11 +19,11 @@
   :class="[sidebarAberto ? 'flex' : 'hidden md:flex',
   'dark:bg-neutral-950/96 ', 'dark:text-slate-500']">
 
-      <SidebarLink to="/" :label="$t('sidebar.painel_geral')" />
-      <SidebarLink to="/funcionarios" :label="$t('sidebar.funcionarios')" />
-      <SidebarLink to="/equipamentos" :label="$t('sidebar.equipamentos')" />
-      <SidebarLink to="/manutencao" :label="$t('sidebar.manutencoes')" />
-      <SidebarLink to="/pedidos" :label="$t('sidebar.pedidos')" />
+      <SidebarLink to="/" :label="t('sidebar.painel_geral')" />
+      <SidebarLink to="/funcionarios" :label="t('sidebar.funcionarios')" />
+      <SidebarLink to="/equipamentos" :label="t('sidebar.equipamentos')" />
+      <SidebarLink to="/manutencao" :label="t('sidebar.manutencoes')" />
+      <SidebarLink to="/pedidos" :label="t('sidebar.pedidos')" />
     </nav>
 
     <main class=" w-full bg-white p-5

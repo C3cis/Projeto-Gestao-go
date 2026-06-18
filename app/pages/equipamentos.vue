@@ -1,13 +1,5 @@
-<script setup>
-import { h } from 'vue';
-import { computed} from 'vue'
-import { useI18n } from 'vue-i18n'
-import Botoes from '../components/botoes.vue';
-import Card from '../components/card.vue';
-import Tabelas from '../components/tabelas.vue'
-
+<script setup lang="ts">
  const {t} = useI18n()
-
 
  const meusCards = computed(() =>[
     { titulo: t('equipamentos.cards.totais'), valor: '3', icone: 'ph:toolbox' },
@@ -32,10 +24,10 @@ import Tabelas from '../components/tabelas.vue'
 <template>
  <section class="mb-9">
     <div class="flex flex-wrap items-center justify-between mb-2 ">
-    <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5 ">{{ $t('equipamentos.titulo') }}</h1>
-         <Botoes class="text-xs mb-4" tipo="medio" :texto="$t('equipamentos.botoes.adicionar')" cor="rosao" />
+    <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5 ">{{ t('equipamentos.titulo') }}</h1>
+         <Botoes class="text-xs mb-4" tipo="medio" :texto="t('equipamentos.botoes.adicionar')" cor="rosao" />
     </div>
-    <p class="text-gray-600 text-xl">{{ $t('equipamentos.sub_titulo') }}</p>
+    <p class="text-gray-600 text-xl">{{ t('equipamentos.sub_titulo') }}</p>
   </section>
   <section class="grid grid-cols-1 gap-4 text-justify mb-5 px-20 text-sm
    sm:grid-cols-2 sm:px-10 sm:gap-6
@@ -60,11 +52,11 @@ import Tabelas from '../components/tabelas.vue'
     <div>      
       <Tabelas
         :colunas="[
-          { titulo: $t('equipamentos.tabela.id'), chave: 'id' },
-          { titulo: $t('equipamentos.tabela.equipamento'), chave: 'nome' },
-          { titulo: $t('equipamentos.tabela.modelo'), chave: 'tipo' },
-          { titulo: $t('equipamentos.tabela.localizacao'), chave: 'localizacao'},
-          { titulo: $t('equipamentos.tabela.status'), chave: 'status'}
+          { titulo: t('equipamentos.tabela.id'), chave: 'id' },
+          { titulo: t('equipamentos.tabela.equipamento'), chave: 'nome' },
+          { titulo: t('equipamentos.tabela.modelo'), chave: 'tipo' },
+          { titulo: t('equipamentos.tabela.localizacao'), chave: 'localizacao'},
+          { titulo: t('equipamentos.tabela.status'), chave: 'status'}
 
         ]"
         :dados="Equipamentos" /><br/>

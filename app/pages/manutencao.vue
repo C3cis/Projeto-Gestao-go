@@ -1,10 +1,4 @@
-<script setup>
-import { computed} from 'vue'
-import { useI18n } from 'vue-i18n'
-import Botoes from '../components/botoes.vue';
-import Card from '../components/card.vue';
-import CardHist from '../components/cardHist.vue';
-
+<script setup lang="ts">
 const {t} = useI18n() 
 
  const meusCards = computed(() =>[
@@ -35,10 +29,10 @@ const Manutencoes = [
 <template>
     <section class="mb-9">
     <div class="flex flex-wrap items-center justify-between mb-2 ">
-    <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5">{{ $t('manutencoes.titulo') }}</h1>
-         <Botoes class="text-xs mb-4" tipo="medio" :texto="$t('manutencoes.botoes.adicionar')" cor="rosao" />
+    <h1 class="text-3xl bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-1.5">{{ t('manutencoes.titulo') }}</h1>
+         <Botoes class="text-xs mb-4" tipo="medio" :texto="t('manutencoes.botoes.adicionar')" cor="rosao" />
     </div>
-    <p class="text-gray-600 text-xl">{{ $t('manutencoes.sub_titulo') }}</p>
+    <p class="text-gray-600 text-xl">{{ t('manutencoes.sub_titulo') }}</p>
   </section>
   <section class="grid grid-cols-1 gap-4 text-justify mb-5 px-20 text-sm
    sm:grid-cols-2 sm:px-10 sm:gap-6

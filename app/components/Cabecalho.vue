@@ -1,22 +1,7 @@
-<script setup>
-  import { Icon } from '@iconify/vue'
-  import { useStorage } from '@vueuse/core'
-  import { watch } from 'vue'
+<script setup lang="ts">
+const colorMode = useColorMode()
 
-  const isDark = useStorage('is-dark', true)
-
-  function darkMode() {
-  if (import.meta.client) {
-    const html = document.documentElement
-    if (isDark.value) {
-      html.classList.add('dark')
-    } else {
-      html.classList.remove('dark')
-    }
-  }
-}
-
-  watch(isDark, darkMode, { immediate: true })
+const isDark = computed(() => colorMode.value === 'dark')
 </script>
 
 <template>
@@ -24,10 +9,10 @@
     class="mb-1 flex flex-wrap items-center justify-between bg-rose-100 p-2.25 sm:w-full dark:bg-rose-950/90">
     <div>
       <h1 class="text-xl font-bold text-rose-950 dark:text-rose-400">
-        {{ $t('cabecalho.meu_painel') }}
+        {{ t('cabecalho.meu_painel') }}
       </h1>
       <p class="text-xs text-rose-800 dark:text-rose-200">
-        {{ $t('cabecalho.atividades_realizadas') }}
+        {{ t('cabecalho.atividades_realizadas') }}
       </p>
     </div>
     <div class="text-right">
@@ -35,9 +20,9 @@
       <p class="text-xs text-rose-800 dark:text-rose-200">Nivel de Acesso</p>
 
       <div class="flex flex-row gap-2" >
-      <button class="mt-2 rounded-full bg-rose-200 p-2" @click="isDark = !isDark">
+      <button class="mt-2 rounded-full bg-rose-200 p-2" @click="colorMode.preference = isDark ? 'light' : 'dark'">
         <Icon
-          :icon="
+          :name="
             isDark ? 'line-md:moon-alt-loop' : 'line-md:moon-filled-to-sunny-filled-loop-transition'
           "
           class="text-2xl text-rose-900" />

@@ -1,11 +1,11 @@
-<script setup>
+<script setup lang="ts">
   defineProps({
     colunas: {
-      type: Array,
+      type: Array as PropType<{ titulo: string; chave: string }[]>,
       required: true,
     },
     dados: {
-      type: Array,
+      type: Array as PropType<Record<string, unknown>[]>,
       required: true,
     },
   })

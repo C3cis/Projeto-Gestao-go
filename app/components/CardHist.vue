@@ -1,14 +1,33 @@
-<script setup>
-import { Icon } from '@iconify/vue'
-
+<script setup lang="ts">
 defineProps({
-  icone: String,
-  titulo: String,
-  status: String,
-  conteudo: String,
-  dataAberto: String,
-  dataFechado: String,
-  valor: String
+  icone: {
+    type: String,
+    required: true
+  },
+  titulo: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    required: true
+  },
+  conteudo: {
+    type: String,
+    required: true
+  },
+  dataAberto: {
+    type: String,
+    required: true
+  },
+  dataFechado: {
+    type: String,
+    required: true
+  },
+  valor: {
+    type: String,
+    required: true
+  }
 })
 </script>
 
@@ -16,7 +35,7 @@ defineProps({
     <article class="flex flex-col  rounded-[20px] border border-black bg-violet-50 p-2 text-xs dark:bg-neutral-500/60">
 
     <div class="text-xl p-2">
-        <Icon :icon="icone" class="text-3xl text-amber-950 dark:text-rose-200"/>
+        <Icon :name="icone" class="text-3xl text-amber-950 dark:text-rose-200"/>
 
         <div class="flex flex-wrap items-center justify-between mb-2 text-3xl dark:text-rose-400">
      <h3 class="m-2 text-base font-medium gap-1 ">
@@ -30,13 +49,13 @@ defineProps({
 
         <div class="flex flex-col m-3 dark:text-neutral-300 ">
     <p class=" text-xs font-medium">
-        {{ $t('manutencoes.cardHist.data_abertura') }}: {{ dataAberto }}
+        {{ t('manutencoes.cardHist.data_abertura') }}: {{ dataAberto }}
     </p>
     <p class="text-xs font-medium">
-        {{ $t('manutencoes.cardHist.data_fechamento') }}: {{ dataFechado }}
+        {{ t('manutencoes.cardHist.data_fechamento') }}: {{ dataFechado }}
     </p>
     <p class="text-xs font-medium">
-        {{ $t('manutencoes.cardHist.custo') }}: {{ valor }}
+        {{ t('manutencoes.cardHist.custo') }}: {{ valor }}
     </p>
 </div>
           

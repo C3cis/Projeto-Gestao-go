@@ -1,10 +1,4 @@
-<script setup>
-import { computed} from 'vue'
-import { useI18n } from 'vue-i18n'
-import Botoes from '../components/botoes.vue';
-import Card from '../components/card.vue';
-import Tabelas from '../components/tabelas.vue'
-
+<script setup lang="ts">
  const {t} = useI18n()
 
 
@@ -34,10 +28,10 @@ import Tabelas from '../components/tabelas.vue'
  <section class="mb-9">
     <div class="flex flex-wrap items-center justify-between mb-2 ">
     <h1 class="text-3xl 
-     bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-3">{{ $t('funcionarios.titulo') }}</h1>
-      <Botoes class="text-xs mb-4" tipo="medio" :texto="$t('funcionarios.botoes.adicionar')" cor="rosao" />
+     bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-transparent font-bold mb-3">{{ t('funcionarios.titulo') }}</h1>
+      <Botoes class="text-xs mb-4" tipo="medio" :texto="t('funcionarios.botoes.adicionar')" cor="rosao" />
       </div>
-      <p class="text-gray-600 mb-8">{{ $t('funcionarios.sub_titulo') }}</p>
+      <p class="text-gray-600 mb-8">{{ t('funcionarios.sub_titulo') }}</p>
         
     
    
@@ -65,11 +59,11 @@ import Tabelas from '../components/tabelas.vue'
     <div>
       <Tabelas
         :colunas="[
-          { titulo:  $t('funcionarios.tabela.id'), chave: 'id' },
-          { titulo: $t('funcionarios.tabela.funcionario'), chave: 'funcionario' },
-          { titulo: $t('funcionarios.tabela.setor'), chave: 'setor' },
-          { titulo: $t('funcionarios.tabela.contato'), chave: 'contato' },
-          { titulo: $t('funcionarios.tabela.status'), chave: 'status'}
+          { titulo:  t('funcionarios.tabela.id'), chave: 'id' },
+          { titulo: t('funcionarios.tabela.funcionario'), chave: 'funcionario' },
+          { titulo: t('funcionarios.tabela.setor'), chave: 'setor' },
+          { titulo: t('funcionarios.tabela.contato'), chave: 'contato' },
+          { titulo: t('funcionarios.tabela.status'), chave: 'status'}
         ]"
         :dados="Funcionarios" /><br/>
     </div>

@@ -11,7 +11,7 @@
 
 <template>
   <cabecalho />
-  <button class="md:hidden fixed top-0 left-0 z-[60] text-3xl text-rose-800" @click="toggleSidebar">
+  <button class="md:hidden fixed top-0 left-0 z-60 text-3xl text-rose-800" @click="toggleSidebar">
     <Icon icon="line-md:align-justify" />
   </button>
 

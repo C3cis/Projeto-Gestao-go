@@ -1,4 +1,3 @@
-import Painel_geral from "../pages/painel_geral.vue";
 
 export default {
   sidebar: {

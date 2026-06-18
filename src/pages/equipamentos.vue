@@ -23,7 +23,7 @@ import Tabelas from '../components/tabelas.vue'
   ]
 
   const BotoesBusca = computed(() =>[
-    {texto: t('equipamentos.botoes.busca'), tamanho: "pequeno", cor: "rosaClaro"},
+  {texto: t('equipamentos.botoes.busca'), tamanho: "pequeno", cor: "rosaClaro"},
   {texto: t('equipamentos.botoes.todos'), tamanho: "pequeno", cor: "rosao"},
   {texto: t('equipamentos.botoes.ativos'), tamanho: "pequeno", cor: "rosinha"},
   {texto: t('equipamentos.botoes.em_manutencao'), tamanho: "pequeno", cor: "rosinha"},])

@@ -6,6 +6,7 @@
   const isDark = useStorage('is-dark', true)
 
   function darkMode() {
+  if (import.meta.client) {
     const html = document.documentElement
     if (isDark.value) {
       html.classList.add('dark')
@@ -13,6 +14,7 @@
       html.classList.remove('dark')
     }
   }
+}
 
   watch(isDark, darkMode, { immediate: true })
 </script>

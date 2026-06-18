@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  const { t } = useI18n()
+  const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
-    { titulo: t('pedidos.cards.pendentes'), valor: '3', icone: 'line-md:document-report' },
-    { titulo: t('pedidos.cards.aprovados'), valor: '4', icone: 'line-md:email-check' },
-    { titulo: t('pedidos.cards.em_analise'), valor: '2', icone: 'line-md:downloading-loop' },
-    { titulo: t('pedidos.cards.total'), valor: '2', icone: 'line-md:folder-settings-filled' },
+    { titulo: t('cards.pendentes'), valor: '3', icone: 'line-md:document-report' },
+    { titulo: t('cards.aprovados'), valor: '4', icone: 'line-md:email-check' },
+    { titulo: t('cards.em_analise'), valor: '2', icone: 'line-md:downloading-loop' },
+    { titulo: t('cards.total'), valor: '2', icone: 'line-md:folder-settings-filled' },
   ])
 
   const Pedidos = [
@@ -14,11 +14,11 @@
     { id: '003', cliente: 'Carlos Santos', produto: 'Espectrofotômetro', status: 'Entregue' },
   ]
   const BotoesBusca = computed(() => [
-    { texto: t('pedidos.botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },
-    { texto: t('pedidos.botoes.todos'), tamanho: 'pequeno', cor: 'rosao' },
-    { texto: t('pedidos.botoes.pendentes'), tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('pedidos.botoes.aprovados'), tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('pedidos.botoes.cancelados'), tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },
+    { texto: t('botoes.todos'), tamanho: 'pequeno', cor: 'rosao' },
+    { texto: t('botoes.pendentes'), tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.aprovados'), tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.cancelados'), tamanho: 'pequeno', cor: 'rosinha' },
   ])
 </script>
 <template>
@@ -26,15 +26,11 @@
     <div class="mb-2 flex flex-wrap items-center justify-between">
       <h1
         class="mb-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-3xl font-bold text-transparent">
-        {{ t('pedidos.titulo') }}
+        {{ t('titulo') }}
       </h1>
-      <Botoes
-        class="mb-4 text-xs"
-        tipo="medio"
-        :texto="t('pedidos.botoes.adicionar')"
-        cor="rosao" />
+      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" />
     </div>
-    <p class="text-xl text-gray-600">{{ t('pedidos.sub_titulo') }}</p>
+    <p class="text-xl text-gray-600">{{ t('sub_titulo') }}</p>
   </section>
   <section
     class="mb-5 grid grid-cols-1 gap-4 px-20 text-justify text-sm sm:grid-cols-2 sm:gap-6 sm:px-10 lg:grid-cols-4 lg:px-4 lg:text-lg xl:text-xl">
@@ -56,12 +52,65 @@
     <div>
       <Tabelas
         :colunas="[
-          { titulo: t('pedidos.tabela.id'), chave: 'id' },
-          { titulo: t('pedidos.tabela.tecnico'), chave: 'cliente' },
-          { titulo: t('pedidos.tabela.pedido'), chave: 'produto' },
-          { titulo: t('pedidos.tabela.status'), chave: 'status' },
+          { titulo: t('tabela.id'), chave: 'id' },
+          { titulo: t('tabela.tecnico'), chave: 'cliente' },
+          { titulo: t('tabela.pedido'), chave: 'produto' },
+          { titulo: t('tabela.status'), chave: 'status' },
         ]"
         :dados="Pedidos" /><br />
     </div>
   </section>
 </template>
+
+<i18n lang="json">
+{
+  "pt": {
+    "titulo": "Pedidos",
+    "sub_titulo": "Gerencie os pedidos realizados por seus clientes",
+    "cards": {
+      "pendentes": "Pendentes",
+      "aprovados": "Aprovados",
+      "em_analise": "Em análise",
+      "total": "Total"
+    },
+    "tabela": {
+      "id": "ID",
+      "tecnico": "Tecnico",
+      "pedido": "Pedido",
+      "status": "Status"
+    },
+    "botoes": {
+      "adicionar": "+ Novo Pedido",
+      "busca": "Busca",
+      "todos": "Todos",
+      "pendentes": "Pendentes",
+      "aprovados": "Aprovados",
+      "cancelados": "Cancelados"
+    }
+  },
+  "en": {
+    "titulo": "Orders",
+    "sub_titulo": "Manage orders placed by your customers",
+    "cards": {
+      "pendentes": "Pending",
+      "aprovados": "Approved",
+      "em_analise": "Under Review",
+      "total": "Total"
+    },
+    "tabela": {
+      "id": "ID",
+      "tecnico": "Technician",
+      "pedido": "Order",
+      "status": "Status"
+    },
+    "botoes": {
+      "adicionar": "+ New Order",
+      "busca": "Search",
+      "todos": "All",
+      "pendentes": "Pending",
+      "aprovados": "Approved",
+      "cancelados": "Cancelled"
+    }
+  }
+}
+</i18n>

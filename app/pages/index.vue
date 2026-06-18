@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  const { t } = useI18n()
+  const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
-    { titulo: t('painel_geral.cards.equipamentos'), valor: '3', icone: 'line-md:computer-twotone' },
-    { titulo: t('painel_geral.cards.funcionarios'), valor: '4', icone: 'ph:users' },
-    { titulo: t('painel_geral.cards.manutencao_ativa'), valor: '2', icone: 'line-md:alert-loop' },
+    { titulo: t('cards.equipamentos'), valor: '3', icone: 'line-md:computer-twotone' },
+    { titulo: t('cards.funcionarios'), valor: '4', icone: 'ph:users' },
+    { titulo: t('cards.manutencao_ativa'), valor: '2', icone: 'line-md:alert-loop' },
     {
-      titulo: t('painel_geral.cards.pedidos_pendentes'),
+      titulo: t('cards.pedidos_pendentes'),
       valor: '2',
       icone: 'line-md:text-box-twotone-to-text-box-multiple-twotone-transition',
     },
@@ -27,7 +27,7 @@
         Dashboard
       </h1>
     </div>
-    <p class="text-gray-600">{{ t('painel_geral.titulo') }}</p>
+    <p class="text-gray-600">{{ t('titulo') }}</p>
   </section>
   <section
     class="mb-15 grid grid-cols-1 gap-4 px-12 text-justify text-sm sm:grid-cols-2 sm:gap-6 sm:px-10 lg:grid-cols-4 lg:px-4 lg:text-lg xl:text-xl">
@@ -41,17 +41,52 @@
   <section>
     <div class="mt-4 rounded-xl bg-rose-50 p-5 dark:bg-neutral-200/36">
       <h2 class="text-2xl font-bold dark:text-neutral-200">
-        {{ t('painel_geral.titulo_tabela') }}
+        {{ t('titulo_tabela') }}
       </h2>
       <div class="mb-4 flex items-center justify-between p-4 px-0.5">
         <Tabelas
           :colunas="[
-            { titulo: t('painel_geral.tabela.id'), chave: 'id' },
-            { titulo: t('painel_geral.tabela.pedido'), chave: 'pedido' },
-            { titulo: t('painel_geral.tabela.problemas'), chave: 'problema' },
+            { titulo: t('tabela.id'), chave: 'id' },
+            { titulo: t('tabela.pedido'), chave: 'pedido' },
+            { titulo: t('tabela.problemas'), chave: 'problema' },
           ]"
           :dados="listaDeEquipamentos" /><br />
       </div>
     </div>
   </section>
 </template>
+
+<i18n lang="json">
+{
+  "pt": {
+    "titulo": "Visão geral do sistema e Pendências",
+    "titulo_tabela": "Pedidos Pendentes",
+    "cards": {
+      "equipamentos": "Equipamentos",
+      "funcionarios": "Funcionários",
+      "manutencao_ativa": "Manutenções Ativas",
+      "pedidos_pendentes": "Pedidos Pendentes"
+    },
+    "tabela": {
+      "id": "ID",
+      "pedido": "Pedidos",
+      "problemas": "Problemas"
+    }
+  },
+  "en": {
+    "titulo": "System overview and pending items",
+    "titulo_tabela": "Pending Orders",
+    "cards": {
+      "equipamentos": "Equipment",
+      "funcionarios": "Employees",
+      "manutencao_ativa": "Active Maintenance",
+      "pedidos_pendentes": "Pending Orders"
+    },
+    "tabela": {
+      "id": "ID",
+      "pedido": "Orders",
+      "problemas": "Issues"
+    }
+  }
+}
+</i18n>

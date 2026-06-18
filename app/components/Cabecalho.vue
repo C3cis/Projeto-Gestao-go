@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  const { t } = useI18n({ useScope: 'local' })
+
   const colorMode = useColorMode()
 
   const isDark = computed(() => colorMode.value === 'dark')
@@ -9,10 +11,10 @@
     class="mb-1 flex flex-wrap items-center justify-between bg-rose-100 p-2.25 sm:w-full dark:bg-rose-950/90">
     <div>
       <h1 class="text-xl font-bold text-rose-950 dark:text-rose-400">
-        {{ t('cabecalho.meu_painel') }}
+        {{ t('meu_painel') }}
       </h1>
       <p class="text-xs text-rose-800 dark:text-rose-200">
-        {{ t('cabecalho.atividades_realizadas') }}
+        {{ t('atividades_realizadas') }}
       </p>
     </div>
     <div class="text-right">
@@ -45,3 +47,16 @@
     </div>
   </header>
 </template>
+
+<i18n lang="json">
+{
+  "pt": {
+    "meu_painel": "Meu Painel",
+    "atividades_realizadas": "Atividades Realizadas"
+  },
+  "en": {
+    "meu_painel": "My Dashboard",
+    "atividades_realizadas": "Activities"
+  }
+}
+</i18n>

@@ -29,6 +29,8 @@
       required: true,
     },
   })
+
+  const { t } = useI18n({ useScope: 'local' })
 </script>
 
 <template>
@@ -52,14 +54,29 @@
       </p>
 
       <div class="m-3 flex flex-col dark:text-neutral-300">
-        <p class="text-xs font-medium">
-          {{ t('manutencoes.cardHist.data_abertura') }}: {{ dataAberto }}
-        </p>
-        <p class="text-xs font-medium">
-          {{ t('manutencoes.cardHist.data_fechamento') }}: {{ dataFechado }}
-        </p>
-        <p class="text-xs font-medium">{{ t('manutencoes.cardHist.custo') }}: {{ valor }}</p>
+        <p class="text-xs font-medium">{{ t('cardHist.data_abertura') }}: {{ dataAberto }}</p>
+        <p class="text-xs font-medium">{{ t('cardHist.data_fechamento') }}: {{ dataFechado }}</p>
+        <p class="text-xs font-medium">{{ t('cardHist.custo') }}: {{ valor }}</p>
       </div>
     </div>
   </article>
 </template>
+
+<i18n lang="json">
+{
+  "pt": {
+    "cardHist": {
+      "data_abertura": "Data de Abertura",
+      "data_fechamento": "Data de Fechamento",
+      "custo": "Custo"
+    }
+  },
+  "en": {
+    "cardHist": {
+      "data_abertura": "Opening Date",
+      "data_fechamento": "Closing Date",
+      "custo": "Cost"
+    }
+  }
+}
+</i18n>

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-  const { t } = useI18n()
+  const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
-    { titulo: t('equipamentos.cards.totais'), valor: '3', icone: 'ph:toolbox' },
-    { titulo: t('equipamentos.cards.operacionais'), valor: '4', icone: 'line-md:fork-right' },
+    { titulo: t('cards.totais'), valor: '3', icone: 'ph:toolbox' },
+    { titulo: t('cards.operacionais'), valor: '4', icone: 'line-md:fork-right' },
     {
-      titulo: t('equipamentos.cards.em_manutencao'),
+      titulo: t('cards.em_manutencao'),
       valor: '2',
       icone: 'line-md:construction-twotone',
     },
     {
-      titulo: t('equipamentos.cards.inativos'),
+      titulo: t('cards.inativos'),
       valor: '2',
       icone: 'line-md:menu-to-close-alt-transition',
     },
@@ -41,10 +41,10 @@
   ]
 
   const BotoesBusca = computed(() => [
-    { texto: t('equipamentos.botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },
-    { texto: t('equipamentos.botoes.todos'), tamanho: 'pequeno', cor: 'rosao' },
-    { texto: t('equipamentos.botoes.ativos'), tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('equipamentos.botoes.em_manutencao'), tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },
+    { texto: t('botoes.todos'), tamanho: 'pequeno', cor: 'rosao' },
+    { texto: t('botoes.ativos'), tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.em_manutencao'), tamanho: 'pequeno', cor: 'rosinha' },
   ])
 </script>
 
@@ -53,15 +53,11 @@
     <div class="mb-2 flex flex-wrap items-center justify-between">
       <h1
         class="mb-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-3xl font-bold text-transparent">
-        {{ t('equipamentos.titulo') }}
+        {{ t('titulo') }}
       </h1>
-      <Botoes
-        class="mb-4 text-xs"
-        tipo="medio"
-        :texto="t('equipamentos.botoes.adicionar')"
-        cor="rosao" />
+      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" />
     </div>
-    <p class="text-xl text-gray-600">{{ t('equipamentos.sub_titulo') }}</p>
+    <p class="text-xl text-gray-600">{{ t('sub_titulo') }}</p>
   </section>
   <section
     class="mb-5 grid grid-cols-1 gap-4 px-20 text-justify text-sm sm:grid-cols-2 sm:gap-6 sm:px-10 lg:grid-cols-4 lg:px-4 lg:text-lg xl:text-xl">
@@ -83,13 +79,66 @@
     <div>
       <Tabelas
         :colunas="[
-          { titulo: t('equipamentos.tabela.id'), chave: 'id' },
-          { titulo: t('equipamentos.tabela.equipamento'), chave: 'nome' },
-          { titulo: t('equipamentos.tabela.modelo'), chave: 'tipo' },
-          { titulo: t('equipamentos.tabela.localizacao'), chave: 'localizacao' },
-          { titulo: t('equipamentos.tabela.status'), chave: 'status' },
+          { titulo: t('tabela.id'), chave: 'id' },
+          { titulo: t('tabela.equipamento'), chave: 'nome' },
+          { titulo: t('tabela.modelo'), chave: 'tipo' },
+          { titulo: t('tabela.localizacao'), chave: 'localizacao' },
+          { titulo: t('tabela.status'), chave: 'status' },
         ]"
         :dados="Equipamentos" /><br />
     </div>
   </section>
 </template>
+
+<i18n lang="json">
+{
+  "pt": {
+    "titulo": "Equipamentos",
+    "sub_titulo": "Equipamentos Cadastrado",
+    "cards": {
+      "totais": "Totais",
+      "operacionais": "Operacionais",
+      "em_manutencao": "Em Manutenção",
+      "inativos": "Inativos"
+    },
+    "tabela": {
+      "id": "ID",
+      "equipamento": "Nome",
+      "modelo": "Modelo",
+      "localizacao": "Localização",
+      "status": "Status"
+    },
+    "botoes": {
+      "adicionar": "+ Novo Equipamento",
+      "busca": "Busca",
+      "todos": "Todos",
+      "ativos": "Ativos",
+      "em_manutencao": "Em manutenção"
+    }
+  },
+  "en": {
+    "titulo": "Equipment",
+    "sub_titulo": "Registered Equipment",
+    "cards": {
+      "totais": "Total",
+      "operacionais": "Operational",
+      "em_manutencao": "Under Maintenance",
+      "inativos": "Inactive"
+    },
+    "tabela": {
+      "id": "ID",
+      "equipamento": "Name",
+      "modelo": "Model",
+      "localizacao": "Location",
+      "status": "Status"
+    },
+    "botoes": {
+      "adicionar": "+ New Equipment",
+      "busca": "Search",
+      "todos": "All",
+      "ativos": "Active",
+      "em_manutencao": "Under Maintenance"
+    }
+  }
+}
+</i18n>

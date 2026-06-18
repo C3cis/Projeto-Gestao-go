@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  const { t } = useI18n({ useScope: 'local' })
+
   const sidebarAberto = ref(false)
 
   function toggleSidebar() {
@@ -20,11 +22,11 @@
         'dark:bg-neutral-950/96',
         'dark:text-slate-500',
       ]">
-      <SidebarLink to="/" :label="t('sidebar.painel_geral')" />
-      <SidebarLink to="/funcionarios" :label="t('sidebar.funcionarios')" />
-      <SidebarLink to="/equipamentos" :label="t('sidebar.equipamentos')" />
-      <SidebarLink to="/manutencao" :label="t('sidebar.manutencoes')" />
-      <SidebarLink to="/pedidos" :label="t('sidebar.pedidos')" />
+      <SidebarLink to="/" :label="t('painel_geral')" />
+      <SidebarLink to="/funcionarios" :label="t('funcionarios')" />
+      <SidebarLink to="/equipamentos" :label="t('equipamentos')" />
+      <SidebarLink to="/manutencao" :label="t('manutencoes')" />
+      <SidebarLink to="/pedidos" :label="t('pedidos')" />
     </nav>
 
     <main class="w-full bg-white p-5 dark:bg-neutral-950">
@@ -34,3 +36,22 @@
     </main>
   </div>
 </template>
+
+<i18n lang="json">
+{
+  "pt": {
+    "painel_geral": "Painel Geral",
+    "funcionarios": "Funcionários",
+    "equipamentos": "Equipamentos",
+    "manutencoes": "Manutenções",
+    "pedidos": "Pedidos"
+  },
+  "en": {
+    "painel_geral": "Dashboard",
+    "funcionarios": "Employees",
+    "equipamentos": "Equipment",
+    "manutencoes": "Maintenance",
+    "pedidos": "Orders"
+  }
+}
+</i18n>

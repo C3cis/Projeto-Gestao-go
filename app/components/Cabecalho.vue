@@ -1,5 +1,11 @@
 <script setup lang="ts">
-  const { t } = useI18n({ useScope: 'local' })
+  const { t, locales, locale } = useI18n({ useScope: 'local' })
+
+  const switchLocalePath = useSwitchLocalePath()
+
+  const availableLocales = computed(() => {
+    return locales.value.filter((i) => i.code !== locale.value)
+  })
 
   const colorMode = useColorMode()
 
@@ -33,16 +39,12 @@
             "
             class="text-2xl text-rose-900" />
         </button>
-        <select
-          class="rounded-[20px] text-[0.8rem] text-black dark:text-white"
-          v-model="$i18n.locale">
-          <option
-            v-for="locale in $i18n.availableLocales"
-            :key="`locale-${locale}`"
-            :value="locale">
-            {{ locale }}
-          </option>
-        </select>
+        <NuxtLink
+          v-for="locale in availableLocales"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)">
+          {{ locale.name }}
+        </NuxtLink>
       </div>
     </div>
   </header>

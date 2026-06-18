@@ -1,16 +1,11 @@
-import tailwindcss from '@tailwindcss/vite' 
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
-  modules: [
-    '@vueuse/nuxt',
-    '@nuxt/icon',
-    '@nuxtjs/i18n',
-    '@nuxtjs/color-mode',
-  ],
+  modules: ['@vueuse/nuxt', '@nuxt/icon', '@nuxtjs/i18n', '@nuxtjs/color-mode'],
   compatibilityDate: '2026-06-18',
   css: ['~/assets/main.css'],
   vite: {
-    plugins: [tailwindcss()], 
+    plugins: [tailwindcss()],
   },
   i18n: {
     defaultLocale: 'pt',
@@ -29,5 +24,5 @@ export default defineNuxtConfig({
       },
     ],
   },
-  nitro: {preset: 'bun'}
+  nitro: { preset: 'bun' },
 })

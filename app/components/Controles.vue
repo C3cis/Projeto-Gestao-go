@@ -1,15 +1,7 @@
 <script setup lang="ts">
-defineProps({
-    
-})
+  defineProps({})
 </script>
 <template>
-    <button
-    :class= "{
-
-
-    }"></button>
+  <button :class="{}"></button>
 </template>
-<style lang="css">
-
-</style>
+<style lang="css"></style>

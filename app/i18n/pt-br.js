@@ -1,13 +1,12 @@
-
 export default {
   sidebar: {
     painel_geral: 'Painel Geral',
     funcionarios: 'Funcionários',
     equipamentos: 'Equipamentos',
     manutencoes: 'Manutenções',
-    pedidos: 'Pedidos'
+    pedidos: 'Pedidos',
   },
-  
+
   cabecalho: {
     meu_painel: 'Meu Painel',
     atividades_realizadas: 'Atividades Realizadas',
@@ -19,13 +18,13 @@ export default {
       equipamentos: 'Equipamentos',
       funcionarios: 'Funcionários',
       manutencao_ativa: 'Manutenções Ativas',
-      pedidos_pendentes: 'Pedidos Pendentes'
+      pedidos_pendentes: 'Pedidos Pendentes',
     },
     tabela: {
       id: 'ID',
       pedido: 'Pedidos',
-      problemas: 'Problemas'
-    }
+      problemas: 'Problemas',
+    },
   },
   funcionarios: {
     titulo: 'Funcionários',
@@ -34,22 +33,22 @@ export default {
       totais: 'Totais',
       ativos: 'Ativos',
       afastados: 'Afastados',
-      inativos: 'Inativos'
+      inativos: 'Inativos',
     },
     tabela: {
       id: 'ID',
       funcionario: 'Funcionario',
       setor: 'Setor',
       contato: 'Contato',
-      status: 'Status'
+      status: 'Status',
     },
-    botoes:{
-    adicionar: '+ Novo Funcionario',
-    busca: 'Busca',
-    todos: 'Todos',
-    ativos: 'Ativos',
-    afastados: 'Afastados',
-    inativo: 'Inativos'
+    botoes: {
+      adicionar: '+ Novo Funcionario',
+      busca: 'Busca',
+      todos: 'Todos',
+      ativos: 'Ativos',
+      afastados: 'Afastados',
+      inativo: 'Inativos',
     },
   },
   equipamentos: {
@@ -59,47 +58,47 @@ export default {
       totais: 'Totais',
       operacionais: 'Operacionais',
       em_manutencao: 'Em Manutenção',
-      inativos: 'Inativos'
+      inativos: 'Inativos',
     },
     tabela: {
       id: 'ID',
       equipamento: 'Nome',
       modelo: 'Modelo',
       localizacao: 'Localização',
-      status: 'Status'
+      status: 'Status',
     },
-    botoes:{
-    adicionar: '+ Novo Equipamento',
-    busca: "Busca",
-    todos: 'Todos',
-    ativos: 'Ativos',
-    em_manutencao: 'Em manutenção'
-   },
+    botoes: {
+      adicionar: '+ Novo Equipamento',
+      busca: 'Busca',
+      todos: 'Todos',
+      ativos: 'Ativos',
+      em_manutencao: 'Em manutenção',
+    },
   },
-  manutencoes:{
+  manutencoes: {
     titulo: 'Manutenções',
     sub_titulo: 'Registro de Manutenções',
     cards: {
       agendadas: 'Agendadas',
       em_andamento: 'Em andamento',
       concluidas: 'Concluídas',
-      urgentes: 'Urgentes'
+      urgentes: 'Urgentes',
     },
     cardHist: {
-  data_abertura: 'Data de Abertura',
-  data_fechamento: 'Data de Fechamento',
-  custo: 'Custo',
+      data_abertura: 'Data de Abertura',
+      data_fechamento: 'Data de Fechamento',
+      custo: 'Custo',
+    },
+    botoes: {
+      adicionar: '+ Nova Manutenção',
+      busca: 'Busca',
+      todos: 'Todos',
+      agendadas: 'Agendadas',
+      concluidas: 'Concluídas',
+      urgentes: 'Urgentes',
+      cancelados: 'Cancelados',
+    },
   },
-  botoes:{
-    adicionar: '+ Nova Manutenção',
-    busca: "Busca",
-    todos: 'Todos',
-    agendadas: 'Agendadas',
-    concluidas: 'Concluídas',
-    urgentes: 'Urgentes',
-    cancelados: 'Cancelados'
-  },
-},
   pedidos: {
     titulo: 'Pedidos',
     sub_titulo: 'Gerencie os pedidos realizados por seus clientes',
@@ -107,22 +106,21 @@ export default {
       pendentes: 'Pendentes',
       aprovados: 'Aprovados',
       em_analise: 'Em análise',
-      total: 'Total'
+      total: 'Total',
     },
     tabela: {
       id: 'ID',
       tecnico: 'Tecnico',
       pedido: 'Pedido',
-      status: 'Status'
+      status: 'Status',
     },
-    botoes:{
-        adicionar: '+ Novo Pedido',
-        busca: "Busca",
-        todos: 'Todos',
-        pendentes: 'Pendentes',
-        aprovados: 'Aprovados',
-        cancelados: 'Cancelados' 
-   },
-  }
- }
-
+    botoes: {
+      adicionar: '+ Novo Pedido',
+      busca: 'Busca',
+      todos: 'Todos',
+      pendentes: 'Pendentes',
+      aprovados: 'Aprovados',
+      cancelados: 'Cancelados',
+    },
+  },
+}

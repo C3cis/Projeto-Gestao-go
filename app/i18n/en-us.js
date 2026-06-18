@@ -4,7 +4,7 @@ export default {
     funcionarios: 'Employees',
     equipamentos: 'Equipment',
     manutencoes: 'Maintenance',
-    pedidos: 'Orders'
+    pedidos: 'Orders',
   },
 
   cabecalho: {
@@ -18,13 +18,13 @@ export default {
       equipamentos: 'Equipment',
       funcionarios: 'Employees',
       manutencao_ativa: 'Active Maintenance',
-      pedidos_pendentes: 'Pending Orders'
+      pedidos_pendentes: 'Pending Orders',
     },
     tabela: {
       id: 'ID',
       pedido: 'Orders',
-      problemas: 'Issues'
-    }
+      problemas: 'Issues',
+    },
   },
   funcionarios: {
     titulo: 'Employees',
@@ -33,14 +33,14 @@ export default {
       totais: 'Total',
       ativos: 'Active',
       afastados: 'On Leave',
-      inativos: 'Inactive'
+      inativos: 'Inactive',
     },
     tabela: {
       id: 'ID',
       funcionario: 'Employee',
       setor: 'Department',
       contato: 'Contact',
-      status: 'Status'
+      status: 'Status',
     },
     botoes: {
       adicionar: '+ New Employee',
@@ -48,7 +48,7 @@ export default {
       todos: 'All',
       ativos: 'Active',
       afastados: 'On Leave',
-      inativo: 'Inactive'
+      inativo: 'Inactive',
     },
   },
   equipamentos: {
@@ -58,21 +58,21 @@ export default {
       totais: 'Total',
       operacionais: 'Operational',
       em_manutencao: 'Under Maintenance',
-      inativos: 'Inactive'
+      inativos: 'Inactive',
     },
     tabela: {
       id: 'ID',
       equipamento: 'Name',
       modelo: 'Model',
       localizacao: 'Location',
-      status: 'Status'
+      status: 'Status',
     },
     botoes: {
       adicionar: '+ New Equipment',
       busca: 'Search',
       todos: 'All',
       ativos: 'Active',
-      em_manutencao: 'Under Maintenance'
+      em_manutencao: 'Under Maintenance',
     },
   },
   manutencoes: {
@@ -82,7 +82,7 @@ export default {
       agendadas: 'Scheduled',
       em_andamento: 'In Progress',
       concluidas: 'Completed',
-      urgentes: 'Urgent'
+      urgentes: 'Urgent',
     },
     cardHist: {
       data_abertura: 'Opening Date',
@@ -96,7 +96,7 @@ export default {
       agendadas: 'Scheduled',
       concluidas: 'Completed',
       urgentes: 'Urgent',
-      cancelados: 'Cancelled'
+      cancelados: 'Cancelled',
     },
   },
   pedidos: {
@@ -106,13 +106,13 @@ export default {
       pendentes: 'Pending',
       aprovados: 'Approved',
       em_analise: 'Under Review',
-      total: 'Total'
+      total: 'Total',
     },
     tabela: {
       id: 'ID',
       tecnico: 'Technician',
       pedido: 'Order',
-      status: 'Status'
+      status: 'Status',
     },
     botoes: {
       adicionar: '+ New Order',
@@ -120,7 +120,7 @@ export default {
       todos: 'All',
       pendentes: 'Pending',
       aprovados: 'Approved',
-      cancelados: 'Cancelled'
+      cancelados: 'Cancelled',
     },
-  }
+  },
 }

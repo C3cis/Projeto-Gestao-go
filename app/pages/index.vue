@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ListaDeEquipamentos from '~/data/index.json'
+
   const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
@@ -12,11 +14,6 @@
     },
   ])
 
-  const listaDeEquipamentos = [
-    { id: '----', pedido: '---', problemas: '---' },
-    { id: '----', pedido: '----', problemas: '---' },
-    { id: '---', pedido: '---', problemas: '----' },
-  ]
 </script>
 
 <template>
@@ -50,7 +47,7 @@
             { titulo: t('tabela.pedido'), chave: 'pedido' },
             { titulo: t('tabela.problemas'), chave: 'problema' },
           ]"
-          :dados="listaDeEquipamentos" /><br />
+          :dados="ListaDeEquipamentos" /><br />
       </div>
     </div>
   </section>

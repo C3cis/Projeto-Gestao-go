@@ -1,34 +1,13 @@
 <script setup lang="ts">
-  defineProps({
-    icone: {
-      type: String,
-      required: true,
-    },
-    titulo: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: String,
-      required: true,
-    },
-    conteudo: {
-      type: String,
-      required: true,
-    },
-    dataAberto: {
-      type: String,
-      required: true,
-    },
-    dataFechado: {
-      type: String,
-      required: true,
-    },
-    valor: {
-      type: String,
-      required: true,
-    },
-  })
+  defineProps <{
+    icone: string,
+    titulo: string,
+    status: string,
+    conteudo: string,
+    dataAberto: string,
+    dataFechado: string,
+    valor: string,
+  }>()
 
   const { t } = useI18n({ useScope: 'local' })
 </script>

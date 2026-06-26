@@ -1,25 +1,16 @@
 <script setup lang="ts">
-  defineProps({
-    titulo: {
-      type: String,
-      required: true,
-    },
-    valor: {
-      type: String,
-      required: true,
-    },
-    icone: {
-      type: String,
-      required: true,
-    },
-  })
+  defineProps <{
+    titulo: string,
+    valor: string,
+    icone: string,
+  }>()
 </script>
 
 <template>
   <article
     class="flex flex-col rounded-[20px] border-2 border-black bg-violet-50 p-3 py-2 text-xs dark:border-white dark:bg-neutral-500/50">
     <div class="text-[2rem] text-rose-900 dark:text-rose-200">
-      <Icon :name="icone" />
+      <Icon :name ="icone" />
     </div>
 
     <div>

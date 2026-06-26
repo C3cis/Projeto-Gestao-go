@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+import Pedidos from '~/data/pedidos.json'
+
   const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
@@ -8,11 +11,6 @@
     { titulo: t('cards.total'), valor: '2', icone: 'line-md:folder-settings-filled' },
   ])
 
-  const Pedidos = [
-    { id: '001', cliente: 'João Silva', produto: 'Microscópio Zeiss', status: 'Em Processamento' },
-    { id: '002', cliente: 'Maria Oliveira', produto: 'Centrífuga Digital', status: 'Enviado' },
-    { id: '003', cliente: 'Carlos Santos', produto: 'Espectrofotômetro', status: 'Entregue' },
-  ]
   const BotoesBusca = computed(() => [
     { texto: t('botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },
     { texto: t('botoes.todos'), tamanho: 'pequeno', cor: 'rosao' },

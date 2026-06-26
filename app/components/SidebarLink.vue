@@ -1,14 +1,8 @@
-<script setup lang="js">
-  defineProps({
-    to: {
-      type: String,
-      required: true,
-    },
-    label: {
-      type: String,
-      required: true,
-    },
-  })
+<script setup lang="ts">
+  defineProps <{
+    to: string 
+    label: string
+  }>()
 </script>
 
 <template>

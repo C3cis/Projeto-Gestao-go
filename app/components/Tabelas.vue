@@ -2,11 +2,9 @@
   defineProps({
     colunas: {
       type: Array as PropType<{ titulo: string; chave: string }[]>,
-      required: true,
     },
     dados: {
       type: Array as PropType<Record<string, unknown>[]>,
-      required: true,
     },
   })
 </script>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  defineProps({
-    tipo: String,
-    texto: String,
-    cor: String,
-  })
+  defineProps <{
+    tipo: string,
+    texto: string,
+    cor: string,
+  }>()
 </script>
 <template>
   <button

@@ -1,0 +1,24 @@
+
+[
+  {
+    "id": "001",
+    "nome": "Notebook Dell",
+    "modelo": "Computador",
+    "status": "Ativos",
+    "localizacao": "Setor de TI"
+  },
+  {
+    "id": "002",
+    "nome": "Impressora HP",
+    "modelo": "Imprimidora",
+    "status": "Em Manutenção",
+    "localizacao": "Setor de TI"
+  },
+  {
+  "id": "003",
+  "nome": "Monitor Samsung",
+  "modelo": "Monitor",
+  "status": "Inativo",
+  "localizacao": "Setor de TI"
+}
+]

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Equipamentos from '~/data/equipamentos.json'
+
   const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
@@ -15,37 +17,20 @@
       icone: 'line-md:menu-to-close-alt-transition',
     },
   ])
-
-  const Equipamentos = [
-    {
-      id: '001',
-      nome: 'Notebook Dell',
-      modelo: 'Computador',
-      status: 'Ativo',
-      localizacao: 'Setor de TI',
-    },
-    {
-      id: '002',
-      nome: 'Impressora HP',
-      modelo: 'Imprimidora',
-      status: 'Em Manutenção',
-      localizacao: 'Setor de TI',
-    },
-    {
-      id: '003',
-      nome: 'Monitor Samsung',
-      modelo: 'Monitor',
-      status: 'Inativo',
-      localizacao: 'Setor de TI',
-    },
-  ]
-
+  
   const BotoesBusca = computed(() => [
-    { texto: t('botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },
-    { texto: t('botoes.todos'), tamanho: 'pequeno', cor: 'rosao' },
-    { texto: t('botoes.ativos'), tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.em_manutencao'), tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.busca'), valor:'busca', tamanho: 'pequeno', cor: 'rosaClaro' },
+    { texto: t('botoes.todos'), valor:'todos', tamanho: 'pequeno', cor: 'rosao' },
+    { texto: t('botoes.ativos'), valor:'Ativos',tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.em_manutencao'), valor:'Em Manutenção', tamanho: 'pequeno', cor: 'rosinha' },
   ])
+
+  const filtroStatus = ref('todos')
+  const equipamentosFiltrados = computed(() => {
+    if (filtroStatus.value == 'todos')
+      return Equipamentos
+    return Equipamentos.filter((e) => e.status == filtroStatus.value)
+  })
 </script>
 
 <template>
@@ -69,11 +54,14 @@
       :icone="card.icone" />
   </section>
   <section class="mb-6 flex flex-wrap gap-2 p-2">
+    <p class="text-white">filtro atual: {{ filtroStatus }}</p>
     <Botoes
       v-for="botoes in BotoesBusca"
+      :key="botoes.valor"
       :texto="botoes.texto"
       :tipo="botoes.tamanho"
-      :cor="botoes.cor" />
+      :cor="botoes.cor" 
+      @click="filtroStatus = botoes.valor"/>
   </section>
   <section>
     <div>
@@ -81,11 +69,11 @@
         :colunas="[
           { titulo: t('tabela.id'), chave: 'id' },
           { titulo: t('tabela.equipamento'), chave: 'nome' },
-          { titulo: t('tabela.modelo'), chave: 'tipo' },
+          { titulo: t('tabela.modelo'), chave: 'modelo' },
           { titulo: t('tabela.localizacao'), chave: 'localizacao' },
           { titulo: t('tabela.status'), chave: 'status' },
         ]"
-        :dados="Equipamentos" /><br />
+        :dados="equipamentosFiltrados" /><br />
     </div>
   </section>
 </template>

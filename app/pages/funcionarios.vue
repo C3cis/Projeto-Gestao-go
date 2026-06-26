@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Funcionarios from '~/data/funcionarios.json'
+
   const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
@@ -7,18 +9,6 @@
     { titulo: t('cards.afastados'), valor: '2', icone: 'line-md:account-alert' },
     { titulo: t('cards.inativos'), valor: '2', icone: 'line-md:account-delete' },
   ])
-
-  const Funcionarios = [
-    {
-      id: '001',
-      funcionario: 'Rosa mosqueta',
-      contato: '(11)1234567',
-      setor: 'Webzinho',
-      status: 'Negativado',
-    },
-    { id: '000', funcionario: '---', setor: '---', status: '---' },
-    { id: '000', funcionario: '---', setor: '---', status: '---' },
-  ]
 
   const BotoesBusca = computed(() => [
     { texto: t('botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },

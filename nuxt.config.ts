@@ -25,4 +25,10 @@ export default defineNuxtConfig({
     ],
   },
   nitro: { preset: 'bun' },
+
+  runtimeConfig: {
+    public:{
+      apiBase: 'http://localhost:8080'
+    }
+  }
 })

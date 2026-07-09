@@ -4,7 +4,8 @@ import Equipamentos from '~/data/equipamentos.json'
   const { t } = useI18n({ useScope: 'local' })
 
   const meusCards = computed(() => [
-    { titulo: t('cards.totais'), valor: '3', icone: 'ph:toolbox' },
+    { titulo: t('cards.totais'), 
+      valor: '3', icone: 'ph:toolbox' },
     { titulo: t('cards.operacionais'), valor: '4', icone: 'line-md:fork-right' },
     {
       titulo: t('cards.em_manutencao'),

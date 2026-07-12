@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import Equipamentos from '~/data/equipamentos.json'
 
   const { t } = useI18n({ useScope: 'local' })
 
+  const { equipamentos, buscarEquipamentos, adicionarEquipamento, deletarEquipamento, TotalEquipamentos, EquipamentosOperacionais, EquipamentosManutencao, EquipamentosInativos, error, carregando, filtroStatus, equipamentosFiltrados} = useEquipamentos()
+
+  onMounted(async () => {
+    await buscarEquipamentos()
+  })
+
+
   const meusCards = computed(() => [
     { titulo: t('cards.totais'), 
-      valor: '3', icone: 'ph:toolbox' },
-    { titulo: t('cards.operacionais'), valor: '4', icone: 'line-md:fork-right' },
+      valor: TotalEquipamentos.value, icone: 'ph:toolbox' },
+    { titulo: t('cards.operacionais'), valor: EquipamentosOperacionais.value, icone: 'line-md:fork-right' },
     {
       titulo: t('cards.em_manutencao'),
-      valor: '2',
+      valor: EquipamentosManutencao.value,
       icone: 'line-md:construction-twotone',
     },
     {
       titulo: t('cards.inativos'),
-      valor: '2',
+      valor: EquipamentosInativos.value,
       icone: 'line-md:menu-to-close-alt-transition',
     },
   ])
@@ -22,16 +28,11 @@ import Equipamentos from '~/data/equipamentos.json'
   const BotoesBusca = computed(() => [
     { texto: t('botoes.busca'), valor:'busca', tamanho: 'pequeno', cor: 'rosaClaro' },
     { texto: t('botoes.todos'), valor:'todos', tamanho: 'pequeno', cor: 'rosao' },
-    { texto: t('botoes.ativos'), valor:'Ativos',tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.em_manutencao'), valor:'Em Manutenção', tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.ativos'), valor:'Ativo',tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.em_manutencao'), valor:'Manutencao', tamanho: 'pequeno', cor: 'rosinha' },
   ])
 
-  const filtroStatus = ref('todos')
-  const equipamentosFiltrados = computed(() => {
-    if (filtroStatus.value == 'todos')
-      return Equipamentos
-    return Equipamentos.filter((e) => e.status == filtroStatus.value)
-  })
+ 
 </script>
 
 <template>
@@ -64,15 +65,18 @@ import Equipamentos from '~/data/equipamentos.json'
       :cor="botoes.cor" 
       @click="filtroStatus = botoes.valor"/>
   </section>
+  <section v-if="carregando">Carregando...</section>
+<section v-else-if="error">Erro ao carregar</section>
   <section>
     <div>
       <Tabelas
         :colunas="[
           { titulo: t('tabela.id'), chave: 'id' },
           { titulo: t('tabela.equipamento'), chave: 'nome' },
-          { titulo: t('tabela.modelo'), chave: 'modelo' },
+          { titulo: t('tabela.descricao'), chave: 'descricao' },
           { titulo: t('tabela.localizacao'), chave: 'localizacao' },
           { titulo: t('tabela.status'), chave: 'status' },
+          { titulo: t('tabela.dataAquisicao'), chave: 'dataAquisicao', formato: formatarData },
         ]"
         :dados="equipamentosFiltrados" /><br />
     </div>
@@ -93,9 +97,10 @@ import Equipamentos from '~/data/equipamentos.json'
     "tabela": {
       "id": "ID",
       "equipamento": "Nome",
-      "modelo": "Modelo",
+      "descricao": "Descrição",
       "localizacao": "Localização",
-      "status": "Status"
+      "status": "Status",
+      "dataAquisicao": "Data de Aquisição"
     },
     "botoes": {
       "adicionar": "+ Novo Equipamento",
@@ -117,9 +122,10 @@ import Equipamentos from '~/data/equipamentos.json'
     "tabela": {
       "id": "ID",
       "equipamento": "Name",
-      "modelo": "Model",
+      "descricao": "Description",
       "localizacao": "Location",
-      "status": "Status"
+      "status": "Status",
+      "dataAquisicao": "Acquisition Date"
     },
     "botoes": {
       "adicionar": "+ New Equipment",

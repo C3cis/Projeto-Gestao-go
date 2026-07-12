@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineProps <{
     titulo: string,
-    valor: string,
+    valor: number | string,
     icone: string,
   }>()
 </script>

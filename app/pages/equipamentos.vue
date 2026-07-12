@@ -31,8 +31,7 @@
     { texto: t('botoes.ativos'), valor:'Ativo',tamanho: 'pequeno', cor: 'rosinha' },
     { texto: t('botoes.em_manutencao'), valor:'Manutencao', tamanho: 'pequeno', cor: 'rosinha' },
   ])
-
- 
+const modalAberto = ref(false)
 </script>
 
 <template>
@@ -42,10 +41,13 @@
         class="mb-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-3xl font-bold text-transparent">
         {{ t('titulo') }}
       </h1>
-      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" />
+      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" @click="modalAberto = !modalAberto"/>
+
     </div>
     <p class="text-xl text-gray-600">{{ t('sub_titulo') }}</p>
   </section>
+
+  <FormularioEquipamento v-if="modalAberto" @salvar="adicionarEquipamento" @fechar="modalAberto = false" />
   <section
     class="mb-5 grid grid-cols-1 gap-4 px-20 text-justify text-sm sm:grid-cols-2 sm:gap-6 sm:px-10 lg:grid-cols-4 lg:px-4 lg:text-lg xl:text-xl">
     <Card
@@ -56,7 +58,6 @@
       :icone="card.icone" />
   </section>
   <section class="mb-6 flex flex-wrap gap-2 p-2">
-    <p class="text-white">filtro atual: {{ filtroStatus }}</p>
     <Botoes
       v-for="botoes in BotoesBusca"
       :key="botoes.valor"
@@ -67,7 +68,7 @@
   </section>
   <section v-if="carregando">Carregando...</section>
 <section v-else-if="error">Erro ao carregar</section>
-  <section>
+  <section v-else>
     <div>
       <Tabelas
         :colunas="[

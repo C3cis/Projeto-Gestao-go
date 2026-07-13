@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Campo } from '~/types/formulario'
+import type {Equipamento} from '~/types/equipamentos'
 
   const { t } = useI18n({ useScope: 'local' })
 
@@ -31,6 +33,14 @@
     { texto: t('botoes.ativos'), valor:'Ativo',tamanho: 'pequeno', cor: 'rosinha' },
     { texto: t('botoes.em_manutencao'), valor:'Manutencao', tamanho: 'pequeno', cor: 'rosinha' },
   ])
+
+ const camposEquipamento: Campo[] = [
+  { chave: 'nome',          label: 'Nome',              tipo: 'text' },
+  { chave: 'descricao',     label: 'Descrição',         tipo: 'text' },
+  { chave: 'localizacao',   label: 'Localização',       tipo: 'text' },
+  { chave: 'status',        label: 'Status',            tipo: 'select', opcoes: ['Ativo', 'Manutencao', 'Inativo'] },
+  { chave: 'dataAquisicao', label: 'Data de Aquisição', tipo: 'date' },
+]
 const modalAberto = ref(false)
 </script>
 
@@ -43,11 +53,14 @@ const modalAberto = ref(false)
       </h1>
       <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" @click="modalAberto = !modalAberto"/>
 
+      <FormularioBase v-if="modalAberto" titulo="Cadastro de Equipamento" :campos="camposEquipamento"
+      @salvar="(dados) => adicionarEquipamento(dados as Omit<Equipamento, 'id'>)"
+      @fechar="modalAberto = false" />
+
+
     </div>
     <p class="text-xl text-gray-600">{{ t('sub_titulo') }}</p>
   </section>
-
-  <FormularioEquipamento v-if="modalAberto" @salvar="adicionarEquipamento" @fechar="modalAberto = false" />
   <section
     class="mb-5 grid grid-cols-1 gap-4 px-20 text-justify text-sm sm:grid-cols-2 sm:gap-6 sm:px-10 lg:grid-cols-4 lg:px-4 lg:text-lg xl:text-xl">
     <Card

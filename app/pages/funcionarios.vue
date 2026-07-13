@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import Funcionarios from '~/data/funcionarios.json'
+import type { Campo } from '~/types/formulario'
+
 
   const { t } = useI18n({ useScope: 'local' })
 
@@ -17,6 +19,15 @@ import Funcionarios from '~/data/funcionarios.json'
     { texto: t('botoes.afastados'), tamanho: 'pequeno', cor: 'rosinha' },
     { texto: t('botoes.inativo'), tamanho: 'pequeno', cor: 'rosinha' },
   ])
+
+  const camposFuncionario: Campo[] = [
+  { chave: 'funcionario', label: 'Nome',    tipo: 'text' },
+  { chave: 'setor',       label: 'Setor',   tipo: 'select', opcoes: ['Setor TI', 'Setor Manutenção', 'Setor Reforma'] },
+  { chave: 'contato',     label: 'Contato', tipo: 'text' },
+  { chave: 'status',      label: 'Status',  tipo: 'select', opcoes: ['Ativo', 'Afastado', 'Inativo'] },
+]
+
+const modalAberto = ref(false)
 </script>
 
 <template>
@@ -26,7 +37,13 @@ import Funcionarios from '~/data/funcionarios.json'
         class="mb-3 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-3xl font-bold text-transparent">
         {{ t('titulo') }}
       </h1>
-      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" />
+      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" @click="modalAberto = !modalAberto"/>
+
+      <FormularioBase v-if="modalAberto" titulo="Cadastro de Funcionário" :campos="camposFuncionario"
+      @salvar="(dados) => console.log('Salvar funcionário:', dados)"
+      @fechar="modalAberto = false" />
+
+
     </div>
     <p class="mb-8 text-gray-600">{{ t('sub_titulo') }}</p>
   </section>

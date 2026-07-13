@@ -18,7 +18,7 @@ const novoEquipamento = ref<Omit<Equipamento, 'id'>>({
 
 function enviar() {
   emit('salvar', novoEquipamento.value)
-  // Limpar o formulário após o envio
+  // Limpar o formulário após o envio é bom para evitar que os dados permaneçam no formulário quando o modal for reaberto
   novoEquipamento.value = {
     nome: '',
     descricao: '',
@@ -37,13 +37,11 @@ function enviar() {
 >
   <div class="bg-white rounded-xl border border-gray-200 w-full max-w-sm">
 
-    <!-- Cabeçalho -->
     <div class="flex justify-between items-center px-5 py-4 border-b border-gray-100">
-      <span class="font-medium text-gray-900">Novo equipamento</span>
+      <span class="font-medium text-gray-900">Cadastro de Equipamento</span>
       <button @click="emit('fechar')" class="text-gray-400 hover:text-gray-600">✕</button>
     </div>
 
-    <!-- Campos -->
     <div class="px-5 py-4 flex flex-col gap-3">
       <input v-model="novoEquipamento.nome" placeholder="Nome" />
       <input v-model="novoEquipamento.descricao" placeholder="Descrição" />
@@ -56,10 +54,9 @@ function enviar() {
       <input type="date" v-model="novoEquipamento.dataAquisicao" />
     </div>
 
-    <!-- Rodapé -->
     <div class="flex justify-end gap-2 px-5 py-4 border-t border-gray-100">
       <button @click="emit('fechar')">Cancelar</button>
-      <button @click="enviar" class="bg-blue-500 text-white px-4 py-1.5 rounded-lg">Salvar</button>
+      <button @click="enviar" class="bg-rose-900 text-white px-4 py-1.5 rounded-lg">Salvar</button>
     </div>
 
   </div>

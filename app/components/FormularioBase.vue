@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Campo } from '~/types/formulario'
+import type { Campo, OpcaoCampo } from '~/types/formulario'
 
 const props = defineProps<{
     titulo: string,
@@ -11,10 +11,18 @@ const emit = defineEmits<{
     fechar: []
 }>()  
 
+// deixa toda opção no mesmo formato { label, valor }, seja ela texto simples ou objeto
+function normalizar(op: OpcaoCampo) {
+    return typeof op === 'string' ? { label: op, valor: op } : op
+}
+
 //funcao para criar o corpo do formulario com os campos e valores iniciais e certos para o que vc precisa
 function modeloVazio():Record<string, any> {
     return Object.fromEntries(
-        props.campos.map((c) => [c.chave, c.tipo === 'select' ? (c.opcoes?.[0] ?? '') : ''])
+        props.campos.map((c) => [
+            c.chave,
+            c.tipo === 'select' && c.opcoes?.[0] !== undefined ? normalizar(c.opcoes[0]).valor : '',
+        ])
     )
 }
 
@@ -43,10 +51,13 @@ function enviar() {
       <!-- Campos gerados a partir da configuração -->
       <div class="px-5 py-4 flex flex-col gap-3">
         <template v-for="campo in campos" :key="campo.chave">
-          <select v-if="campo.tipo === 'select'" v-model="modelo[campo.chave]">
-            <option v-for="op in campo.opcoes" :key="op" :value="op">{{ op }}</option>
-          </select>
-          <input v-else :type="campo.tipo" v-model="modelo[campo.chave]" :placeholder="campo.label" />
+          <label class="flex flex-col gap-1 text-sm text-gray-700">
+            <span>{{ campo.label }}</span>
+            <select v-if="campo.tipo === 'select'" v-model="modelo[campo.chave]">
+              <option v-for="op in campo.opcoes" :key="normalizar(op).valor" :value="normalizar(op).valor">{{ normalizar(op).label }}</option>
+            </select>
+            <input v-else :type="campo.tipo" v-model="modelo[campo.chave]" :placeholder="campo.label" />
+          </label>
         </template>
       </div>
 

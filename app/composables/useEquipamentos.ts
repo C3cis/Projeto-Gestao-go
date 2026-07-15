@@ -74,6 +74,8 @@ export function useEquipamentos() {
   const EquipamentosInativos = computed (() =>  
     equipamentos.value.filter(equipamento => equipamento.status === 'Inativo').length);
 
+  
+
    const filtroStatus = ref('todos')
   const equipamentosFiltrados = computed(() => {
     if (filtroStatus.value == 'todos')

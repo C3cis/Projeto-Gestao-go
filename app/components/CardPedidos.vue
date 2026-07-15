@@ -7,17 +7,6 @@
   urgente?: boolean
 }>()
 
-const sensorStyles: Record<Pedido['statusSensorPedido'], string> = {
-  Urgencia: 'border-rose-400 bg-rose-950/60 text-rose-300',
-  Alerta: 'border-amber-400 bg-amber-950/60 text-amber-300',
-  Normal: 'border-emerald-400 bg-emerald-950/60 text-emerald-300',
-}
-const pedidoStyles: Record<Pedido['statusPedido'], string> = {
-  Pendente: 'border-amber-400 bg-amber-950/60 text-amber-300',
-  'Em Triagem': 'border-sky-400 bg-sky-950/60 text-sky-300',
-  Concluido: 'border-emerald-400 bg-emerald-950/60 text-emerald-300',
-  Cancelado: 'border-neutral-500 bg-neutral-800 text-neutral-400',
-}
 </script>
 
 <template>
@@ -47,17 +36,17 @@ const pedidoStyles: Record<Pedido['statusPedido'], string> = {
       <div class="flex flex-col gap-0.5">
         <span class="text-xs font-semibold text-rose-400">Pedido:</span>
         <span class="text-xs font-medium text-neutral-100">{{ pedido.descricao }}</span>
-        <span class="text-xs text-neutral-400">Técnico: {{ pedido.tecnico }}</span>
+        <span class="text-xs text-neutral-400">Técnico: {{ pedido.tecnicoNome }}</span>
       </div>
 
       <div class="flex flex-col gap-0.5">
         <span class="text-xs font-semibold text-rose-400">Prazo de Entrega:</span>
-        <span class="text-xs font-medium text-neutral-100">{{ pedido.prazo }}</span>
+        <span class="text-xs font-medium text-neutral-100">{{ formatarData(pedido.prazo) }}</span>
       </div>
 
       <div class="flex flex-col gap-0.5">
         <span class="text-xs font-semibold text-rose-400">Criado em:</span>
-        <span class="text-xs font-medium text-neutral-100">{{ pedido.dataCriacao }}</span>
+        <span class="text-xs font-medium text-neutral-100">{{ formatarData(pedido.dataCriacao) }}</span>
       </div>
     </div>
   </article>

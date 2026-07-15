@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineProps({
     colunas: {
-      type: Array as PropType<{ titulo: string; chave: string; formato?: (valor: any) => string }[]>,
+      type: Array as PropType<{ titulo: string; chave: string; formato?: (valor: any) => string; classe?: (valor: any) => string }[]>,
     },
     dados: {
       type: Array as PropType<Record<string, unknown>[]>,
@@ -29,8 +29,9 @@
             v-for="coluna in colunas"
             :key="coluna.chave"
             class="border-r border-b px-3 py-5 align-middle text-sm text-black dark:text-white">
-            {{ coluna.formato ? coluna.formato(item[coluna.chave]) : item[coluna.chave] }}
-
+            <span :class="coluna.classe ? ['inline-block rounded-full border px-2 py-0.5 text-xs', coluna.classe(item[coluna.chave])] : ''">
+              {{ coluna.formato ? coluna.formato(item[coluna.chave]) : item[coluna.chave] }}
+            </span>
           </td>
         </tr>
       </tbody>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Campo } from '~/types/formulario'
-import type {Equipamento} from '~/types/equipamentos'
+import type { Equipamento } from '~/types/equipamentos'
 
   const { t } = useI18n({ useScope: 'local' })
 
@@ -89,7 +89,7 @@ const modalAberto = ref(false)
           { titulo: t('tabela.equipamento'), chave: 'nome' },
           { titulo: t('tabela.descricao'), chave: 'descricao' },
           { titulo: t('tabela.localizacao'), chave: 'localizacao' },
-          { titulo: t('tabela.status'), chave: 'status' },
+          { titulo: t('tabela.status'), chave: 'status', classe: (valor: keyof typeof equipamentoStyles) => equipamentoStyles[valor] },
           { titulo: t('tabela.dataAquisicao'), chave: 'dataAquisicao', formato: formatarData },
         ]"
         :dados="equipamentosFiltrados" /><br />

@@ -4,35 +4,61 @@
  defineProps<{
    pedido: Pedido,
    icone: string
- }>()
-  </script>
-  <template>
-    <article
-    class="flex flex-col rounded-[20px] border border-black bg-violet-50 p-2 text-xs dark:bg-neutral-500/60">
-    <div class="p-2 text-xl">
-      <Icon :name="icone" class="text-3xl text-amber-950 dark:text-rose-200" />
+  urgente?: boolean
+}>()
 
-       <p class="mb-3.5 text-sm font-medium dark:text-neutral-50">
-        {{ pedido.tecnico }}
-      </p>
+const sensorStyles: Record<Pedido['statusSensorPedido'], string> = {
+  Urgencia: 'border-rose-400 bg-rose-950/60 text-rose-300',
+  Alerta: 'border-amber-400 bg-amber-950/60 text-amber-300',
+  Normal: 'border-emerald-400 bg-emerald-950/60 text-emerald-300',
+}
+const pedidoStyles: Record<Pedido['statusPedido'], string> = {
+  Pendente: 'border-amber-400 bg-amber-950/60 text-amber-300',
+  'Em Triagem': 'border-sky-400 bg-sky-950/60 text-sky-300',
+  Concluido: 'border-emerald-400 bg-emerald-950/60 text-emerald-300',
+  Cancelado: 'border-neutral-500 bg-neutral-800 text-neutral-400',
+}
+</script>
 
-      <div class="mb-2 flex flex-wrap items-center justify-between text-3xl dark:text-rose-400">
-        <h3 class="m-2 gap-1 text-base font-medium">
-          {{ pedido.descricao }}
-        </h3>
+<template>
+  <article
+    class="flex flex-col gap-3 rounded-xl border border-neutral-700 bg-neutral-900 p-4 dark:bg-neutral-800/90"
+  >
+    <div class="flex items-start justify-between text-2xl">
+      <Icon :name="icone" class="h-9 w-9 text-rose-400 " />
 
-        <h2
-          class="mb-4 w-min rounded-[20px] border-2 border-rose-800 bg-red-100 p-[4.3px] text-xs font-medium text-rose-800">
+      <div class="flex items-center gap-2 mb-2">
+        <span
+          class="w-fit rounded-full border px-3 py-1 text-[11px] font-semibold"
+          :class="pedidoStyles[pedido.statusPedido]"
+        >
           {{ pedido.statusPedido }}
-        </h2>
+        </span>
+        <span
+          class="w-fit rounded-full border px-3 py-1 text-[11px] font-semibold"
+          :class="sensorStyles[pedido.statusSensorPedido]"
+        >
+          {{ pedido.statusSensorPedido }}
+        </span>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-x-6 gap-y-3 sm:grid-cols-3">
+      <div class="flex flex-col gap-0.5">
+        <span class="text-xs font-semibold text-rose-400">Pedido:</span>
+        <span class="text-xs font-medium text-neutral-100">{{ pedido.descricao }}</span>
+        <span class="text-xs text-neutral-400">Técnico: {{ pedido.tecnico }}</span>
       </div>
 
-      <div class="m-3 flex flex-col dark:text-neutral-300">
-        <p class="text-xs font-medium"> {{ pedido.dataCriacao }}</p>
-        <p class="text-xs font-medium">{{ pedido.prazo }}</p>
-        <p class="text-xs font-medium"> {{ pedido.statusSensorPedido }}</p>
+      <div class="flex flex-col gap-0.5">
+        <span class="text-xs font-semibold text-rose-400">Prazo de Entrega:</span>
+        <span class="text-xs font-medium text-neutral-100">{{ pedido.prazo }}</span>
+      </div>
+
+      <div class="flex flex-col gap-0.5">
+        <span class="text-xs font-semibold text-rose-400">Criado em:</span>
+        <span class="text-xs font-medium text-neutral-100">{{ pedido.dataCriacao }}</span>
       </div>
     </div>
   </article>
-
   </template>

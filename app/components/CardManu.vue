@@ -14,7 +14,7 @@
 
 <template>
   <article
-    class="flex flex-col rounded-[20px] border border-black bg-violet-50 p-2 text-xs dark:bg-neutral-500/60">
+    class="flex flex-col rounded-[20px] border border-black bg-violet-50 p-2 text-xs dark:bg-neutral-800/90">
     <div class="p-2 text-xl">
       <Icon :name="icone" class="text-3xl text-amber-950 dark:text-rose-200" />
 
@@ -33,9 +33,9 @@
       </p>
 
       <div class="m-3 flex flex-col dark:text-neutral-300">
-        <p class="text-xs font-medium">{{ t('cardHist.data_abertura') }}: {{ dataAberto }}</p>
-        <p class="text-xs font-medium">{{ t('cardHist.data_fechamento') }}: {{ dataFechado }}</p>
-        <p class="text-xs font-medium">{{ t('cardHist.custo') }}: {{ valor }}</p>
+        <p class="text-xs font-medium">{{ t('cardManu.data_abertura') }}: {{ dataAberto }}</p>
+        <p class="text-xs font-medium">{{ t('cardManu.data_fechamento') }}: {{ dataFechado }}</p>
+        <p class="text-xs font-medium">{{ t('cardManu.custo') }}: {{ valor }}</p>
       </div>
     </div>
   </article>
@@ -44,14 +44,14 @@
 <i18n lang="json">
 {
   "pt": {
-    "cardHist": {
+    "cardManu": {
       "data_abertura": "Data de Abertura",
       "data_fechamento": "Data de Fechamento",
       "custo": "Custo"
     }
   },
   "en": {
-    "cardHist": {
+    "cardManu": {
       "data_abertura": "Opening Date",
       "data_fechamento": "Closing Date",
       "custo": "Cost"

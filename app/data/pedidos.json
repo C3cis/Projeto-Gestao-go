@@ -1,20 +1,38 @@
 [
   {
-    "id": "001",
-    "cliente": "João Silva",
-    "produto": "Microscópio Zeiss",
-    "status": "Em Processamento"
+    "id": 1,
+    "tecnico": "João Silva",
+    "descricao": "Análise de amostra de água",
+    "statusPedido": "Pendente",
+    "dataCriacao": "2026-07-10",
+    "prazo": "2026-07-20",
+    "statusSensorPedido": "Normal"
   },
   {
-    "id": "002",
-    "cliente": "Maria Oliveira",
-    "produto": "Centrífuga Digital",
-    "status": "Enviado"
+    "id": 2,
+    "tecnico": "Maria Oliveira",
+    "descricao": "Calibração de espectrofotômetro",
+    "statusPedido": "Em Triagem",
+    "dataCriacao": "2026-07-08",
+    "prazo": "2026-07-15",
+    "statusSensorPedido": "Alerta"
   },
   {
-    "id": "003",
-    "cliente": "Carlos Santos",
-    "produto": "Espectrofotômetro",
-    "status": "Entregue"
+    "id": 3,
+    "tecnico": "Carlos Santos",
+    "descricao": "Manutenção de centrífuga",
+    "statusPedido": "Concluido",
+    "dataCriacao": "2026-07-01",
+    "prazo": "2026-07-05",
+    "statusSensorPedido": "Normal"
+  },
+  {
+    "id": 4,
+    "tecnico": "Ana Costa",
+    "descricao": "Reposição de reagentes",
+    "statusPedido": "Cancelado",
+    "dataCriacao": "2026-07-12",
+    "prazo": "2026-07-14",
+    "statusSensorPedido": "Urgencia"
   }
 ]

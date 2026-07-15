@@ -55,7 +55,7 @@ import Manutencoes from '~/data/manutencao.json'
   <section>
     <div
       class="mb-5 grid grid-cols-1 gap-4 px-2 text-justify text-sm sm:gap-4 sm:px-4 lg:grid-cols-2 lg:px-20 xl:text-xl">
-      <CardHist
+      <CardManu
         v-for="card in Manutencoes"
         :titulo="card.titulo"
         :valor="card.valor"

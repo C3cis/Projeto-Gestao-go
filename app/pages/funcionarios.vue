@@ -1,33 +1,40 @@
 <script setup lang="ts">
-import Funcionarios from '~/data/funcionarios.json'
 import type { Campo } from '~/types/formulario'
+import type { Funcionario } from '~/types/funcionarios'
 
 
   const { t } = useI18n({ useScope: 'local' })
 
+  const { funcionarios, buscarFuncionarios, adicionarFuncionario, deletarFuncionario, totalFuncionarios, funcionariosAtivos, funcionariosSuspensos, funcionariosInativos, error, carregando, filtroStatus, funcionariosFiltrados} = useFuncionarios()
+
+  onMounted(async () => {
+    await buscarFuncionarios()
+  })
+
   const meusCards = computed(() => [
-    { titulo: t('cards.totais'), valor: '3', icone: 'line-md:account' },
-    { titulo: t('cards.ativos'), valor: '4', icone: 'line-md:account-add' },
-    { titulo: t('cards.afastados'), valor: '2', icone: 'line-md:account-alert' },
-    { titulo: t('cards.inativos'), valor: '2', icone: 'line-md:account-delete' },
+    { titulo: t('cards.totais'), valor: totalFuncionarios.value, icone: 'line-md:account' },
+    { titulo: t('cards.ativos'), valor: funcionariosAtivos.value, icone: 'line-md:account-add' },
+    { titulo: t('cards.suspensos'), valor: funcionariosSuspensos.value, icone: 'line-md:account-alert' },
+    { titulo: t('cards.inativos'), valor: funcionariosInativos.value, icone: 'line-md:account-delete' },
   ])
 
   const BotoesBusca = computed(() => [
-    { texto: t('botoes.busca'), tamanho: 'pequeno', cor: 'rosaClaro' },
-    { texto: t('botoes.todos'), tamanho: 'pequeno', cor: 'rosao' },
-    { texto: t('botoes.ativos'), tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.afastados'), tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.inativo'), tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.busca'), valor: 'busca', tamanho: 'pequeno', cor: 'rosaClaro' },
+    { texto: t('botoes.todos'), valor: 'todos', tamanho: 'pequeno', cor: 'rosao' },
+    { texto: t('botoes.ativos'), valor: 'Ativo', tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.suspensos'), valor: 'Suspenso', tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.inativo'), valor: 'Inativo', tamanho: 'pequeno', cor: 'rosinha' },
   ])
 
   const camposFuncionario: Campo[] = [
-  { chave: 'funcionario', label: 'Nome',    tipo: 'text' },
-  { chave: 'setor',       label: 'Setor',   tipo: 'select', opcoes: ['Setor TI', 'Setor Manutenção', 'Setor Reforma'] },
-  { chave: 'contato',     label: 'Contato', tipo: 'text' },
-  { chave: 'status',      label: 'Status',  tipo: 'select', opcoes: ['Ativo', 'Afastado', 'Inativo'] },
-]
-
-const modalAberto = ref(false)
+    { chave: 'nome', label: 'Nome', tipo: 'text'},
+    { chave: 'email', label: 'Email', tipo: 'text'},
+    { chave: 'telefone', label: 'Contato', tipo: 'text'},
+    { chave: 'cargo', label: 'Cargo', tipo: 'select', opcoes: ['Administrador', 'Técnico de Desenvolvimento', 'Coordenador', 'Gerente', 'Estagiario', 'Suporte']},
+    { chave: 'status', label: 'Status', tipo: 'select', opcoes: ['Ativo', 'Suspenso', 'Inativo', 'Nas Ferias']}
+  ]
+  
+  const modalAberto = ref(false)
 </script>
 
 <template>
@@ -40,7 +47,7 @@ const modalAberto = ref(false)
       <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" @click="modalAberto = !modalAberto"/>
 
       <FormularioBase v-if="modalAberto" titulo="Cadastro de Funcionário" :campos="camposFuncionario"
-      @salvar="(dados) => console.log('Salvar funcionário:', dados)"
+      @salvar="(dados) => adicionarFuncionario(dados as Omit<Funcionario, 'id'>)"
       @fechar="modalAberto = false" />
 
 
@@ -59,22 +66,27 @@ const modalAberto = ref(false)
   <section class="mb-6 flex flex-wrap gap-2 p-2">
     <Botoes
       v-for="botoes in BotoesBusca"
+      :key="botoes.valor"
       :texto="botoes.texto"
       :tipo="botoes.tamanho"
-      :cor="botoes.cor" />
+      :cor="botoes.cor" 
+      @click="filtroStatus = botoes.valor"/>
   </section>
 
-  <section>
+ <section v-if="carregando">Carregando...</section>
+<section v-else-if="error">Erro ao carregar</section>
+  <section v-else>
     <div>
       <Tabelas
         :colunas="[
           { titulo: t('tabela.id'), chave: 'id' },
-          { titulo: t('tabela.funcionario'), chave: 'funcionario' },
-          { titulo: t('tabela.setor'), chave: 'setor' },
-          { titulo: t('tabela.contato'), chave: 'contato' },
-          { titulo: t('tabela.status'), chave: 'status' },
+          { titulo: t('tabela.funcionario'), chave: 'nome' },
+          { titulo: t('tabela.email'), chave: 'email' },
+          { titulo: t('tabela.telefone'), chave: 'telefone' },
+          { titulo: t('tabela.cargo'), chave: 'cargo' },
+          { titulo: t('tabela.status'), chave: 'status' }
         ]"
-        :dados="Funcionarios" /><br />
+        :dados="funcionariosFiltrados" /><br />
     </div>
   </section>
 </template>
@@ -87,23 +99,24 @@ const modalAberto = ref(false)
     "cards": {
       "totais": "Totais",
       "ativos": "Ativos",
-      "afastados": "Afastados",
+      "suspensos": "Suspensos",
       "inativos": "Inativos"
     },
     "tabela": {
       "id": "ID",
       "funcionario": "Funcionario",
-      "setor": "Setor",
-      "contato": "Contato",
+      "email": "Email",
+      "telefone": "Telefone",
+      "cargo": "Cargo",
       "status": "Status"
     },
     "botoes": {
       "adicionar": "+ Novo Funcionario",
       "busca": "Busca",
       "todos": "Todos",
-      "ativos": "Ativos",
-      "afastados": "Afastados",
-      "inativo": "Inativos"
+      "ativos": "Ativo",
+      "suspensos": "Suspenso",
+      "inativo": "Inativo"
     }
   },
   "en": {
@@ -112,14 +125,15 @@ const modalAberto = ref(false)
     "cards": {
       "totais": "Total",
       "ativos": "Active",
-      "afastados": "On Leave",
+      "suspensos": "Suspended",
       "inativos": "Inactive"
     },
     "tabela": {
       "id": "ID",
       "funcionario": "Employee",
-      "setor": "Department",
-      "contato": "Contact",
+      "cargo": "Position",
+      "email": "Email",
+      "telefone": "Phone",
       "status": "Status"
     },
     "botoes": {

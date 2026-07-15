@@ -47,15 +47,12 @@ import Pedidos from '~/data/pedidos.json'
       :cor="botoes.cor" />
   </section>
   <section>
-    <div>
-      <Tabelas
-        :colunas="[
-          { titulo: t('tabela.id'), chave: 'id' },
-          { titulo: t('tabela.tecnico'), chave: 'cliente' },
-          { titulo: t('tabela.pedido'), chave: 'produto' },
-          { titulo: t('tabela.status'), chave: 'status' },
-        ]"
-        :dados="Pedidos" /><br />
+    <div class="mb-5 grid grid-cols-1 gap-4 px-2 text-justify text-sm sm:gap-4 sm:px-4 lg:grid-cols-2 lg:px-20 xl:text-xl">
+      <CardPedidos
+        v-for="pedido in Pedidos"
+        :key="pedido.id"
+        :pedido="pedido"
+        :icone="'line-md:document-report'" />
     </div>
   </section>
 </template>

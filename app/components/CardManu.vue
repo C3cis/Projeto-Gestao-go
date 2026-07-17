@@ -1,12 +1,8 @@
 <script setup lang="ts">
+import type { Manutencao } from '~/types/manutencao';
   defineProps <{
     icone: string,
-    titulo: string,
-    status: string,
-    conteudo: string,
-    dataAberto: string,
-    dataFechado: string,
-    valor: string,
+    manutencao: Manutencao
   }>()
 
   const { t } = useI18n({ useScope: 'local' })
@@ -20,22 +16,24 @@
 
       <div class="mb-2 flex flex-wrap items-center justify-between text-3xl dark:text-rose-400">
         <h3 class="m-2 gap-1 text-base font-medium">
-          {{ titulo }}
+          {{ manutencao.tipoManu }}
+          <span class="block text-xs font-normal text-neutral-400">{{ manutencao.equipamentoNome }}</span>
         </h3>
 
         <h2
-          class="mb-4 w-min rounded-[20px] border-2 border-rose-800 bg-red-100 p-[4.3px] text-xs font-medium text-rose-800">
-          {{ status }}
+          class="mb-4 w-min rounded-[20px] border-2 p-[4.3px] text-xs font-medium"
+          :class="manutencaoStyles[manutencao.status]">
+          {{ manutencao.status }}
         </h2>
       </div>
       <p class="mb-3.5 text-sm font-medium dark:text-neutral-50">
-        {{ conteudo }}
+        {{ manutencao.descricao }}
       </p>
 
       <div class="m-3 flex flex-col dark:text-neutral-300">
-        <p class="text-xs font-medium">{{ t('cardManu.data_abertura') }}: {{ dataAberto }}</p>
-        <p class="text-xs font-medium">{{ t('cardManu.data_fechamento') }}: {{ dataFechado }}</p>
-        <p class="text-xs font-medium">{{ t('cardManu.custo') }}: {{ valor }}</p>
+        <p class="text-xs font-medium">{{ t('cardManu.data_abertura') }}: {{formatarData(manutencao.dataAbertura) }}</p>
+        <p class="text-xs font-medium">{{ t('cardManu.data_fechamento') }}: {{ formatarData (manutencao.dataFechamento) }}</p>
+        <p class="text-xs font-medium">{{ t('cardManu.custo') }}: {{ manutencao.valor }}</p>
       </div>
     </div>
   </article>

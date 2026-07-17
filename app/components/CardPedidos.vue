@@ -19,14 +19,12 @@
       <div class="flex items-center gap-2 mb-2">
         <span
           class="w-fit rounded-full border px-3 py-1 text-[11px] font-semibold"
-          :class="pedidoStyles[pedido.statusPedido]"
-        >
+          :class="pedidoStyles[pedido.statusPedido]">
           {{ pedido.statusPedido }}
         </span>
         <span
           class="w-fit rounded-full border px-3 py-1 text-[11px] font-semibold"
-          :class="sensorStyles[pedido.statusSensorPedido]"
-        >
+          :class="sensorStyles[pedido.statusSensorPedido]">
           {{ pedido.statusSensorPedido }}
         </span>
       </div>

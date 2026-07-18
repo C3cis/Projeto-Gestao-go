@@ -28,3 +28,9 @@ export const manutencaoStyles: Record<StatusManutencao, string> = {
   Urgentes: 'border-neutral-500 bg-neutral-800 text-neutral-400',
   'Em Andamento': 'border-violet-400 bg-violet-950/60 text-violet-300',
 }
+
+export const badgeStyles: Record<'urgente' | 'alerta' | 'normal', string> = {
+  urgente: 'border-l-red-500',
+  alerta: 'border-l-amber-400',
+  normal: 'border-l-emerald-400'
+}

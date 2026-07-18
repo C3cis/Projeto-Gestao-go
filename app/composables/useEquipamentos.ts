@@ -1,4 +1,6 @@
 import type { Equipamento } from '~/types/equipamentos';
+import type { ItemDashboard } from '~/types/dashboard';
+
 
 export function useEquipamentos() {
   const equipamentos = ref<Equipamento[]>([]); //para a listagem dos equipamentos
@@ -82,7 +84,21 @@ export function useEquipamentos() {
       return equipamentos.value
     return equipamentos.value.filter((e) => e.status == filtroStatus.value)
   })
+//Verificar funcao
+  function mapParaItemDashboard(equipamento: Equipamento): ItemDashboard {
+  return {
+    id: equipamento.id,
+    titulo: equipamento.nome,
+    subtitulo: equipamento.localizacao
+  }
+}
+const emManutencao = computed(() =>
+  equipamentos.value
+    .filter(e => e.status === 'Manutencao')
+    .map(mapParaItemDashboard)
+)
 
 
-  return { equipamentos, buscarEquipamentos, adicionarEquipamento, deletarEquipamento, TotalEquipamentos, EquipamentosOperacionais, EquipamentosManutencao, EquipamentosInativos, error, carregando, filtroStatus, equipamentosFiltrados};
+
+  return { equipamentos, buscarEquipamentos, adicionarEquipamento, deletarEquipamento, TotalEquipamentos, EquipamentosOperacionais, EquipamentosManutencao, EquipamentosInativos, error, carregando, filtroStatus, equipamentosFiltrados, emManutencao};
 }

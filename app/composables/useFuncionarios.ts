@@ -1,4 +1,6 @@
 import type { Funcionario } from '~/types/funcionarios';
+import type { ItemDashboard } from '~/types/dashboard';
+
 
 export function useFuncionarios() {
     const funcionarios = ref<Funcionario[]>([]);
@@ -74,6 +76,19 @@ export function useFuncionarios() {
         return funcionarios.value.filter(funcionario => funcionario.status === filtroStatus.value);
     });
 
+    function mapParaItemDashboard(funcionario: Funcionario): ItemDashboard {
+  return {
+    id: funcionario.id,
+    titulo: funcionario.nome,
+    subtitulo: `Status: ${funcionario.status}`
+  }
+    }
+    
+  const ausentes = computed(() =>
+  funcionarios.value
+    .filter(f => f.status === 'Nas Ferias' || f.status === 'Suspenso')
+    .map(mapParaItemDashboard))
 
-    return { funcionarios, error, carregando, buscarFuncionarios, adicionarFuncionario, deletarFuncionario, totalFuncionarios, funcionariosAtivos, funcionariosInativos, funcionariosSuspensos, filtroStatus, funcionariosFiltrados };
+
+    return { funcionarios, error, carregando, buscarFuncionarios, adicionarFuncionario, deletarFuncionario, totalFuncionarios, funcionariosAtivos, funcionariosInativos, funcionariosSuspensos, filtroStatus, funcionariosFiltrados, ausentes };
 }

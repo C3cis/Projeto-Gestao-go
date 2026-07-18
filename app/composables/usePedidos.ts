@@ -1,4 +1,5 @@
 import type { Pedido } from '~/types/pedidos'
+import type { ItemDashboard } from '~/types/dashboard';
 
 export function usePedidos(){
     const pedidos = ref<Pedido[]>([]);
@@ -77,6 +78,20 @@ export function usePedidos(){
       return pedidos.value
     return pedidos.value.filter((p) => p.statusPedido === filtroStatus.value || p.statusSensorPedido === filtroStatus.value)
   })
+
+  function mapParaItemDashboard(pedido: Pedido): ItemDashboard {
+  return {
+    id: pedido.id,
+    titulo: pedido.descricao,
+    subtitulo: `${pedido.tecnicoNome} · Prazo: ${formatarData(pedido.prazo)}`
+  }
+}
+const urgentes = computed(() =>
+  pedidos.value.filter(p => p.statusSensorPedido === 'Urgencia').map(mapParaItemDashboard)
+)
+
+
+
     
-    return { pedidos, buscarPedidos, adicionarPedido, deletarPedido, totalPedidos, pedidosUrgentes, pedidosConcluidos, pedidosCancelados, pedidosEmTriagem, pedidosPendentes, error, carregando, filtroStatus, pedidosFiltrados};
+    return { pedidos, buscarPedidos, adicionarPedido, deletarPedido, totalPedidos, pedidosUrgentes, pedidosConcluidos, pedidosCancelados, pedidosEmTriagem, pedidosPendentes, error, carregando, filtroStatus, pedidosFiltrados, mapParaItemDashboard, urgentes};
 }

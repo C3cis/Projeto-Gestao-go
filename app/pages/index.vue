@@ -1,15 +1,23 @@
 <script setup lang="ts">
-import ListaDeEquipamentos from '~/data/index.json'
 
   const { t } = useI18n({ useScope: 'local' })
 
+const { equipamentos, buscarEquipamentos, TotalEquipamentos, emManutencao } = useEquipamentos()
+const { funcionarios, buscarFuncionarios, totalFuncionarios, ausentes } = useFuncionarios()
+const { manutencao, buscarManutencao, manutencaoEmAndamento } = useManutencao()
+const { pedidos, buscarPedidos, pedidosUrgentes, urgentes } = usePedidos()
+
+onMounted(async () => {
+  await Promise.all([buscarEquipamentos(), buscarFuncionarios(), buscarManutencao(), buscarPedidos()])
+})
+
   const meusCards = computed(() => [
-    { titulo: t('cards.equipamentos'), valor: '3', icone: 'line-md:computer-twotone' },
-    { titulo: t('cards.funcionarios'), valor: '4', icone: 'ph:users' },
-    { titulo: t('cards.manutencao_ativa'), valor: '2', icone: 'line-md:alert-loop' },
+    { titulo: t('cards.equipamentos'), valor: TotalEquipamentos.value, icone: 'line-md:computer-twotone' },
+    { titulo: t('cards.funcionarios'), valor: totalFuncionarios.value, icone: 'ph:users' },
+    { titulo: t('cards.manutencao_ativa'), valor: manutencaoEmAndamento.value, icone: 'line-md:alert-loop' },
     {
       titulo: t('cards.pedidos_pendentes'),
-      valor: '2',
+      valor: pedidosUrgentes.value,
       icone: 'line-md:text-box-twotone-to-text-box-multiple-twotone-transition',
     },
   ])
@@ -36,21 +44,24 @@ import ListaDeEquipamentos from '~/data/index.json'
       :icone="card.icone" />
   </section>
   <section>
-    <div class="mt-4 rounded-xl bg-rose-50 p-5 dark:bg-neutral-200/36">
-      <h2 class="text-2xl font-bold dark:text-neutral-200">
-        {{ t('titulo_tabela') }}
-      </h2>
-      <div class="mb-4 flex items-center justify-between p-4 px-0.5">
-        <Tabelas
-          :colunas="[
-            { titulo: t('tabela.id'), chave: 'id' },
-            { titulo: t('tabela.pedido'), chave: 'pedido' },
-            { titulo: t('tabela.problemas'), chave: 'problema' },
-          ]"
-          :dados="ListaDeEquipamentos" /><br />
-      </div>
-    </div>
-  </section>
+    <CardDashboard
+      icone="mdi:alert-circle"
+      titulo="Pedidos urgentes"
+      cor-badge="urgente"
+      :itens="urgentes" />
+
+    <CardDashboard
+      icone="mdi:tools"
+      titulo="Equipamentos em manutenção"
+      cor-badge="alerta"
+      :itens="emManutencao" />
+
+    <CardDashboard
+      icone="mdi:beach"
+      titulo="Funcionários ausentes"
+      cor-badge="normal"
+      :itens="ausentes" />
+      </section>
 </template>
 
 <i18n lang="json">

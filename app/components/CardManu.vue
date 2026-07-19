@@ -21,7 +21,7 @@ import type { Manutencao } from '~/types/manutencao';
         </h3>
 
         <h2
-          class="mb-4 w-min rounded-[20px] border-2 p-[4.3px] text-xs font-medium"
+          class="mb-4 w-min whitespace-nowrap rounded-[20px] border-2 p-[4.3px] text-xs font-medium"
           :class="manutencaoStyles[manutencao.status]">
           {{ manutencao.status }}
         </h2>

@@ -59,7 +59,7 @@ import type { Campo } from '~/types/formulario'
     <p class="text-xl text-gray-600">{{ t('sub_titulo') }}</p>
   </section>
   <section
-    class="mb-5 grid grid-cols-1 gap-4 px-20 text-justify text-sm sm:grid-cols-2 sm:gap-6 sm:px-10 lg:grid-cols-4 lg:px-4 lg:text-lg xl:text-xl">
+    class="mb-5 grid grid-cols-1 gap-4 px-20 text-left text-sm sm:grid-cols-2 sm:gap-6 sm:px-10 lg:grid-cols-4 lg:px-4 lg:text-lg xl:text-xl">
     <Card
       v-for="card in meusCards"
       :key="card.titulo"
@@ -77,7 +77,7 @@ import type { Campo } from '~/types/formulario'
       @click="filtroStatus = botoes.valor "/>
   </section>
   <section>
-    <div class="mb-5 grid grid-cols-2 gap-4 px-2 text-justify text-sm sm:gap-4 sm:px-4 lg:px-20 xl:text-2xl">
+    <div class="mb-5 grid grid-cols-2 gap-4 px-2 text-left text-sm sm:gap-4 sm:px-4 lg:px-20 xl:text-2xl">
       <CardPedidos
         v-for="pedido in pedidosFiltrados"
         :key="pedido.id"

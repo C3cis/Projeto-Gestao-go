@@ -83,8 +83,8 @@ import type { Funcionario } from '~/types/funcionarios'
           { titulo: t('tabela.funcionario'), chave: 'nome' },
           { titulo: t('tabela.email'), chave: 'email' },
           { titulo: t('tabela.telefone'), chave: 'telefone' },
-          { titulo: t('tabela.cargo'), chave: 'cargo' },
-          { titulo: t('tabela.status'), chave: 'status' }
+          { titulo: t('tabela.cargo'), chave: 'cargo', classe: (valor: keyof typeof funcionariosCargoStyles) => funcionariosCargoStyles[valor] },
+          { titulo: t('tabela.status'), chave: 'status', classe: (valor: keyof typeof funcionariosStyles) => funcionariosStyles[valor] }
         ]"
         :dados="funcionariosFiltrados" /><br />
     </div>

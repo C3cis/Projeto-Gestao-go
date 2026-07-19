@@ -23,28 +23,41 @@
         {{ t('atividades_realizadas') }}
       </p>
     </div>
-    <div class="text-right">
-      <h1 class="text-sm text-rose-950 dark:text-rose-400">Russaneta</h1>
-      <p class="text-xs text-rose-800 dark:text-rose-200">Nivel de Acesso</p>
+    <div class="flex max-w-120 items-center gap-4">
+      <!-- Botão claro/escuro: fica FORA do card -->
+      <button
+        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-[0.5px] border-rose-200 bg-rose-100 dark:border-rose-800/50 dark:bg-rose-900/50"
+        @click="colorMode.preference = isDark ? 'light' : 'dark'">
+        <Icon
+          :name="
+            isDark
+              ? 'line-md:moon-alt-loop'
+              : 'line-md:moon-filled-to-sunny-filled-loop-transition'
+          "
+          class="text-2xl text-rose-800 dark:text-rose-300" />
+      </button>
 
-      <div class="flex flex-row gap-2">
-        <button
-          class="mt-2 rounded-full bg-rose-200 p-2"
-          @click="colorMode.preference = isDark ? 'light' : 'dark'">
-          <Icon
-            :name="
-              isDark
-                ? 'line-md:moon-alt-loop'
-                : 'line-md:moon-filled-to-sunny-filled-loop-transition'
-            "
-            class="text-2xl text-rose-900" />
-        </button>
-        <NuxtLink
-          v-for="locale in availableLocales"
-          :key="locale.code"
-          :to="switchLocalePath(locale.code)">
-          {{ locale.name }}
-        </NuxtLink>
+      <!-- Card que agrupa o resto -->
+      <div
+        class="flex flex-1 items-center gap-4 rounded-xl border-[0.5px] border-rose-200 bg-white/80 px-6 py-5 dark:border-rose-800/50 dark:bg-rose-900/30">
+        <div class="min-w-0 flex-1">
+          <p class="mb-0.5 text-[17px] font-medium text-rose-950 dark:text-rose-100">Russaneta</p>
+          <div class="flex flex-wrap items-center gap-2">
+            <span
+              class="rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-medium text-rose-900 dark:bg-rose-900/50 dark:text-rose-200">
+              Nível de acesso
+            </span>
+            <NuxtLink
+              v-for="locale in availableLocales"
+              :key="locale.code"
+              :to="switchLocalePath(locale.code)"
+              class="flex items-center gap-1 text-[13px] text-rose-700 dark:text-rose-300">
+              <Icon name="tabler:language" class="text-sm" />
+              {{ locale.name }}
+            </NuxtLink>
+          </div>
+        </div>
+        <Icon name="tabler:chevron-down" class="shrink-0 text-lg text-rose-400 dark:text-rose-500" />
       </div>
     </div>
   </header>

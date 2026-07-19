@@ -10,14 +10,14 @@
 </script>
 
 <template>
-  <section class="rounded-2.5 w-full overflow-x-auto bg-purple-50 p-2.5 dark:bg-rose-100/93">
+  <section class="rounded-2.5 max-h-[70vh] w-full overflow-x-auto overflow-y-auto bg-purple-50 p-2.5 dark:bg-rose-100/93">
     <table class="mt-3.75 w-full border-collapse bg-white dark:bg-neutral-800">
       <thead>
         <tr>
           <th
             v-for="coluna in colunas"
             :key="coluna.chave"
-            class="bg-rose-300 px-3 py-3.75 text-left text-sm font-semibold text-white dark:bg-rose-500/55">
+            class="sticky top-0 z-10 bg-rose-300 px-3 py-3.75 text-left text-sm font-semibold text-white dark:bg-rose-500/55">
             {{ coluna.titulo }}
           </th>
         </tr>

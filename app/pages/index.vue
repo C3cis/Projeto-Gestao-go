@@ -43,25 +43,27 @@ onMounted(async () => {
       :valor="card.valor"
       :icone="card.icone" />
   </section>
-  <section>
+   <section class="space-y-4">
     <CardDashboard
       icone="mdi:alert-circle"
       titulo="Pedidos urgentes"
       cor-badge="urgente"
       :itens="urgentes" />
+      
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <CardDashboard
+        icone="mdi:tools"
+        titulo="Equipamentos em manutenção"
+        cor-badge="alerta"
+        :itens="emManutencao" />
 
-    <CardDashboard
-      icone="mdi:tools"
-      titulo="Equipamentos em manutenção"
-      cor-badge="alerta"
-      :itens="emManutencao" />
-
-    <CardDashboard
-      icone="mdi:beach"
-      titulo="Funcionários ausentes"
-      cor-badge="normal"
-      :itens="ausentes" />
-      </section>
+      <CardDashboard
+        icone="mdi:beach"
+        titulo="Funcionários ausentes"
+        cor-badge="normal"
+        :itens="ausentes" />
+    </div>
+  </section>
 </template>
 
 <i18n lang="json">

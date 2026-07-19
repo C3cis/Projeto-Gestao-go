@@ -7,4 +7,5 @@ export type Campo = {
   label: string          // texto que aparece pro usuário (placeholder/opção)
   tipo: 'text' | 'date' | 'number' | 'select'
   opcoes?: OpcaoCampo[]  // só usado quando tipo === 'select'
+  largura?: 'metade'     // 'metade' = 2 campos por linha (ex.: Cargo/Status); padrão = linha inteira
 }

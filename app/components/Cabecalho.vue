@@ -14,7 +14,7 @@
 
 <template>
   <header
-    class="mb-1 flex flex-wrap items-center justify-between bg-rose-100 p-2.25 sm:w-full dark:bg-rose-950/90">
+    class="mb-1 flex flex-wrap items-center justify-between gap-y-3 bg-rose-100 p-2.25 sm:w-full dark:bg-rose-950/90 ">
     <div>
       <h1 class="text-xl font-bold text-rose-950 dark:text-rose-400">
         {{ t('meu_painel') }}
@@ -23,10 +23,10 @@
         {{ t('atividades_realizadas') }}
       </p>
     </div>
-    <div class="flex max-w-120 items-center gap-4">
-      <!-- Botão claro/escuro: fica FORA do card -->
+
+    <div class="flex max-w-120 items-center gap-2 sm:gap-4">
       <button
-        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-[0.5px] border-rose-200 bg-rose-100 dark:border-rose-800/50 dark:bg-rose-900/50"
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-[0.5px] border-rose-300 bg-rose-200 dark:border-rose-800/50 dark:bg-rose-900/50 sm:h-14 sm:w-14"
         @click="colorMode.preference = isDark ? 'light' : 'dark'">
         <Icon
           :name="
@@ -34,14 +34,14 @@
               ? 'line-md:moon-alt-loop'
               : 'line-md:moon-filled-to-sunny-filled-loop-transition'
           "
-          class="text-2xl text-rose-800 dark:text-rose-300" />
+          class="text-xl text-rose-800 dark:text-rose-300 sm:text-2xl" />
       </button>
 
       <!-- Card que agrupa o resto -->
       <div
-        class="flex flex-1 items-center gap-4 rounded-xl border-[0.5px] border-rose-200 bg-white/80 px-6 py-5 dark:border-rose-800/50 dark:bg-rose-900/30">
+        class="flex flex-1 items-center gap-2 rounded-xl border-[0.5px] border-rose-200 bg-rose-50 px-3 py-2 dark:border-rose-800/50 dark:bg-rose-900/30 sm:gap-4 sm:px-6 sm:py-5">
         <div class="min-w-0 flex-1">
-          <p class="mb-0.5 text-[17px] font-medium text-rose-950 dark:text-rose-100">Russaneta</p>
+          <p class="mb-0.5 text-sm font-medium text-rose-950 dark:text-rose-100 sm:text-[17px]">Russaneta</p>
           <div class="flex flex-wrap items-center gap-2">
             <span
               class="rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-medium text-rose-900 dark:bg-rose-900/50 dark:text-rose-200">
@@ -57,7 +57,7 @@
             </NuxtLink>
           </div>
         </div>
-        <Icon name="tabler:chevron-down" class="shrink-0 text-lg text-rose-400 dark:text-rose-500" />
+        <Icon name="tabler:chevron-down" class="hidden shrink-0 text-lg text-rose-400 dark:text-rose-500 sm:block" />
       </div>
     </div>
   </header>

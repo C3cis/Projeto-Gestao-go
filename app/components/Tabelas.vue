@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <section class="rounded-2.5 max-h-[70vh] w-full overflow-x-auto overflow-y-auto bg-purple-50 p-2.5 dark:bg-rose-100/93">
+  <section class="rounded-2.5 max-h-[70vh] w-full overflow-x-auto overflow-y-auto bg-purple-50 p-2.5 dark:bg-rose-100/70">
     <table class="mt-3.75 w-full border-collapse bg-white dark:bg-neutral-800">
       <thead>
         <tr>

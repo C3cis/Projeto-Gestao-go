@@ -77,7 +77,7 @@ import type { Campo } from '~/types/formulario'
       @click="filtroStatus = botoes.valor "/>
   </section>
   <section>
-    <div class="mb-5 grid grid-cols-2 gap-4 px-2 text-left text-sm sm:gap-4 sm:px-4 lg:px-20 xl:text-2xl">
+    <div class="mb-5 grid grid-cols-1 gap-4 px-2 text-left text-sm sm:gap-4 sm:px-4 lg:grid-cols-2 lg:px-20 xl:text-2xl">
       <CardPedidos
         v-for="pedido in pedidosFiltrados"
         :key="pedido.id"

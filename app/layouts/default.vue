@@ -26,7 +26,10 @@
       <SidebarLink to="/funcionarios" :label="t('funcionarios')" />
       <SidebarLink to="/equipamentos" :label="t('equipamentos')" />
       <SidebarLink to="/manutencao" :label="t('manutencoes')" />
-      <SidebarLink to="/pedidos" :label="t('pedidos')" />
+      <SidebarLink to="/pedidos" :label="t('pedidos')"/>
+      <SidebarLink to="/relatorios" :label="t('relatorios')"/>
+
+
     </nav>
 
     <main class="w-full bg-white p-5 dark:bg-neutral-950">
@@ -44,14 +47,18 @@
     "funcionarios": "Funcionários",
     "equipamentos": "Equipamentos",
     "manutencoes": "Manutenções",
-    "pedidos": "Pedidos"
+    "pedidos": "Pedidos",
+    "relatorios": "Relatorios"
   },
   "en": {
     "painel_geral": "Dashboard",
     "funcionarios": "Employees",
     "equipamentos": "Equipment",
     "manutencoes": "Maintenance",
-    "pedidos": "Orders"
+    "pedidos": "Orders",
+    "relatorios": "Reports"
+
+
   }
 }
 </i18n>

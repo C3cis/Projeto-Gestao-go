@@ -8,7 +8,7 @@
 
 <template>
   <article
-    class="flex flex-col rounded-[20px] border-2 border-black bg-violet-50 p-3 py-2 text-xs dark:border-white dark:bg-neutral-500/50">
+    class="flex flex-col rounded-[20px] border-2 bg-rose-50/60 border-rose-200 p-3 py-2 text-xs dark:border-rose-200 dark:bg-neutral-400/40">
     <div class="text-[2rem] text-rose-900 dark:text-rose-200">
       <Icon :name ="icone" />
     </div>

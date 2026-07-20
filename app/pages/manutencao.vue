@@ -1,63 +1,83 @@
 <script setup lang="ts">
-
-import { useManutencao } from '~/composables/useManutencao';
-import type { Campo } from '~/types/formulario';
-import type { Manutencao } from '~/types/manutencao';
+  import { useManutencao } from '~/composables/useManutencao'
+  import type { Campo } from '~/types/formulario'
+  import type { Manutencao } from '~/types/manutencao'
 
   const { t } = useI18n({ useScope: 'local' })
 
+  const {
+    manutencao,
+    buscarManutencao,
+    adicionarManutencao,
+    deletarManutencao,
+    totalManutencao,
+    manutencaoAgendadas,
+    manutencaoConcluidos,
+    manutencaoCancelados,
+    manutencaoUrgentes,
+    manutencaoEmAndamento,
+    filtroStatus,
+    manutencaoFiltrados,
+    error,
+    carregando,
+  } = useManutencao()
 
-const {manutencao, buscarManutencao, adicionarManutencao, deletarManutencao, totalManutencao, manutencaoAgendadas, manutencaoConcluidos, manutencaoCancelados, manutencaoUrgentes, manutencaoEmAndamento, filtroStatus, manutencaoFiltrados, error, carregando} = useManutencao()
+  const { equipamentos, buscarEquipamentos } = useEquipamentos()
 
-const { equipamentos, buscarEquipamentos} = useEquipamentos()
-
-onMounted(async () => {
-  await buscarManutencao()
-  await buscarEquipamentos()
-})
+  onMounted(async () => {
+    await buscarManutencao()
+    await buscarEquipamentos()
+  })
 
   const meusCards = computed(() => [
     { titulo: t('cards.agendadas'), valor: manutencaoAgendadas.value, icone: 'line-md:calendar' },
-    { titulo: t('cards.em_andamento'), valor: manutencaoEmAndamento.value, icone: 'line-md:construction' },
+    {
+      titulo: t('cards.em_andamento'),
+      valor: manutencaoEmAndamento.value,
+      icone: 'line-md:construction',
+    },
     {
       titulo: t('cards.concluidas'),
       valor: manutencaoConcluidos.value,
       icone: 'line-md:confirm-square-twotone',
     },
-    { titulo: t('cards.urgentes'), valor: manutencaoUrgentes.value, icone: 'line-md:hazard-lights-loop' },
+    {
+      titulo: t('cards.urgentes'),
+      valor: manutencaoUrgentes.value,
+      icone: 'line-md:hazard-lights-loop',
+    },
   ])
 
   const BotoesBusca = computed(() => [
-    { texto: t('botoes.busca'), valor: 'buscar' , tamanho: 'pequeno', cor: 'rosaClaro' },
+    { texto: t('botoes.busca'), valor: 'buscar', tamanho: 'pequeno', cor: 'rosaClaro' },
     { texto: t('botoes.todos'), valor: 'todos', tamanho: 'pequeno', cor: 'rosao' },
-    { texto: t('botoes.agendadas'), valor: 'Agendadas',tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.concluidas'), valor: 'Concluidas',tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.urgentes'), valor: 'Urgentes',tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.cancelados'), valor: 'Canceladas',tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.agendadas'), valor: 'Agendadas', tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.concluidas'), valor: 'Concluidas', tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.urgentes'), valor: 'Urgentes', tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.cancelados'), valor: 'Canceladas', tamanho: 'pequeno', cor: 'rosinha' },
   ])
 
   const camposManutencao = computed<Campo[]>(() => [
-  {
-    chave: 'equipamentoId',
-    label: 'Equipamento',
-    tipo: 'select',
-    opcoes: equipamentos.value.map((e) => ({ label: e.nome, valor: e.id })),
-  },
-  { chave: 'tipoManu', label: 'Tipo de Manutenção', tipo: 'text' },
-  { chave: 'descricao', label: 'Descrição', tipo: 'text' },
-  { chave: 'dataAbertura', label: 'Data de Abertura', tipo: 'date' },
-  { chave: 'dataFechamento', label: 'Data de Fechamento', tipo: 'date' },
-  { chave: 'valor', label: 'Valor', tipo: 'number' },
-  {
-    chave: 'status',
-    label: 'Status',
-    tipo: 'select',
-    opcoes: ['Agendadas', 'Concluidas', 'Canceladas', 'Urgentes', 'Em Andamento'],
-  },
-])
+    {
+      chave: 'equipamentoId',
+      label: 'Equipamento',
+      tipo: 'select',
+      opcoes: equipamentos.value.map((e) => ({ label: e.nome, valor: e.id })),
+    },
+    { chave: 'tipoManu', label: 'Tipo de Manutenção', tipo: 'text' },
+    { chave: 'descricao', label: 'Descrição', tipo: 'text' },
+    { chave: 'dataAbertura', label: 'Data de Abertura', tipo: 'date' },
+    { chave: 'dataFechamento', label: 'Data de Fechamento', tipo: 'date' },
+    { chave: 'valor', label: 'Valor', tipo: 'number' },
+    {
+      chave: 'status',
+      label: 'Status',
+      tipo: 'select',
+      opcoes: ['Agendadas', 'Concluidas', 'Canceladas', 'Urgentes', 'Em Andamento'],
+    },
+  ])
 
   const modalAberto = ref(false)
-
 </script>
 
 <template>
@@ -68,11 +88,18 @@ onMounted(async () => {
         {{ t('titulo') }}
       </h1>
 
-      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" @click="modalAberto = !modalAberto"/>
-      <FormularioBase  v-if="modalAberto" titulo="Cadastro de Manutenção" :campos="camposManutencao"
-      @salvar="(dados) => adicionarManutencao(dados as Omit<Manutencao, 'id'>)"
-      @fechar="modalAberto = false" />
-
+      <Botoes
+        class="mb-4 text-xs"
+        tipo="medio"
+        :texto="t('botoes.adicionar')"
+        cor="rosao"
+        @click="modalAberto = !modalAberto" />
+      <FormularioBase
+        v-if="modalAberto"
+        titulo="Cadastro de Manutenção"
+        :campos="camposManutencao"
+        @salvar="(dados) => adicionarManutencao(dados as Omit<Manutencao, 'id'>)"
+        @fechar="modalAberto = false" />
     </div>
     <p class="text-xl text-gray-600">{{ t('sub_titulo') }}</p>
   </section>
@@ -91,8 +118,8 @@ onMounted(async () => {
       :key="botoes.valor"
       :texto="botoes.texto"
       :tipo="botoes.tamanho"
-      :cor="botoes.cor" 
-      @click="filtroStatus = botoes.valor"/>
+      :cor="botoes.cor"
+      @click="filtroStatus = botoes.valor" />
   </section>
   <section v-if="carregando">Carregando...</section>
   <section v-else-if="error">Erro ao carregar</section>
@@ -103,8 +130,7 @@ onMounted(async () => {
         v-for="manutencao in manutencaoFiltrados"
         :key="manutencao.id"
         :manutencao="manutencao"
-        :icone="'line-md:construction'"
-        />
+        :icone="'line-md:construction'" />
     </div>
   </section>
 </template>

@@ -1,4 +1,5 @@
 import { Router } from 'express'
+
 import { db } from '../db'
 
 const router = Router()
@@ -19,7 +20,7 @@ router.post('/', async (req, res) => {
     const { nome, descricao, status, localizacao, dataAquisicao } = req.body
     await db.query(
       'INSERT INTO equipamentos (nome, descricao, status, localizacao, dataAquisicao) VALUES (?, ?, ?, ?, ?)',
-      [nome, descricao, status, localizacao, dataAquisicao]
+      [nome, descricao, status, localizacao, dataAquisicao],
     )
     res.status(201).json({ mensagem: 'Equipamento criado com sucesso' })
   } catch (e) {

@@ -1,4 +1,3 @@
-
 [
   {
     "id": "001",
@@ -15,10 +14,10 @@
     "localizacao": "Setor de TI"
   },
   {
-  "id": "003",
-  "nome": "Monitor Samsung",
-  "modelo": "Monitor",
-  "status": "Inativo",
-  "localizacao": "Setor de TI"
-}
+    "id": "003",
+    "nome": "Monitor Samsung",
+    "modelo": "Monitor",
+    "status": "Inativo",
+    "localizacao": "Setor de TI"
+  }
 ]

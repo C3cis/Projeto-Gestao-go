@@ -1,11 +1,25 @@
 <script setup lang="ts">
-
-import type { Pedido } from '~/types/pedidos'
-import type { Campo } from '~/types/formulario'
+  import type { Campo } from '~/types/formulario'
+  import type { Pedido } from '~/types/pedidos'
 
   const { t } = useI18n({ useScope: 'local' })
 
-  const { pedidos, buscarPedidos, adicionarPedido, deletarPedido, totalPedidos, pedidosUrgentes, pedidosCancelados, pedidosConcluidos, pedidosEmTriagem, pedidosPendentes, error, carregando, filtroStatus, pedidosFiltrados} = usePedidos()
+  const {
+    pedidos,
+    buscarPedidos,
+    adicionarPedido,
+    deletarPedido,
+    totalPedidos,
+    pedidosUrgentes,
+    pedidosCancelados,
+    pedidosConcluidos,
+    pedidosEmTriagem,
+    pedidosPendentes,
+    error,
+    carregando,
+    filtroStatus,
+    pedidosFiltrados,
+  } = usePedidos()
 
   // técnicos = funcionários; carregados pra popular o select do formulário
   const { funcionarios, buscarFuncionarios } = useFuncionarios()
@@ -16,31 +30,57 @@ import type { Campo } from '~/types/formulario'
   })
 
   const meusCards = computed(() => [
-    { titulo: t('cards.pendentes'), valor: pedidosPendentes.value,  icone: 'line-md:document-report' },
+    {
+      titulo: t('cards.pendentes'),
+      valor: pedidosPendentes.value,
+      icone: 'line-md:document-report',
+    },
     { titulo: t('cards.aprovados'), valor: pedidosConcluidos.value, icone: 'line-md:email-check' },
-    { titulo: t('cards.em_analise'), valor: pedidosEmTriagem.value, icone: 'line-md:downloading-loop' },
-    { titulo: t('cards.total'), valor: totalPedidos.value, icone: 'line-md:folder-settings-filled' },
+    {
+      titulo: t('cards.em_analise'),
+      valor: pedidosEmTriagem.value,
+      icone: 'line-md:downloading-loop',
+    },
+    {
+      titulo: t('cards.total'),
+      valor: totalPedidos.value,
+      icone: 'line-md:folder-settings-filled',
+    },
   ])
 
   const BotoesBusca = computed(() => [
     { texto: t('botoes.busca'), valor: 'busca', tamanho: 'pequeno', cor: 'rosaClaro' },
     { texto: t('botoes.todos'), valor: 'todos', tamanho: 'pequeno', cor: 'rosao' },
     { texto: t('botoes.urgencia'), valor: 'Urgencia', tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.concluidos'), valor: 'Concluido',tamanho: 'pequeno', cor: 'rosinha' },
-    { texto: t('botoes.cancelados'), valor: 'Cancelado',tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.concluidos'), valor: 'Concluido', tamanho: 'pequeno', cor: 'rosinha' },
+    { texto: t('botoes.cancelados'), valor: 'Cancelado', tamanho: 'pequeno', cor: 'rosinha' },
   ])
 
   const camposPedido = computed<Campo[]>(() => [
-  { chave: 'tecnicoId',          label: 'Técnico',              tipo: 'select', opcoes: funcionarios.value.map((f) => ({ label: f.nome, valor: f.id })) },
-  { chave: 'descricao',          label: 'Descrição',            tipo: 'text' },
-  { chave: 'statusPedido',       label: 'Status',                tipo: 'select', opcoes: ['Pendente', 'Em Triagem', 'Concluido', 'Cancelado'] },
-  { chave: 'statusSensorPedido', label: 'Status de Urgência',      tipo: 'select', opcoes: ['Urgencia', 'Alerta', 'Normal'] },
-  { chave: 'dataCriacao',        label: 'Data de Criação',       tipo: 'date' },
-  { chave: 'prazo',              label: 'Prazo',                 tipo: 'date' },
-])
+    {
+      chave: 'tecnicoId',
+      label: 'Técnico',
+      tipo: 'select',
+      opcoes: funcionarios.value.map((f) => ({ label: f.nome, valor: f.id })),
+    },
+    { chave: 'descricao', label: 'Descrição', tipo: 'text' },
+    {
+      chave: 'statusPedido',
+      label: 'Status',
+      tipo: 'select',
+      opcoes: ['Pendente', 'Em Triagem', 'Concluido', 'Cancelado'],
+    },
+    {
+      chave: 'statusSensorPedido',
+      label: 'Status de Urgência',
+      tipo: 'select',
+      opcoes: ['Urgencia', 'Alerta', 'Normal'],
+    },
+    { chave: 'dataCriacao', label: 'Data de Criação', tipo: 'date' },
+    { chave: 'prazo', label: 'Prazo', tipo: 'date' },
+  ])
 
   const modalAberto = ref(false)
-
 </script>
 <template>
   <section class="mb-9">
@@ -50,9 +90,17 @@ import type { Campo } from '~/types/formulario'
         {{ t('titulo') }}
       </h1>
 
-      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" @click="modalAberto = !modalAberto"  />
+      <Botoes
+        class="mb-4 text-xs"
+        tipo="medio"
+        :texto="t('botoes.adicionar')"
+        cor="rosao"
+        @click="modalAberto = !modalAberto" />
     </div>
-    <FormularioBase  v-if="modalAberto" titulo="Cadastro de Pedido" :campos="camposPedido"
+    <FormularioBase
+      v-if="modalAberto"
+      titulo="Cadastro de Pedido"
+      :campos="camposPedido"
       @salvar="(dados) => adicionarPedido(dados as Omit<Pedido, 'id'>)"
       @fechar="modalAberto = false" />
 
@@ -73,11 +121,12 @@ import type { Campo } from '~/types/formulario'
       :key="botoes.valor"
       :texto="botoes.texto"
       :tipo="botoes.tamanho"
-      :cor="botoes.cor" 
-      @click="filtroStatus = botoes.valor "/>
+      :cor="botoes.cor"
+      @click="filtroStatus = botoes.valor" />
   </section>
   <section>
-    <div class="mb-5 grid grid-cols-1 gap-4 px-2 text-left text-sm sm:gap-4 sm:px-4 lg:grid-cols-2 lg:px-20 xl:text-2xl">
+    <div
+      class="mb-5 grid grid-cols-1 gap-4 px-2 text-left text-sm sm:gap-4 sm:px-4 lg:grid-cols-2 lg:px-20 xl:text-2xl">
       <CardPedidos
         v-for="pedido in pedidosFiltrados"
         :key="pedido.id"

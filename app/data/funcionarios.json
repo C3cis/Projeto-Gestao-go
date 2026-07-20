@@ -1,19 +1,21 @@
 [
-    {
-      "id": "001",
-      "funcionario": "Rosa mosqueta",
-      "contato": "(11)1234567",
-      "setor": "Webzinho",
-      "status": "Negativado"
-    },
-    { 
-    "id": "000", 
-    "funcionario": "---", 
-    "setor": "---", 
-    "status": "---" },
-    { 
-    "id": "000", 
-    "funcionario": "---", 
-    "setor": "---", 
-    "status": "---" }
-  ]
+  {
+    "id": "001",
+    "funcionario": "Rosa mosqueta",
+    "contato": "(11)1234567",
+    "setor": "Webzinho",
+    "status": "Negativado"
+  },
+  {
+    "id": "000",
+    "funcionario": "---",
+    "setor": "---",
+    "status": "---"
+  },
+  {
+    "id": "000",
+    "funcionario": "---",
+    "setor": "---",
+    "status": "---"
+  }
+]

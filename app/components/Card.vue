@@ -1,16 +1,16 @@
 <script setup lang="ts">
-  defineProps <{
-    titulo: string,
-    valor: number | string,
-    icone: string,
+  defineProps<{
+    titulo: string
+    valor: number | string
+    icone: string
   }>()
 </script>
 
 <template>
   <article
-    class="flex flex-col rounded-[20px] border-2 bg-rose-50/60 border-rose-200 p-3 py-2 text-xs dark:border-rose-200 dark:bg-neutral-400/40">
+    class="flex flex-col rounded-[20px] border-2 border-rose-200 bg-rose-50/60 p-3 py-2 text-xs dark:border-rose-200 dark:bg-neutral-400/40">
     <div class="text-[2rem] text-rose-900 dark:text-rose-200">
-      <Icon :name ="icone" />
+      <Icon :name="icone" />
     </div>
 
     <div>

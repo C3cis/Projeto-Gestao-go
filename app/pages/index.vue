@@ -1,27 +1,38 @@
 <script setup lang="ts">
-
   const { t } = useI18n({ useScope: 'local' })
 
-const { equipamentos, buscarEquipamentos, TotalEquipamentos, emManutencao } = useEquipamentos()
-const { funcionarios, buscarFuncionarios, totalFuncionarios, ausentes } = useFuncionarios()
-const { manutencao, buscarManutencao, manutencaoEmAndamento } = useManutencao()
-const { pedidos, buscarPedidos, pedidosUrgentes, urgentes } = usePedidos()
+  const { equipamentos, buscarEquipamentos, TotalEquipamentos, emManutencao } = useEquipamentos()
+  const { funcionarios, buscarFuncionarios, totalFuncionarios, ausentes } = useFuncionarios()
+  const { manutencao, buscarManutencao, manutencaoEmAndamento } = useManutencao()
+  const { pedidos, buscarPedidos, pedidosUrgentes, urgentes } = usePedidos()
 
-onMounted(async () => {
-  await Promise.all([buscarEquipamentos(), buscarFuncionarios(), buscarManutencao(), buscarPedidos()])
-})
+  onMounted(async () => {
+    await Promise.all([
+      buscarEquipamentos(),
+      buscarFuncionarios(),
+      buscarManutencao(),
+      buscarPedidos(),
+    ])
+  })
 
   const meusCards = computed(() => [
-    { titulo: t('cards.equipamentos'), valor: TotalEquipamentos.value, icone: 'line-md:computer-twotone' },
+    {
+      titulo: t('cards.equipamentos'),
+      valor: TotalEquipamentos.value,
+      icone: 'line-md:computer-twotone',
+    },
     { titulo: t('cards.funcionarios'), valor: totalFuncionarios.value, icone: 'ph:users' },
-    { titulo: t('cards.manutencao_ativa'), valor: manutencaoEmAndamento.value, icone: 'line-md:alert-loop' },
+    {
+      titulo: t('cards.manutencao_ativa'),
+      valor: manutencaoEmAndamento.value,
+      icone: 'line-md:alert-loop',
+    },
     {
       titulo: t('cards.pedidos_pendentes'),
       valor: pedidosUrgentes.value,
       icone: 'line-md:text-box-twotone-to-text-box-multiple-twotone-transition',
     },
   ])
-
 </script>
 
 <template>
@@ -43,13 +54,13 @@ onMounted(async () => {
       :valor="card.valor"
       :icone="card.icone" />
   </section>
-   <section class="space-y-4">
+  <section class="space-y-4">
     <CardDashboard
       icone="mdi:alert-circle"
       titulo="Pedidos urgentes"
       cor-badge="urgente"
       :itens="urgentes" />
-      
+
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <CardDashboard
         icone="mdi:tools"

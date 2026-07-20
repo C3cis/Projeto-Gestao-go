@@ -1,25 +1,21 @@
 <script setup lang="ts">
-const { t } = useI18n({ useScope: 'local' })
+  const { t } = useI18n({ useScope: 'local' })
 
-const { equipamentos, buscarEquipamentos } = useEquipamentos()
-const { manutencao, buscarManutencao } = useManutencao()
+  const { equipamentos, buscarEquipamentos } = useEquipamentos()
+  const { manutencao, buscarManutencao } = useManutencao()
 
-onMounted(() => Promise.all([buscarEquipamentos(), buscarManutencao()]))
+  onMounted(() => Promise.all([buscarEquipamentos(), buscarManutencao()]))
 
-const equipamentoId = ref<number | null>(null)
+  const equipamentoId = ref<number | null>(null)
 
-const equipamentoSelecionado = computed(() =>
-  equipamentos.value.find(e => e.id === equipamentoId.value)
-)
+  const equipamentoSelecionado = computed(() =>
+    equipamentos.value.find((e) => e.id === equipamentoId.value),
+  )
 
-// a relação FK: manutenções desse equipamento
-const manutencoesDoEquipamento = computed(() =>
-  manutencao.value.filter(m => m.equipamentoId === equipamentoId.value)
-)
-
-
-
-
+  // a relação FK: manutenções desse equipamento
+  const manutencoesDoEquipamento = computed(() =>
+    manutencao.value.filter((m) => m.equipamentoId === equipamentoId.value),
+  )
 </script>
 <template>
   <!-- Título -->
@@ -37,7 +33,7 @@ const manutencoesDoEquipamento = computed(() =>
       <span class="text-[13px] text-neutral-500 dark:text-neutral-400">{{ t('selecione') }}</span>
       <select
         v-model="equipamentoId"
-        class="h-10 w-full rounded-[10px] border border-gray-200 bg-white px-3 text-sm text-neutral-900 outline-none transition-colors focus:border-rose-400 focus:ring-1 focus:ring-rose-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100">
+        class="h-10 w-full rounded-[10px] border border-gray-200 bg-white px-3 text-sm text-neutral-900 transition-colors outline-none focus:border-rose-400 focus:ring-1 focus:ring-rose-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100">
         <option :value="null" disabled>{{ t('placeholder') }}</option>
         <option v-for="e in equipamentos" :key="e.id" :value="e.id">{{ e.nome }}</option>
       </select>

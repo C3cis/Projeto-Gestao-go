@@ -1,15 +1,15 @@
 <!-- components/CardDashboard.vue -->
 <script setup lang="ts">
-import type { ItemDashboard } from '~/types/dashboard'
+  import type { ItemDashboard } from '~/types/dashboard'
 
-defineProps<{
-  icone: string
-  titulo: string
-  itens: ItemDashboard[]
-  corBadge?: 'urgente' | 'alerta' | 'normal'
-}>()
+  defineProps<{
+    icone: string
+    titulo: string
+    itens: ItemDashboard[]
+    corBadge?: 'urgente' | 'alerta' | 'normal'
+  }>()
 
-const { t } = useI18n({ useScope: 'local' })
+  const { t } = useI18n({ useScope: 'local' })
 </script>
 
 <template>

@@ -1,11 +1,23 @@
 <script setup lang="ts">
-import type { Campo } from '~/types/formulario'
-import type { Funcionario } from '~/types/funcionarios'
-
+  import type { Campo } from '~/types/formulario'
+  import type { Funcionario } from '~/types/funcionarios'
 
   const { t } = useI18n({ useScope: 'local' })
 
-  const { funcionarios, buscarFuncionarios, adicionarFuncionario, deletarFuncionario, totalFuncionarios, funcionariosAtivos, funcionariosSuspensos, funcionariosInativos, error, carregando, filtroStatus, funcionariosFiltrados} = useFuncionarios()
+  const {
+    funcionarios,
+    buscarFuncionarios,
+    adicionarFuncionario,
+    deletarFuncionario,
+    totalFuncionarios,
+    funcionariosAtivos,
+    funcionariosSuspensos,
+    funcionariosInativos,
+    error,
+    carregando,
+    filtroStatus,
+    funcionariosFiltrados,
+  } = useFuncionarios()
 
   onMounted(async () => {
     await buscarFuncionarios()
@@ -14,8 +26,16 @@ import type { Funcionario } from '~/types/funcionarios'
   const meusCards = computed(() => [
     { titulo: t('cards.totais'), valor: totalFuncionarios.value, icone: 'line-md:account' },
     { titulo: t('cards.ativos'), valor: funcionariosAtivos.value, icone: 'line-md:account-add' },
-    { titulo: t('cards.suspensos'), valor: funcionariosSuspensos.value, icone: 'line-md:account-alert' },
-    { titulo: t('cards.inativos'), valor: funcionariosInativos.value, icone: 'line-md:account-delete' },
+    {
+      titulo: t('cards.suspensos'),
+      valor: funcionariosSuspensos.value,
+      icone: 'line-md:account-alert',
+    },
+    {
+      titulo: t('cards.inativos'),
+      valor: funcionariosInativos.value,
+      icone: 'line-md:account-delete',
+    },
   ])
 
   const BotoesBusca = computed(() => [
@@ -27,13 +47,30 @@ import type { Funcionario } from '~/types/funcionarios'
   ])
 
   const camposFuncionario: Campo[] = [
-    { chave: 'nome', label: 'Nome', tipo: 'text'},
-    { chave: 'email', label: 'Email', tipo: 'text'},
-    { chave: 'telefone', label: 'Contato', tipo: 'text'},
-    { chave: 'cargo', label: 'Cargo', tipo: 'select', opcoes: ['Administrador', 'Técnico de Desenvolvimento', 'Coordenador', 'Gerente', 'Estagiario', 'Suporte']},
-    { chave: 'status', label: 'Status', tipo: 'select', opcoes: ['Ativo', 'Suspenso', 'Inativo', 'Nas Ferias']}
+    { chave: 'nome', label: 'Nome', tipo: 'text' },
+    { chave: 'email', label: 'Email', tipo: 'text' },
+    { chave: 'telefone', label: 'Contato', tipo: 'text' },
+    {
+      chave: 'cargo',
+      label: 'Cargo',
+      tipo: 'select',
+      opcoes: [
+        'Administrador',
+        'Técnico de Desenvolvimento',
+        'Coordenador',
+        'Gerente',
+        'Estagiario',
+        'Suporte',
+      ],
+    },
+    {
+      chave: 'status',
+      label: 'Status',
+      tipo: 'select',
+      opcoes: ['Ativo', 'Suspenso', 'Inativo', 'Nas Ferias'],
+    },
   ]
-  
+
   const modalAberto = ref(false)
 </script>
 
@@ -44,13 +81,19 @@ import type { Funcionario } from '~/types/funcionarios'
         class="mb-3 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-3xl font-bold text-transparent">
         {{ t('titulo') }}
       </h1>
-      <Botoes class="mb-4 text-xs" tipo="medio" :texto="t('botoes.adicionar')" cor="rosao" @click="modalAberto = !modalAberto"/>
+      <Botoes
+        class="mb-4 text-xs"
+        tipo="medio"
+        :texto="t('botoes.adicionar')"
+        cor="rosao"
+        @click="modalAberto = !modalAberto" />
 
-      <FormularioBase v-if="modalAberto" titulo="Cadastro de Funcionário" :campos="camposFuncionario"
-      @salvar="(dados) => adicionarFuncionario(dados as Omit<Funcionario, 'id'>)"
-      @fechar="modalAberto = false" />
-
-
+      <FormularioBase
+        v-if="modalAberto"
+        titulo="Cadastro de Funcionário"
+        :campos="camposFuncionario"
+        @salvar="(dados) => adicionarFuncionario(dados as Omit<Funcionario, 'id'>)"
+        @fechar="modalAberto = false" />
     </div>
     <p class="mb-8 text-gray-600">{{ t('sub_titulo') }}</p>
   </section>
@@ -69,12 +112,12 @@ import type { Funcionario } from '~/types/funcionarios'
       :key="botoes.valor"
       :texto="botoes.texto"
       :tipo="botoes.tamanho"
-      :cor="botoes.cor" 
-      @click="filtroStatus = botoes.valor"/>
+      :cor="botoes.cor"
+      @click="filtroStatus = botoes.valor" />
   </section>
 
- <section v-if="carregando">Carregando...</section>
-<section v-else-if="error">Erro ao carregar</section>
+  <section v-if="carregando">Carregando...</section>
+  <section v-else-if="error">Erro ao carregar</section>
   <section v-else>
     <div>
       <Tabelas
@@ -83,8 +126,16 @@ import type { Funcionario } from '~/types/funcionarios'
           { titulo: t('tabela.funcionario'), chave: 'nome' },
           { titulo: t('tabela.email'), chave: 'email' },
           { titulo: t('tabela.telefone'), chave: 'telefone' },
-          { titulo: t('tabela.cargo'), chave: 'cargo', classe: (valor: keyof typeof funcionariosCargoStyles) => funcionariosCargoStyles[valor] },
-          { titulo: t('tabela.status'), chave: 'status', classe: (valor: keyof typeof funcionariosStyles) => funcionariosStyles[valor] }
+          {
+            titulo: t('tabela.cargo'),
+            chave: 'cargo',
+            classe: (valor: keyof typeof funcionariosCargoStyles) => funcionariosCargoStyles[valor],
+          },
+          {
+            titulo: t('tabela.status'),
+            chave: 'status',
+            classe: (valor: keyof typeof funcionariosStyles) => funcionariosStyles[valor],
+          },
         ]"
         :dados="funcionariosFiltrados" /><br />
     </div>

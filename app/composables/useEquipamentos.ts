@@ -15,7 +15,7 @@ export function useEquipamentos() {
     try {
       const dados = await $fetch<Equipamento[]>(`${config.public.apiBase}/api/equipamentos`)
       equipamentos.value = dados
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -39,7 +39,7 @@ export function useEquipamentos() {
       await buscarEquipamentos()
       return response
       //try catch para caso exista um erro na hora de adicionar o equipamento
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -56,7 +56,7 @@ export function useEquipamentos() {
       })
       await buscarEquipamentos()
       return response
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false

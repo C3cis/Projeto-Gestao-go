@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM equipamentos')
     res.json(rows)
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao buscar equipamentos' })
   }
 })
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
       [nome, descricao, status, localizacao, dataAquisicao],
     )
     res.status(201).json({ mensagem: 'Equipamento criado com sucesso' })
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao criar equipamento' })
   }
 })
@@ -33,7 +33,7 @@ router.delete('/:id', async (req, res) => {
   try {
     await db.query('DELETE FROM equipamentos WHERE id = ?', [req.params.id])
     res.json({ mensagem: 'Equipamento excluído com sucesso' })
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao excluir equipamento' })
   }
 })

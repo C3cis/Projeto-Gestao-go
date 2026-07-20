@@ -13,7 +13,7 @@ export function useFuncionarios() {
     try {
       const dados = await $fetch<Funcionario[]>(`${config.public.apiBase}/api/funcionarios`)
       funcionarios.value = dados
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -33,7 +33,7 @@ export function useFuncionarios() {
 
       await buscarFuncionarios()
       return response
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -50,7 +50,7 @@ export function useFuncionarios() {
       })
       await buscarFuncionarios()
       return response
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false

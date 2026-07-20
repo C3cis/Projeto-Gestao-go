@@ -18,7 +18,7 @@
   const proximaAgendada = computed(() =>
     props.manutencoes
       .filter((m) => m.status === 'Agendadas')
-      .sort((a, b) => new Date(a.dataAbertura).getTime() - new Date(b.dataAbertura).getTime())
+      .toSorted((a, b) => new Date(a.dataAbertura).getTime() - new Date(b.dataAbertura).getTime())
       .at(0),
   )
 </script>

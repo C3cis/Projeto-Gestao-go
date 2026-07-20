@@ -2,8 +2,15 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', '@nuxt/icon', '@nuxtjs/i18n', '@nuxtjs/color-mode'],
-  compatibilityDate: '2026-06-18',
   css: ['~/assets/main.css'],
+
+  runtimeConfig: {
+    public: {
+      apiBase: 'http://localhost:8080',
+    },
+  },
+  compatibilityDate: '2026-06-18',
+  nitro: { preset: 'bun' },
   vite: {
     plugins: [tailwindcss()],
   },
@@ -23,12 +30,5 @@ export default defineNuxtConfig({
         flag: 'flag:us-4x3',
       },
     ],
-  },
-  nitro: { preset: 'bun' },
-
-  runtimeConfig: {
-    public: {
-      apiBase: 'http://localhost:8080',
-    },
   },
 })

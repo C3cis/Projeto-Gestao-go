@@ -13,7 +13,7 @@ export function usePedidos() {
     try {
       const dados = await $fetch<Pedido[]>(`${config.public.apiBase}/api/pedidos`)
       pedidos.value = dados
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -31,7 +31,7 @@ export function usePedidos() {
       })
       await buscarPedidos()
       return response
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -48,7 +48,7 @@ export function usePedidos() {
       })
       await buscarPedidos()
       return response
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false

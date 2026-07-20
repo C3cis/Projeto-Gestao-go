@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
        JOIN equipamentos e ON m.equipamentoId = e.id`,
     )
     res.json(rows)
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao buscar manutenção' })
   }
 })
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
       [equipamentoId, tipoManu, descricao, dataAbertura, dataFechamento, valor, status],
     )
     res.status(201).json({ mensagem: 'Manutenção criado com sucesso' })
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao criar manutenção' })
   }
 })
@@ -35,7 +35,7 @@ router.delete('/:id', async (req, res) => {
   try {
     await db.query('DELETE FROM manutencoes WHERE id = ?', [req.params.id])
     res.json({ mensagem: 'Manutenção deletado com sucesso' })
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao deletar Manutenção' })
   }
 })

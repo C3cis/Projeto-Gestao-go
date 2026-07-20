@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
        JOIN funcionarios f ON p.tecnicoId = f.id`,
     )
     res.json(rows)
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao buscar pedidos' })
   }
 })
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
       [tecnicoId, descricao, statusPedido, dataCriacao, prazo, statusSensorPedido],
     )
     res.status(201).json({ mensagem: 'Pedido criado com sucesso' })
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao criar pedido' })
   }
 })
@@ -34,7 +34,7 @@ router.delete('/:id', async (req, res) => {
   try {
     await db.query('DELETE FROM pedidos WHERE id = ?', [req.params.id])
     res.json({ mensagem: 'Pedido deletado com sucesso' })
-  } catch (e) {
+  } catch {
     res.status(500).json({ erro: 'Erro ao deletar pedido' })
   }
 })

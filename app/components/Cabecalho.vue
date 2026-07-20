@@ -3,9 +3,9 @@
 
   const switchLocalePath = useSwitchLocalePath()
 
-  const availableLocales = computed(() => {
-    return locales.value.filter((i) => i.code !== locale.value)
-  })
+  const availableLocales = computed(() => 
+    locales.value.filter((i) => i.code !== locale.value)
+  )
 
   const colorMode = useColorMode()
 

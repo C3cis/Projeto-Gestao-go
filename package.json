@@ -9,22 +9,24 @@
     "build": "nuxt build",
     "fmt": "oxfmt --check",
     "fmt:fix": "oxfmt",
-    "typecheck": "nuxi typecheck"
+    "typecheck": "nuxi typecheck",
+    "lint": "oxlint --type-aware",
+    "lint:fix": "oxlint --type-aware --fix"
   },
   "dependencies": {
-    "@nuxt/icon": "^2.2.3",
+    "@nuxt/icon": "^2.3.1",
     "@nuxtjs/color-mode": "^4.0.1",
-    "@nuxtjs/i18n": "^10.4.0",
-    "@tailwindcss/vite": "^4.3.0",
+    "@nuxtjs/i18n": "^10.4.1",
+    "@tailwindcss/vite": "^4.3.3",
     "@vueuse/nuxt": "^14.3.0",
-    "nuxt": "^4.4.8",
-    "tailwindcss": "^4.3.0",
-    "vue": "^3.5.32",
-    "vue-i18n": "^11.4.5",
-    "vue-router": "^5.0.7"
+    "nuxt": "^4.5.0",
+    "tailwindcss": "^4.3.3",
+    "vue": "^3.5.40",
+    "vue-i18n": "^11.4.7",
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "oxfmt": "^0.51.0",
-    "vue-tsc": "^3.3.5"
+    "@dethdkn/ox-config": "^1.0.23",
+    "vue-tsc": "^3.3.7"
   }
 }

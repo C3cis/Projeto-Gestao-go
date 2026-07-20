@@ -1,5 +1,5 @@
 import type { StatusEquipamento } from '~/types/equipamentos'
-import type { StatusFuncionario, CargoFuncionario } from '~/types/funcionarios'
+import type { CargoFuncionario, StatusFuncionario } from '~/types/funcionarios'
 import type { StatusManutencao } from '~/types/manutencao'
 import type { StatusPedido, StatusSensorPedido } from '~/types/pedidos'
 

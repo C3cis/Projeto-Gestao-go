@@ -12,7 +12,7 @@ export function useManutencao() {
     try {
       const dados = await $fetch<Manutencao[]>(`${config.public.apiBase}/api/manutencao`)
       manutencao.value = dados
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -30,7 +30,7 @@ export function useManutencao() {
       })
       await buscarManutencao()
       return response
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false
@@ -47,7 +47,7 @@ export function useManutencao() {
       })
       await buscarManutencao()
       return response
-    } catch (e) {
+    } catch {
       error.value = true
     } finally {
       carregando.value = false

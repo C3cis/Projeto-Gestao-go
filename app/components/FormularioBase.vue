@@ -1,19 +1,14 @@
 <script lang="ts" setup>
   import type { Campo, OpcaoCampo } from '~/types/formulario'
 
-  const props = withDefaults(
-    defineProps<{
-      titulo: string
-      campos: Campo[]
-      icone?: string
-    }>(),
-    {
-      icone: 'tabler:plus',
-    },
-  )
+  const props = defineProps({
+    titulo: { type: String, required: true },
+    campos: { type: Array as PropType<Campo[]>, required: true },
+    icone: { type: String, default: 'tabler:plus' },
+  })
 
   const emit = defineEmits<{
-    salvar: [dados: Record<string, any>]
+    salvar: [dados: Record<string, unknown>]
     fechar: []
   }>()
 
@@ -22,12 +17,13 @@
     'h-10 w-full rounded-[10px] border border-gray-200 bg-white px-3 text-sm text-neutral-900 outline-none transition-colors focus:border-rose-400 focus:ring-1 focus:ring-rose-300 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100'
 
   // deixa toda opção no mesmo formato { label, valor }, seja ela texto simples ou objeto
-  function normalizar(op: OpcaoCampo) {
-    return typeof op === 'string' ? { label: op, valor: op } : op
-  }
+  //Lembrar sempre de colocar a typagem quando der explicit-function-return-type
+  function normalizar(op: OpcaoCampo): { label: string; valor: string | number } {
+  return typeof op === 'string' ? { label: op, valor: op } : op
+}
 
   //funcao para criar o corpo do formulario com os campos e valores iniciais e certos para o que vc precisa
-  function modeloVazio(): Record<string, any> {
+  function modeloVazio(): Record<string, unknown> {
     return Object.fromEntries(
       props.campos.map((c) => [
         c.chave,
@@ -36,11 +32,11 @@
     )
   }
 
-  const modelo = ref<Record<string, any>>(modeloVazio())
+  const modelo = ref<Record<string, unknown>>(modeloVazio())
 
-  function enviar() {
+  function enviar() : void {
     emit('salvar', { ...modelo.value })
-    modelo.value = modeloVazio() // limpa o formulário
+    modelo.value = modeloVazio() 
     emit('fechar')
   }
 </script>

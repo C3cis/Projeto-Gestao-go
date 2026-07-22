@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-  import type { Pedido } from '~/types/pedidos'
+  import type { PropType } from 'vue';
+import type { Pedido } from '~/types/pedidos'
 
-  defineProps<{
-    pedido: Pedido
-    icone: string
-    urgente?: boolean
-  }>()
+  defineProps({
+    pedido: {type: Object as PropType<Pedido>, required: true},
+    icone: {type: String, required: true},
+    urgente: {type: Boolean, default: false}
+  })
 </script>
 
 <template>

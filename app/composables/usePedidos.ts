@@ -70,16 +70,16 @@ export function usePedidos() {
   )
 
   const pedidosEmTriagem = computed(
-    () => pedidos.value.filter((pedido) => pedido.statusPedido == 'Em Triagem').length,
+    () => pedidos.value.filter((pedido) => pedido.statusPedido === 'Em Triagem').length,
   )
 
   const pedidosPendentes = computed(
-    () => pedidos.value.filter((pedido) => pedido.statusPedido == 'Pendente').length,
+    () => pedidos.value.filter((pedido) => pedido.statusPedido === 'Pendente').length,
   )
 
   const filtroStatus = ref('todos')
   const pedidosFiltrados = computed(() => {
-    if (filtroStatus.value == 'todos') return pedidos.value
+    if (filtroStatus.value === 'todos') return pedidos.value
     return pedidos.value.filter(
       (p) => p.statusPedido === filtroStatus.value || p.statusSensorPedido === filtroStatus.value,
     )

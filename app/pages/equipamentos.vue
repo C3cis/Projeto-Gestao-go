@@ -118,9 +118,13 @@
           {
             titulo: t('tabela.status'),
             chave: 'status',
-            classe: (valor: keyof typeof equipamentoStyles) => equipamentoStyles[valor],
+            classe: (valor: unknown) => equipamentoStyles[valor as keyof typeof equipamentoStyles],
           },
-          { titulo: t('tabela.dataAquisicao'), chave: 'dataAquisicao', formato: formatarData },
+          {
+            titulo: t('tabela.dataAquisicao'),
+            chave: 'dataAquisicao',
+            formato: (valor: unknown) => formatarData(valor as string),
+          },
         ]"
         :dados="equipamentosFiltrados" /><br />
     </div>

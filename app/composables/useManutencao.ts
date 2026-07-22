@@ -69,17 +69,17 @@ export function useManutencao() {
   )
 
   const manutencaoUrgentes = computed(
-    () => manutencao.value.filter((manutencao) => manutencao.status == 'Urgentes').length,
+    () => manutencao.value.filter((manutencao) => manutencao.status === 'Urgentes').length,
   )
 
   const manutencaoEmAndamento = computed(
-    () => manutencao.value.filter((manutencao) => manutencao.status == 'Em Andamento').length,
+    () => manutencao.value.filter((manutencao) => manutencao.status === 'Em Andamento').length,
   )
 
   const filtroStatus = ref('todos')
   const manutencaoFiltrados = computed(() => {
-    if (filtroStatus.value == 'todos') return manutencao.value
-    return manutencao.value.filter((e) => e.status == filtroStatus.value)
+    if (filtroStatus.value === 'todos') return manutencao.value
+    return manutencao.value.filter((e) => e.status === filtroStatus.value)
   })
 
   return {

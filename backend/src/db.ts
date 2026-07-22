@@ -7,6 +7,5 @@ export const db = mysql.createPool({
   database: process.env.DB_NAME || 'lims_dev',
   waitForConnections: true,
   connectionLimit: 10,
-  // devolve colunas DECIMAL (ex.: valor) como number, não como string
   decimalNumbers: true,
 })

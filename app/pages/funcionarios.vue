@@ -129,12 +129,13 @@
           {
             titulo: t('tabela.cargo'),
             chave: 'cargo',
-            classe: (valor: keyof typeof funcionariosCargoStyles) => funcionariosCargoStyles[valor],
+            classe: (valor: unknown) =>
+              funcionariosCargoStyles[valor as keyof typeof funcionariosCargoStyles],
           },
           {
             titulo: t('tabela.status'),
             chave: 'status',
-            classe: (valor: keyof typeof funcionariosStyles) => funcionariosStyles[valor],
+            classe: (valor: unknown) => funcionariosStyles[valor as keyof typeof funcionariosStyles],
           },
         ]"
         :dados="funcionariosFiltrados" /><br />

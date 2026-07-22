@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  defineProps<{
-    tipo: string
-    texto: string
-    cor: string
-  }>()
+  defineProps({
+    tipo: {type: String, required: true},
+    texto: {type: String, required: true},
+    cor: {type: String, required: true}
+  })
 </script>
 <template>
   <button

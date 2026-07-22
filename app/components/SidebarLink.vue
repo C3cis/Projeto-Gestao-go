@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  defineProps<{
-    to: string
-    label: string
-  }>()
+  defineProps({
+    to: {type: String, required: true},
+    label: {type: String, required: true},
+  })
 </script>
 
 <template>

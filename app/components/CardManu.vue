@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  import type { Manutencao } from '~/types/manutencao'
-  defineProps<{
-    icone: string
-    manutencao: Manutencao
-  }>()
+  import type { PropType } from 'vue';
+import type { Manutencao } from '~/types/manutencao'
+  defineProps({
+    icone: {type: String, required: true},
+    manutencao: {type: Object as PropType<Manutencao>, required: true}
+  })
 
   const { t } = useI18n({ useScope: 'local' })
 </script>

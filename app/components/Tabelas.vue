@@ -5,13 +5,15 @@
         {
           titulo: string
           chave: string
-          formato?: (valor: any) => string
-          classe?: (valor: any) => string
+          formato?: (valor: unknown) => string
+          classe?: (valor: unknown) => string
         }[]
       >,
+      required: true,
     },
     dados: {
       type: Array as PropType<Record<string, unknown>[]>,
+      required: true,
     },
   })
 </script>

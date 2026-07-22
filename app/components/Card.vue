@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  defineProps<{
-    titulo: string
-    valor: number | string
-    icone: string
-  }>()
+  const porps = defineProps({
+    titulo: {type: String, required: true},
+    valor: {type: [Number, String], required: true},
+    icone: {type: String, required: true},
+  })
 </script>
 
 <template>

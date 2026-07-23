@@ -30,7 +30,7 @@ export function useEquipamentos(): UseEquipamentosReturn {
   const error = ref(false)
   const carregando = ref(false)
 
-  async function buscarEquipamentos() : Promise<void> {
+  async function buscarEquipamentos(): Promise<void> {
     carregando.value = true
     const config = useRuntimeConfig()
 

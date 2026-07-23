@@ -4,8 +4,8 @@
 
   // o card é "burro": recebe o equipamento e a lista de manutenções já cruzada pela página
   const props = defineProps({
-    equipamento: {type: Object as PropType<Equipamento>, required: true},
-    manutencoes: {type: Array as PropType<Manutencao[]>, required:true},
+    equipamento: { type: Object as PropType<Equipamento>, required: true },
+    manutencoes: { type: Array as PropType<Manutencao[]>, required: true },
   })
 
   // custo acumulado = soma do 'valor' de todas as manutenções

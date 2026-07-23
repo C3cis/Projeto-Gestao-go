@@ -3,7 +3,7 @@
 
   const sidebarAberto = ref(false)
 
-  function toggleSidebar() : void {
+  function toggleSidebar(): void {
     sidebarAberto.value = !sidebarAberto.value
   }
 </script>

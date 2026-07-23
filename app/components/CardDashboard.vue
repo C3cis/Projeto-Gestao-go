@@ -1,13 +1,14 @@
 <!-- components/CardDashboard.vue -->
 <script setup lang="ts">
-  import type { PropType } from 'vue';
-import type { ItemDashboard } from '~/types/dashboard'
+  import type { PropType } from 'vue'
+
+  import type { ItemDashboard } from '~/types/dashboard'
 
   defineProps({
-    icone: {type: String, required: true},
-    titulo: {type: String, required: true},
-    itens: {type: Array as PropType<ItemDashboard[]>, required:true},
-    corBadge: {type: String as PropType<'urgente' | 'alerta' | 'normal'>, default: 'normal'}
+    icone: { type: String, required: true },
+    titulo: { type: String, required: true },
+    itens: { type: Array as PropType<ItemDashboard[]>, required: true },
+    corBadge: { type: String as PropType<'urgente' | 'alerta' | 'normal'>, default: 'normal' },
   })
 
   const { t } = useI18n({ useScope: 'local' })

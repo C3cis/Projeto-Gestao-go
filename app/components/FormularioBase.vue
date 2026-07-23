@@ -19,8 +19,8 @@
   // deixa toda opção no mesmo formato { label, valor }, seja ela texto simples ou objeto
   //Lembrar sempre de colocar a typagem quando der explicit-function-return-type
   function normalizar(op: OpcaoCampo): { label: string; valor: string | number } {
-  return typeof op === 'string' ? { label: op, valor: op } : op
-}
+    return typeof op === 'string' ? { label: op, valor: op } : op
+  }
 
   //funcao para criar o corpo do formulario com os campos e valores iniciais e certos para o que vc precisa
   function modeloVazio(): Record<string, unknown> {
@@ -34,9 +34,9 @@
 
   const modelo = ref<Record<string, unknown>>(modeloVazio())
 
-  function enviar() : void {
+  function enviar(): void {
     emit('salvar', { ...modelo.value })
-    modelo.value = modeloVazio() 
+    modelo.value = modeloVazio()
     emit('fechar')
   }
 </script>

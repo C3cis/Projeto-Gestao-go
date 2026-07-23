@@ -4,8 +4,8 @@ export type StatusSensorPedido = 'Urgencia' | 'Alerta' | 'Normal'
 
 export interface Pedido {
   id: number
-  tecnicoId: number 
-  tecnicoNome?: string 
+  tecnicoId: number
+  tecnicoNome?: string
   descricao: string
   statusPedido: StatusPedido
   dataCriacao: string

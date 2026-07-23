@@ -7,7 +7,8 @@ import manutencaoRouter from './src/routes/manutencao'
 import pedidosRouter from './src/routes/pedidos'
 
 const app = express()
-const PORT = process.env.PORT || 8080
+// eslint-disable-next-line node/no-process-env
+const PORT = process.env.PORT ?? 8080
 
 // middlewares globais
 app.use(cors({ origin: 'http://localhost:3000' }))
@@ -21,5 +22,6 @@ app.use('/api/manutencao', manutencaoRouter)
 
 // iniciar servidor
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Backend rodando em http://localhost:${PORT}`)
 })

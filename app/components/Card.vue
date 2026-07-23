@@ -1,8 +1,8 @@
 <script setup lang="ts">
   const porps = defineProps({
-    titulo: {type: String, required: true},
-    valor: {type: [Number, String], required: true},
-    icone: {type: String, required: true},
+    titulo: { type: String, required: true },
+    valor: { type: [Number, String], required: true },
+    icone: { type: String, required: true },
   })
 </script>
 

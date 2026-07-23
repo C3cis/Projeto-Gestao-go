@@ -14,8 +14,8 @@
     status: 'Ativo',
     dataAquisicao: '',
   })
-// Limpar o formulário após o envio é bom para evitar que os dados permaneçam no formulário quando o modal for reaberto
-  function enviar() : void {
+  // Limpar o formulário após o envio é bom para evitar que os dados permaneçam no formulário quando o modal for reaberto
+  function enviar(): void {
     emit('salvar', novoEquipamento.value)
     novoEquipamento.value = {
       nome: '',
@@ -24,7 +24,7 @@
       status: 'Ativo',
       dataAquisicao: '',
     }
-    emit('fechar') 
+    emit('fechar')
   }
   // fecha o modal depois de salvar
 </script>

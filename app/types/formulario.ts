@@ -7,9 +7,9 @@ export type OpcaoCampo = string | { label: string; valor: string | number }
 // só usado quando tipo === 'select'
 // 'metade' = 2 campos por linha Cargo/Status padrão = linha inteira
 export interface Campo {
-  chave: string 
-  label: string 
+  chave: string
+  label: string
   tipo: 'text' | 'date' | 'number' | 'select'
-  opcoes?: OpcaoCampo[] 
-  largura?: 'metade' 
+  opcoes?: OpcaoCampo[]
+  largura?: 'metade'
 }

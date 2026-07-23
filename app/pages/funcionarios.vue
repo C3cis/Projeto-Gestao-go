@@ -135,7 +135,8 @@
           {
             titulo: t('tabela.status'),
             chave: 'status',
-            classe: (valor: unknown) => funcionariosStyles[valor as keyof typeof funcionariosStyles],
+            classe: (valor: unknown) =>
+              funcionariosStyles[valor as keyof typeof funcionariosStyles],
           },
         ]"
         :dados="funcionariosFiltrados as unknown as Record<string, unknown>[]" /><br />

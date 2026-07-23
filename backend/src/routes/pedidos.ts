@@ -1,5 +1,4 @@
 import type { Request } from 'express'
-
 import { Router } from 'express'
 
 import { db } from '~/db'

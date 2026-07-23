@@ -1,5 +1,4 @@
 import type { Request } from 'express'
-
 import { Router } from 'express'
 
 import { db } from '~/db'
@@ -18,7 +17,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/', async (req: Request<unknown,unknown, NovoFuncionario>, res) => {
+router.post('/', async (req: Request<unknown, unknown, NovoFuncionario>, res) => {
   try {
     const { nome, email, telefone, cargo, status } = req.body
     await db.query(

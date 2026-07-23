@@ -1,8 +1,8 @@
 <script setup lang="ts">
   defineProps({
-    tipo: {type: String, required: true},
-    texto: {type: String, required: true},
-    cor: {type: String, required: true}
+    tipo: { type: String, required: true },
+    texto: { type: String, required: true },
+    cor: { type: String, required: true },
   })
 </script>
 <template>

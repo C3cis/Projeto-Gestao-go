@@ -1,11 +1,28 @@
 import type { Manutencao } from '~/types/manutencao'
 
-export function useManutencao() {
+interface UseManutencaoReturn {
+  manutencao: Ref<Manutencao[]>
+  buscarManutencao: () => Promise<void>
+  adicionarManutencao: (novaManutencao: Omit<Manutencao, 'id'>) => Promise<void>
+  deletarManutencao: (id: number) => Promise<void>
+  totalManutencao: ComputedRef<number>
+  manutencaoAgendadas: ComputedRef<number>
+  manutencaoConcluidos: ComputedRef<number>
+  manutencaoCancelados: ComputedRef<number>
+  manutencaoUrgentes: ComputedRef<number>
+  manutencaoEmAndamento: ComputedRef<number>
+  filtroStatus: Ref<string>
+  manutencaoFiltrados: ComputedRef<Manutencao[]>
+  error: Ref<boolean>
+  carregando: Ref<boolean>
+}
+
+export function useManutencao(): UseManutencaoReturn {
   const manutencao = ref<Manutencao[]>([])
   const error = ref(false)
   const carregando = ref(false)
 
-  async function buscarManutencao() {
+  async function buscarManutencao(): Promise<void> {
     carregando.value = true
     const config = useRuntimeConfig()
 
@@ -19,17 +36,16 @@ export function useManutencao() {
     }
   }
 
-  async function adicionarManutencao(novaManutencao: Omit<Manutencao, 'id'>) {
+  async function adicionarManutencao(novaManutencao: Omit<Manutencao, 'id'>): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/manutencao`, {
+      await $fetch(`${config.public.apiBase}/api/manutencao`, {
         method: 'POST',
         body: novaManutencao,
       })
       await buscarManutencao()
-      return response
     } catch {
       error.value = true
     } finally {
@@ -37,16 +53,15 @@ export function useManutencao() {
     }
   }
 
-  async function deletarManutencao(id: number) {
+  async function deletarManutencao(id: number): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/manutencao/${id}`, {
+      await $fetch(`${config.public.apiBase}/api/manutencao/${id}`, {
         method: 'DELETE',
       })
       await buscarManutencao()
-      return response
     } catch {
       error.value = true
     } finally {
@@ -57,23 +72,23 @@ export function useManutencao() {
   const totalManutencao = computed(() => manutencao.value.length)
 
   const manutencaoAgendadas = computed(
-    () => manutencao.value.filter((manutencao) => manutencao.status === 'Agendadas').length,
+    () => manutencao.value.filter((m) => m.status === 'Agendadas').length,
   )
 
   const manutencaoConcluidos = computed(
-    () => manutencao.value.filter((manutencao) => manutencao.status === 'Concluidas').length,
+    () => manutencao.value.filter((m) => m.status === 'Concluidas').length,
   )
 
   const manutencaoCancelados = computed(
-    () => manutencao.value.filter((manutencao) => manutencao.status === 'Canceladas').length,
+    () => manutencao.value.filter((m) => m.status === 'Canceladas').length,
   )
 
   const manutencaoUrgentes = computed(
-    () => manutencao.value.filter((manutencao) => manutencao.status === 'Urgentes').length,
+    () => manutencao.value.filter((m) => m.status === 'Urgentes').length,
   )
 
   const manutencaoEmAndamento = computed(
-    () => manutencao.value.filter((manutencao) => manutencao.status === 'Em Andamento').length,
+    () => manutencao.value.filter((m) => m.status === 'Em Andamento').length,
   )
 
   const filtroStatus = ref('todos')

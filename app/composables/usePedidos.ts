@@ -1,12 +1,38 @@
 import type { ItemDashboard } from '~/types/dashboard'
 import type { Pedido } from '~/types/pedidos'
 
-export function usePedidos() {
+interface UsePedidosReturn {
+  pedidos: Ref<Pedido[]>
+  buscarPedidos: () => Promise<void>
+  adicionarPedido: (novoPedido: Omit<Pedido, 'id'>) => Promise<void>
+  deletarPedido: (id: number) => Promise<void>
+  totalPedidos: ComputedRef<number>
+  pedidosUrgentes: ComputedRef<number>
+  pedidosConcluidos: ComputedRef<number>
+  pedidosCancelados: ComputedRef<number>
+  pedidosEmTriagem: ComputedRef<number>
+  pedidosPendentes: ComputedRef<number>
+  error: Ref<boolean>
+  carregando: Ref<boolean>
+  filtroStatus: Ref<string>
+  pedidosFiltrados: ComputedRef<Pedido[]>
+  urgentes: ComputedRef<ItemDashboard[]>
+}
+
+function mapParaItemDashboard(pedido: Pedido): ItemDashboard {
+  return {
+    id: pedido.id,
+    titulo: pedido.descricao,
+    subtitulo: `${pedido.tecnicoNome} · Prazo: ${formatarData(pedido.prazo)}`,
+  }
+}
+
+export function usePedidos(): UsePedidosReturn {
   const pedidos = ref<Pedido[]>([])
   const error = ref(false)
   const carregando = ref(false)
 
-  async function buscarPedidos() {
+  async function buscarPedidos(): Promise<void> {
     carregando.value = true
     const config = useRuntimeConfig()
 
@@ -20,17 +46,16 @@ export function usePedidos() {
     }
   }
 
-  async function adicionarPedido(novoPedido: Omit<Pedido, 'id'>) {
+  async function adicionarPedido(novoPedido: Omit<Pedido, 'id'>): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/pedidos`, {
+      await $fetch(`${config.public.apiBase}/api/pedidos`, {
         method: 'POST',
         body: novoPedido,
       })
       await buscarPedidos()
-      return response
     } catch {
       error.value = true
     } finally {
@@ -38,16 +63,15 @@ export function usePedidos() {
     }
   }
 
-  async function deletarPedido(id: number) {
+  async function deletarPedido(id: number): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/pedidos/${id}`, {
+      await $fetch(`${config.public.apiBase}/api/pedidos/${id}`, {
         method: 'DELETE',
       })
       await buscarPedidos()
-      return response
     } catch {
       error.value = true
     } finally {
@@ -85,15 +109,10 @@ export function usePedidos() {
     )
   })
 
-  function mapParaItemDashboard(pedido: Pedido): ItemDashboard {
-    return {
-      id: pedido.id,
-      titulo: pedido.descricao,
-      subtitulo: `${pedido.tecnicoNome} · Prazo: ${formatarData(pedido.prazo)}`,
-    }
-  }
   const urgentes = computed(() =>
-    pedidos.value.filter((p) => p.statusSensorPedido === 'Urgencia').map(mapParaItemDashboard),
+    pedidos.value
+      .filter((p) => p.statusSensorPedido === 'Urgencia')
+      .map((pedido) => mapParaItemDashboard(pedido)),
   )
 
   return {
@@ -111,7 +130,6 @@ export function usePedidos() {
     carregando,
     filtroStatus,
     pedidosFiltrados,
-    mapParaItemDashboard,
     urgentes,
   }
 }

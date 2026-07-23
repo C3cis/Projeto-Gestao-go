@@ -1,12 +1,36 @@
 import type { ItemDashboard } from '~/types/dashboard'
 import type { Funcionario } from '~/types/funcionarios'
 
-export function useFuncionarios() {
+interface UseFuncionariosReturn {
+  funcionarios: Ref<Funcionario[]>
+  error: Ref<boolean>
+  carregando: Ref<boolean>
+  buscarFuncionarios: () => Promise<void>
+  adicionarFuncionario: (novoFuncionario: Omit<Funcionario, 'id'>) => Promise<void>
+  deletarFuncionario: (id: number) => Promise<void>
+  totalFuncionarios: ComputedRef<number>
+  funcionariosAtivos: ComputedRef<number>
+  funcionariosInativos: ComputedRef<number>
+  funcionariosSuspensos: ComputedRef<number>
+  filtroStatus: Ref<string>
+  funcionariosFiltrados: ComputedRef<Funcionario[]>
+  ausentes: ComputedRef<ItemDashboard[]>
+}
+
+function mapParaItemDashboard(funcionario: Funcionario): ItemDashboard {
+  return {
+    id: funcionario.id,
+    titulo: funcionario.nome,
+    subtitulo: `Status: ${funcionario.status}`,
+  }
+}
+
+export function useFuncionarios(): UseFuncionariosReturn {
   const funcionarios = ref<Funcionario[]>([])
   const error = ref(false)
   const carregando = ref(false)
 
-  async function buscarFuncionarios() {
+  async function buscarFuncionarios(): Promise<void> {
     carregando.value = true
     const config = useRuntimeConfig()
 
@@ -20,36 +44,34 @@ export function useFuncionarios() {
     }
   }
 
-  async function adicionarFuncionario(novoFuncionario: Omit<Funcionario, 'id'>) {
+  async function adicionarFuncionario(novoFuncionario: Omit<Funcionario, 'id'>): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
 
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/funcionarios`, {
+      await $fetch(`${config.public.apiBase}/api/funcionarios`, {
         method: 'POST',
         body: novoFuncionario,
       })
 
       await buscarFuncionarios()
-      return response
     } catch {
       error.value = true
     } finally {
       carregando.value = false
     }
   }
-  async function deletarFuncionario(id: number) {
+  async function deletarFuncionario(id: number): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
 
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/funcionarios/${id}`, {
+      await $fetch(`${config.public.apiBase}/api/funcionarios/${id}`, {
         method: 'DELETE',
       })
       await buscarFuncionarios()
-      return response
     } catch {
       error.value = true
     } finally {
@@ -79,18 +101,10 @@ export function useFuncionarios() {
     return funcionarios.value.filter((funcionario) => funcionario.status === filtroStatus.value)
   })
 
-  function mapParaItemDashboard(funcionario: Funcionario): ItemDashboard {
-    return {
-      id: funcionario.id,
-      titulo: funcionario.nome,
-      subtitulo: `Status: ${funcionario.status}`,
-    }
-  }
-
   const ausentes = computed(() =>
     funcionarios.value
       .filter((f) => f.status === 'Nas Ferias' || f.status === 'Suspenso')
-      .map(mapParaItemDashboard),
+      .map((funcionario) => mapParaItemDashboard(funcionario)),
   )
 
   return {

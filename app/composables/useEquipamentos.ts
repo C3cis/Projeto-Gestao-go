@@ -1,12 +1,36 @@
 import type { ItemDashboard } from '~/types/dashboard'
 import type { Equipamento } from '~/types/equipamentos'
 
-export function useEquipamentos() {
+interface UseEquipamentosReturn {
+  equipamentos: Ref<Equipamento[]>
+  buscarEquipamentos: () => Promise<void>
+  adicionarEquipamento: (novoEquipamento: Omit<Equipamento, 'id'>) => Promise<void>
+  deletarEquipamento: (id: number) => Promise<void>
+  TotalEquipamentos: ComputedRef<number>
+  EquipamentosOperacionais: ComputedRef<number>
+  EquipamentosManutencao: ComputedRef<number>
+  EquipamentosInativos: ComputedRef<number>
+  error: Ref<boolean>
+  carregando: Ref<boolean>
+  filtroStatus: Ref<string>
+  equipamentosFiltrados: ComputedRef<Equipamento[]>
+  emManutencao: ComputedRef<ItemDashboard[]>
+}
+
+function mapParaItemDashboard(equipamento: Equipamento): ItemDashboard {
+  return {
+    id: equipamento.id,
+    titulo: equipamento.nome,
+    subtitulo: equipamento.localizacao,
+  }
+}
+
+export function useEquipamentos(): UseEquipamentosReturn {
   const equipamentos = ref<Equipamento[]>([])
   const error = ref(false)
   const carregando = ref(false)
 
-  async function buscarEquipamentos() {
+  async function buscarEquipamentos() : Promise<void> {
     carregando.value = true
     const config = useRuntimeConfig()
 
@@ -20,19 +44,16 @@ export function useEquipamentos() {
     }
   }
 
-  async function adicionarEquipamento(novoEquipamento: Omit<Equipamento, 'id'>) {
+  async function adicionarEquipamento(novoEquipamento: Omit<Equipamento, 'id'>): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/equipamentos`, {
+      await $fetch(`${config.public.apiBase}/api/equipamentos`, {
         method: 'POST',
-
         body: novoEquipamento,
       })
-
       await buscarEquipamentos()
-      return response
     } catch {
       error.value = true
     } finally {
@@ -40,16 +61,15 @@ export function useEquipamentos() {
     }
   }
 
-  async function deletarEquipamento(id: number) {
+  async function deletarEquipamento(id: number): Promise<void> {
     const config = useRuntimeConfig()
     carregando.value = true
     error.value = false
     try {
-      const response = await $fetch(`${config.public.apiBase}/api/equipamentos/${id}`, {
+      await $fetch(`${config.public.apiBase}/api/equipamentos/${id}`, {
         method: 'DELETE',
       })
       await buscarEquipamentos()
-      return response
     } catch {
       error.value = true
     } finally {
@@ -76,15 +96,10 @@ export function useEquipamentos() {
     if (filtroStatus.value === 'todos') return equipamentos.value
     return equipamentos.value.filter((e) => e.status === filtroStatus.value)
   })
-  function mapParaItemDashboard(equipamento: Equipamento): ItemDashboard {
-    return {
-      id: equipamento.id,
-      titulo: equipamento.nome,
-      subtitulo: equipamento.localizacao,
-    }
-  }
   const emManutencao = computed(() =>
-    equipamentos.value.filter((e) => e.status === 'Manutencao').map(mapParaItemDashboard),
+    equipamentos.value
+      .filter((e) => e.status === 'Manutencao')
+      .map((equipamento) => mapParaItemDashboard(equipamento)),
   )
 
   return {

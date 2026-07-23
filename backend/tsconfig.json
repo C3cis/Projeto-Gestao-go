@@ -9,6 +9,11 @@
     "allowJs": true,
     "types": ["bun"],
 
+    // Path alias (~/ aponta para src/)
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

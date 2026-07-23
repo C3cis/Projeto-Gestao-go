@@ -138,7 +138,7 @@
             classe: (valor: unknown) => funcionariosStyles[valor as keyof typeof funcionariosStyles],
           },
         ]"
-        :dados="funcionariosFiltrados" /><br />
+        :dados="funcionariosFiltrados as unknown as Record<string, unknown>[]" /><br />
     </div>
   </section>
 </template>

@@ -126,7 +126,7 @@
             formato: (valor: unknown) => formatarData(valor as string),
           },
         ]"
-        :dados="equipamentosFiltrados" /><br />
+        :dados="equipamentosFiltrados as unknown as Record<string, unknown>[]" /><br />
     </div>
   </section>
 </template>

@@ -1,7 +1,11 @@
+import type { Request } from 'express'
+
 import { Router } from 'express'
 
-import { db } from '../db'
+import { db } from '~/db'
+import type { NovoFuncionario } from '~/types'
 
+// eslint-disable-next-line new-cap
 const router = Router()
 
 //Parte de Get
@@ -14,7 +18,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request<unknown,unknown, NovoFuncionario>, res) => {
   try {
     const { nome, email, telefone, cargo, status } = req.body
     await db.query(

@@ -2,10 +2,14 @@
 // ou um par { label, valor } — mostra o nome, envia o id (usado em relações/FK)
 export type OpcaoCampo = string | { label: string; valor: string | number }
 
+// nome da propriedade no objeto
+// texto que aparece pro usuário as opções
+// só usado quando tipo === 'select'
+// 'metade' = 2 campos por linha Cargo/Status padrão = linha inteira
 export interface Campo {
-  chave: string // nome da propriedade no objeto (ex.: 'nome')
-  label: string // texto que aparece pro usuário (placeholder/opção)
+  chave: string 
+  label: string 
   tipo: 'text' | 'date' | 'number' | 'select'
-  opcoes?: OpcaoCampo[] // só usado quando tipo === 'select'
-  largura?: 'metade' // 'metade' = 2 campos por linha (ex.: Cargo/Status); padrão = linha inteira
+  opcoes?: OpcaoCampo[] 
+  largura?: 'metade' 
 }

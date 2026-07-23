@@ -1,7 +1,11 @@
+import type { Request } from 'express'
+
 import { Router } from 'express'
 
-import { db } from '../db'
+import { db } from '~/db'
+import type { NovoEquipamento } from '~/types'
 
+// eslint-disable-next-line new-cap
 const router = Router()
 
 // GET — listar todos
@@ -15,7 +19,7 @@ router.get('/', async (req, res) => {
 })
 
 // POST — criar novo
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request<unknown, unknown, NovoEquipamento>, res) => {
   try {
     const { nome, descricao, status, localizacao, dataAquisicao } = req.body
     await db.query(

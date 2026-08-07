@@ -10,7 +10,15 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2026-06-18',
-  nitro: { preset: 'bun' },
+  nitro: {
+    preset: 'bun',
+    devProxy: {
+      '/go': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

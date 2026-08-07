@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "postinstall": "nuxt prepare",
-    "dev": "nuxt dev",
-    "build": "nuxt build",
+    "app:dev": "nuxt dev",
+    "app:build": "nuxt build",
+    "api:dev": "cd api && ~/go/bin/air",
+    "dev": "concurrently -n APP,API -c green,blue \"bun app:dev\" \"bun api:dev\"",
     "fmt": "oxfmt --check",
     "fmt:fix": "oxfmt",
     "typecheck": "nuxi typecheck",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@dethdkn/ox-config": "^1.0.23",
+    "concurrently": "^10.0.4",
     "vue-tsc": "^3.3.7"
   }
 }

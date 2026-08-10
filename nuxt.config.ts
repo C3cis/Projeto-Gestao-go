@@ -3,10 +3,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', '@nuxt/icon', '@nuxtjs/i18n', '@nuxtjs/color-mode'],
   css: ['~/assets/main.css'],
-
   runtimeConfig: {
     public: {
-      apiBase: 'http://localhost:8080',
+      siteUrl: '',
     },
   },
   compatibilityDate: '2026-06-18',

@@ -1,43 +1,36 @@
 <script setup lang="ts">
-  import type { Equipamento } from '~/types/equipamentos'
-  import type { Campo } from '~/types/formulario'
-
   const { t } = useI18n({ useScope: 'local' })
 
-  const {
-    equipamentos,
-    buscarEquipamentos,
-    adicionarEquipamento,
-    deletarEquipamento,
-    TotalEquipamentos,
-    EquipamentosOperacionais,
-    EquipamentosManutencao,
-    EquipamentosInativos,
-    error,
-    carregando,
-    filtroStatus,
-    equipamentosFiltrados,
-  } = useEquipamentos()
+  type Campo = unknown
 
-  onMounted(async () => {
-    await buscarEquipamentos()
-  })
+  type StatusEquipamento = 'Ativo' | 'Inativo' | 'Manutencao'
+
+  const { data } = useApi<
+    {
+      id: number
+      nome: string
+      descricao: string
+      status: StatusEquipamento
+      localizacao: string
+      dataAquisicao: string
+    }[]
+  >('/equipamentos/listar')
 
   const meusCards = computed(() => [
-    { titulo: t('cards.totais'), valor: TotalEquipamentos.value, icone: 'ph:toolbox' },
+    { titulo: t('cards.totais'), valor: 1, icone: 'ph:toolbox' },
     {
       titulo: t('cards.operacionais'),
-      valor: EquipamentosOperacionais.value,
+      valor: 2,
       icone: 'line-md:fork-right',
     },
     {
       titulo: t('cards.em_manutencao'),
-      valor: EquipamentosManutencao.value,
+      valor: 3,
       icone: 'line-md:construction-twotone',
     },
     {
       titulo: t('cards.inativos'),
-      valor: EquipamentosInativos.value,
+      valor: 4,
       icone: 'line-md:menu-to-close-alt-transition',
     },
   ])
@@ -66,6 +59,7 @@
 
 <template>
   <section class="mb-9">
+    {{ data }}
     <div class="mb-2 flex flex-wrap items-center justify-between">
       <h1
         class="mb-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-3xl font-bold text-transparent">
@@ -82,7 +76,6 @@
         v-if="modalAberto"
         titulo="Cadastro de Equipamento"
         :campos="camposEquipamento"
-        @salvar="(dados) => adicionarEquipamento(dados as Omit<Equipamento, 'id'>)"
         @fechar="modalAberto = false" />
     </div>
     <p class="text-xl text-gray-600">{{ t('sub_titulo') }}</p>
@@ -102,12 +95,9 @@
       :key="botoes.valor"
       :texto="botoes.texto"
       :tipo="botoes.tamanho"
-      :cor="botoes.cor"
-      @click="filtroStatus = botoes.valor" />
+      :cor="botoes.cor" />
   </section>
-  <section v-if="carregando">Carregando...</section>
-  <section v-else-if="error">Erro ao carregar</section>
-  <section v-else>
+  <section>
     <div>
       <Tabelas
         :colunas="[
@@ -126,7 +116,7 @@
             formato: (valor: unknown) => formatarData(valor as string),
           },
         ]"
-        :dados="equipamentosFiltrados as unknown as Record<string, unknown>[]" /><br />
+        :dados="data || []" />
     </div>
   </section>
 </template>

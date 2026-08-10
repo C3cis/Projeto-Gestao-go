@@ -59,7 +59,6 @@
 
 <template>
   <section class="mb-9">
-    {{ data }}
     <div class="mb-2 flex flex-wrap items-center justify-between">
       <h1
         class="mb-1.5 bg-linear-to-r from-pink-600 via-rose-300 to-fuchsia-900 bg-clip-text text-3xl font-bold text-transparent">

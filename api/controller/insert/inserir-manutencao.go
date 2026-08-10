@@ -3,7 +3,7 @@ package insert
 import (
 	"time"
 
-	"git.cbpf.br/ceciliarussano/projetogestao/api/mongo"
+	"git.cbpf.br/ceciliarussano/projetogestao/api/manutencao"
 	"github.com/gin-gonic/gin"
 )
 
@@ -51,7 +51,7 @@ func InserirManutencao(c *gin.Context) {
 		return
 	}
 
-	if err := mongo.InserirManutencao(req.EquipamentoID, req.TipoManu, req.Descricao, dataFechamento, req.Valor, req.Status); err != nil {
+	if err := manutencao.Inserir(req.EquipamentoID, req.TipoManu, req.Descricao, dataFechamento, req.Valor, req.Status); err != nil {
 		c.JSON(500, gin.H{"error": "Failed to insert maintenance"})
 		return
 	}

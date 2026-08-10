@@ -1,12 +1,15 @@
-package mongo
+package manutencao
 
 import (
 	"context"
 	"log"
+
+	"git.cbpf.br/ceciliarussano/projetogestao/api/equipamentos"
+	"git.cbpf.br/ceciliarussano/projetogestao/api/mongo"
 )
 
-func ListarManutencao() ([]ManuEqui, error) {
-	cursor, err := Russaninha.Collection("manutencoes").Find(context.TODO(), map[string]interface{}{})
+func Listar() ([]ManuEqui, error) {
+	cursor, err := mongo.Russaninha.Collection("manutencoes").Find(context.TODO(), map[string]interface{}{})
 	if err != nil {
 		return nil, err
 	}
@@ -15,16 +18,18 @@ func ListarManutencao() ([]ManuEqui, error) {
 	if err := cursor.All(context.TODO(), &manutencoes); err != nil {
 		return nil, err
 	}
-	equipamentos, err := ListarEquipamentos()
+
+	listaEquipamentos, err := equipamentos.Listar()
 	if err != nil {
 		return nil, err
 	}
+
 	log.Println("Manutencoes:", manutencoes)
-	log.Println("Equipamentos:", equipamentos)
+	log.Println("Equipamentos:", listaEquipamentos)
 
 	var manuEqui []ManuEqui
 	for _, manutencao := range manutencoes {
-		for _, equipamento := range equipamentos {
+		for _, equipamento := range listaEquipamentos {
 			log.Println("Comparando:", manutencao.EquipamentoID, "equipamento", equipamento.ID.Hex())
 			if manutencao.EquipamentoID == equipamento.ID.Hex() {
 				manuEqui = append(manuEqui, ManuEqui{

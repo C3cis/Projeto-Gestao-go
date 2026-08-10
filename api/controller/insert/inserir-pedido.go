@@ -3,7 +3,7 @@ package insert
 import (
 	"time"
 
-	"git.cbpf.br/ceciliarussano/projetogestao/api/mongo"
+	"git.cbpf.br/ceciliarussano/projetogestao/api/pedidos"
 	"github.com/gin-gonic/gin"
 )
 
@@ -50,7 +50,7 @@ func InserirPedido(c *gin.Context) {
 		return
 	}
 
-	if err := mongo.InserirPedido(req.TecnicoId, req.Descricao, req.StatusPedido, prazo, req.StatusAviso); err != nil {
+	if err := pedidos.Inserir(req.TecnicoId, req.Descricao, req.StatusPedido, prazo, req.StatusAviso); err != nil {
 		c.JSON(500, gin.H{"error": "Failed to insert order"})
 		return
 	}

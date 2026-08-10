@@ -1,7 +1,7 @@
 package deletar
 
 import (
-	"git.cbpf.br/ceciliarussano/projetogestao/api/mongo"
+	"git.cbpf.br/ceciliarussano/projetogestao/api/pedidos"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/v2/bson"
 )
@@ -15,7 +15,7 @@ func DeletarPedido(c *gin.Context) {
 		return
 	}
 
-	deletados, err := mongo.DeletarPedido(id)
+	deletados, err := pedidos.Deletar(id)
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Erro ao deletar pedido"})
 		return

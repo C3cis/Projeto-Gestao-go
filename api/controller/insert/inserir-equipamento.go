@@ -1,7 +1,7 @@
 package insert
 
 import (
-	"git.cbpf.br/ceciliarussano/projetogestao/api/mongo"
+	"git.cbpf.br/ceciliarussano/projetogestao/api/equipamentos"
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,7 +29,7 @@ func InserirEquipamento(c *gin.Context) {
 		return
 	}
 
-	if err := mongo.InserirEquipamento(req.Nome, req.Descricao, req.Status, req.Localizacao); err != nil {
+	if err := equipamentos.Inserir(req.Nome, req.Descricao, req.Status, req.Localizacao); err != nil {
 		c.JSON(500, gin.H{"error": "Failed to insert equipment"})
 		return
 	}

@@ -1,4 +1,4 @@
-package mongo
+package funcionarios
 
 import "go.mongodb.org/mongo-driver/v2/bson"
 

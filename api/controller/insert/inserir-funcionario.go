@@ -1,7 +1,7 @@
 package insert
 
 import (
-	"git.cbpf.br/ceciliarussano/projetogestao/api/mongo"
+	"git.cbpf.br/ceciliarussano/projetogestao/api/funcionarios"
 	"github.com/gin-gonic/gin"
 )
 
@@ -48,7 +48,7 @@ func InserirFuncionario(c *gin.Context) {
 		return
 	}
 
-	if err := mongo.InserirFuncionario(req.Nome, req.Email, req.Telefone, req.Cargo, req.Status); err != nil {
+	if err := funcionarios.Inserir(req.Nome, req.Email, req.Telefone, req.Cargo, req.Status); err != nil {
 		c.JSON(500, gin.H{"error": "Failed to insert employee"})
 		return
 	}

@@ -1,7 +1,7 @@
 package deletar
 
 import (
-	"git.cbpf.br/ceciliarussano/projetogestao/api/mongo"
+	"git.cbpf.br/ceciliarussano/projetogestao/api/funcionarios"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/v2/bson"
 )
@@ -15,7 +15,7 @@ func DeletarFuncionario(c *gin.Context) {
 		return
 	}
 
-	deletados, err := mongo.DeletarFuncionario(id)
+	deletados, err := funcionarios.Deletar(id)
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Erro ao deletar funcionario"})
 		return
